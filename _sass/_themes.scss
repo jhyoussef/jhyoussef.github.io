@@ -1,5 +1,8 @@
 /*******************************************************************************
- * Themes — Arget Palette (Carrd/Fourthwall aligned)
+ * Themes — Arget Palette (Carrd/Fourthwall aligned) — Jekyll-safe
+ * Notes:
+ *  - Avoids sass:color channel interpolation for older converters.
+ *  - Avoids undefined $back-to-top-* Sass vars by using CSS fallbacks.
  ******************************************************************************/
 
 @use "sass:color";
@@ -23,13 +26,11 @@
   --global-divider-color: rgba(54, 39, 27, 0.12);
   --global-card-bg-color: #FFF9E9;     /* slightly brighter than page */
   --global-highlight-color: #E09540;   /* warm highlight */
-  --global-back-to-top-bg-color: rgba(
-    #{color.channel(#36271B, "red", $space: rgb)},
-    #{color.channel(#36271B, "green", $space: rgb)},
-    #{color.channel(#36271B, "blue", $space: rgb)},
-    0.40
-  );
+
+  /* Avoid sass:color interpolation — hard-code rgba(54,39,27,0.40) */
+  --global-back-to-top-bg-color: rgba(54, 39, 27, 0.40);
   --global-back-to-top-text-color: #FFFFFF;
+
   --global-newsletter-bg-color: #FFF9E9;
   --global-newsletter-text-color: #36271B;
 
@@ -61,8 +62,90 @@
   .only-light { display: block; }
   .only-dark  { display: none; }
 
-  /* Back to top (uses your Sass sizing vars) */
+  /* Back to top — use CSS fallbacks instead of Sass vars */
   #back-to-top {
     color: var(--global-back-to-top-text-color);
     background: var(--global-back-to-top-bg-color);
-    bottom: $back-
+
+    /* Fallbacks: if your theme defines CSS variables, these will be used;
+       otherwise, the second value is the hard-coded px. */
+    bottom: var(--back-to-top-bottom, 20px);
+    right:  var(--back-to-top-right,  20px);
+    height: var(--back-to-top-height, 42px);
+    width:  var(--back-to-top-width,  42px);
+    z-index: 9999;
+  }
+}
+
+/* ---------- DARK THEME ---------- */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Core surface & text */
+  --global-bg-color: #0F1A17;          /* deep green-black */
+  --global-code-bg-color: #17221F;
+  --global-text-color: #FCF6DE;        /* cornsilk */
+  --global-text-color-light: #B9B19B;  /* muted light */
+  --global-theme-color: #2D6B6D;       /* teal (primary in dark) */
+  --global-hover-color: #3C8B90;
+  --global-hover-text-color: #0F1A17;
+  --global-footer-bg-color: #1B2623;
+  --global-footer-text-color: #EAE1C6;
+  --global-footer-link-color: #FCF6DE;
+  --global-distill-app-color: #C4911E; /* ochre accent in dark */
+  --global-divider-color: #2A3532;
+  --global-card-bg-color: #1B2623;     /* slightly lifted card */
+  --global-highlight-color: #E5A45B;
+
+  /* Avoid sass:color interpolation — hard-code rgba(252,246,222,0.50) */
+  --global-back-to-top-bg-color: rgba(252, 246, 222, 0.50);
+  --global-back-to-top-text-color: #0F1A17;
+
+  --global-newsletter-bg-color: #1B2623;
+  --global-newsletter-text-color: #FCF6DE;
+
+  /* Admonitions (dark-tuned) */
+  --global-tip-block: #6FB0B3;
+  --global-tip-block-bg: #122623;
+  --global-tip-block-text: #CFE8E9;
+  --global-tip-block-title: #A8D4D6;
+
+  --global-warning-block: #E0B04A;
+  --global-warning-block-bg: #2A2213;
+  --global-warning-block-text: #FFE9B8;
+  --global-warning-block-title: #F5CD79;
+
+  --global-danger-block: #D26060;
+  --global-danger-block-bg: #2A1414;
+  --global-danger-block-text: #FFD6D6;
+  --global-danger-block-title: #F29A9A;
+
+  .only-light { display: none; }
+  .only-dark  { display: block; }
+}
+
+/* ---------- Toggle state helpers (unchanged logic) ---------- */
+html[data-theme-setting="dark"] {
+  #light-toggle-system { display: none; }
+  #light-toggle-dark {
+    padding-left: 10px;
+    padding-top: 12px;
+    display: block;
+  }
+  #light-toggle-light { display: none; }
+
+  #back-to-top {
+    color: var(--global-back-to-top-text-color);
+    background: var(--global-back-to-top-bg-color);
+  }
+}
+
+html[data-theme-setting="light"] {
+  #light-toggle-system { display: none; }
+  #light-toggle-dark   { display: none; }
+  #light-toggle-light {
+    padding-left: 10px;
+    padding-top: 12px;
+    display: block;
+  }
+}
