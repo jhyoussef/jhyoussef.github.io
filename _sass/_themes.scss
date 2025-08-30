@@ -5,50 +5,48 @@
  *  - Avoids undefined $back-to-top-* Sass vars by using CSS fallbacks.
  ******************************************************************************/
 
-@use "sass:color";
-
 /* ---------- LIGHT THEME ---------- */
 :root {
   color-scheme: light;
 
   /* Core surface & text */
-  --global-bg-color: #FCF6DE;          /* cornsilk */
-  --global-code-bg-color: #F8F0D7;
-  --global-text-color: #36271B;        /* deep coffee */
-  --global-text-color-light: #6E5A45;  /* muted coffee for secondary text */
-  --global-theme-color: #E09540;       /* ochre (primary) */
-  --global-hover-color: #C4911E;       /* darker ochre on hover */
-  --global-hover-text-color: #FFFFFF;
-  --global-footer-bg-color: #2F4B36;   /* forest */
-  --global-footer-text-color: #FDF3DE; /* soft light */
-  --global-footer-link-color: #FFFFFF;
-  --global-distill-app-color: #2D6B6D; /* teal accent */
+  --global-bg-color: #fcf6de; /* cornsilk */
+  --global-code-bg-color: #f8f0d7;
+  --global-text-color: #36271b; /* deep coffee */
+  --global-text-color-light: #6e5a45; /* muted coffee for secondary text */
+  --global-theme-color: #e09540; /* ochre (primary) */
+  --global-hover-color: #c4911e; /* darker ochre on hover */
+  --global-hover-text-color: #ffffff;
+  --global-footer-bg-color: #2f4b36; /* forest */
+  --global-footer-text-color: #fdf3de; /* soft light */
+  --global-footer-link-color: #ffffff;
+  --global-distill-app-color: #2d6b6d; /* teal accent */
   --global-divider-color: rgba(54, 39, 27, 0.12);
-  --global-card-bg-color: #FFF9E9;     /* slightly brighter than page */
-  --global-highlight-color: #E09540;   /* warm highlight */
+  --global-card-bg-color: #fff9e9; /* slightly brighter than page */
+  --global-highlight-color: #e09540; /* warm highlight */
 
-  /* Avoid sass:color interpolation — hard-code rgba(54,39,27,0.40) */
-  --global-back-to-top-bg-color: rgba(54, 39, 27, 0.40);
-  --global-back-to-top-text-color: #FFFFFF;
+  /* Hard-coded rgba to avoid sass:color */
+  --global-back-to-top-bg-color: rgba(54, 39, 27, 0.4);
+  --global-back-to-top-text-color: #ffffff;
 
-  --global-newsletter-bg-color: #FFF9E9;
-  --global-newsletter-text-color: #36271B;
+  --global-newsletter-bg-color: #fff9e9;
+  --global-newsletter-text-color: #36271b;
 
   /* Admonitions (harmonized) */
-  --global-tip-block: #2D6B6D;
-  --global-tip-block-bg: #E6F0EE;
-  --global-tip-block-text: #1E4749;
-  --global-tip-block-title: #245C5F;
+  --global-tip-block: #2d6b6d;
+  --global-tip-block-bg: #e6f0ee;
+  --global-tip-block-text: #1e4749;
+  --global-tip-block-title: #245c5f;
 
-  --global-warning-block: #C4911E;
-  --global-warning-block-bg: #FFF3D9;
-  --global-warning-block-text: #6A4F10;
-  --global-warning-block-title: #936E15;
+  --global-warning-block: #c4911e;
+  --global-warning-block-bg: #fff3d9;
+  --global-warning-block-text: #6a4f10;
+  --global-warning-block-title: #936e15;
 
-  --global-danger-block: #9E2A2A;
-  --global-danger-block-bg: #FBE7E7;
-  --global-danger-block-text: #5E1717;
-  --global-danger-block-title: #7E1F1F;
+  --global-danger-block: #9e2a2a;
+  --global-danger-block-bg: #fbe7e7;
+  --global-danger-block-text: #5e1717;
+  --global-danger-block-title: #7e1f1f;
 
   /* Toggle icons visibility (light default) */
   #light-toggle-system {
@@ -56,23 +54,28 @@
     padding-top: 12px;
     display: block;
   }
-  #light-toggle-dark { display: none; }
-  #light-toggle-light { display: none; }
+  #light-toggle-dark {
+    display: none;
+  }
+  #light-toggle-light {
+    display: none;
+  }
 
-  .only-light { display: block; }
-  .only-dark  { display: none; }
+  .only-light {
+    display: block;
+  }
+  .only-dark {
+    display: none;
+  }
 
-  /* Back to top — use CSS fallbacks instead of Sass vars */
+  /* Back to top — CSS fallbacks (no Sass vars) */
   #back-to-top {
     color: var(--global-back-to-top-text-color);
     background: var(--global-back-to-top-bg-color);
-
-    /* Fallbacks: if your theme defines CSS variables, these will be used;
-       otherwise, the second value is the hard-coded px. */
     bottom: var(--back-to-top-bottom, 20px);
-    right:  var(--back-to-top-right,  20px);
+    right: var(--back-to-top-right, 20px);
     height: var(--back-to-top-height, 42px);
-    width:  var(--back-to-top-width,  42px);
+    width: var(--back-to-top-width, 42px);
     z-index: 9999;
   }
 }
@@ -82,57 +85,65 @@ html[data-theme="dark"] {
   color-scheme: dark;
 
   /* Core surface & text */
-  --global-bg-color: #0F1A17;          /* deep green-black */
-  --global-code-bg-color: #17221F;
-  --global-text-color: #FCF6DE;        /* cornsilk */
-  --global-text-color-light: #B9B19B;  /* muted light */
-  --global-theme-color: #2D6B6D;       /* teal (primary in dark) */
-  --global-hover-color: #3C8B90;
-  --global-hover-text-color: #0F1A17;
-  --global-footer-bg-color: #1B2623;
-  --global-footer-text-color: #EAE1C6;
-  --global-footer-link-color: #FCF6DE;
-  --global-distill-app-color: #C4911E; /* ochre accent in dark */
-  --global-divider-color: #2A3532;
-  --global-card-bg-color: #1B2623;     /* slightly lifted card */
-  --global-highlight-color: #E5A45B;
+  --global-bg-color: #0f1a17; /* deep green-black */
+  --global-code-bg-color: #17221f;
+  --global-text-color: #fcf6de; /* cornsilk */
+  --global-text-color-light: #b9b19b; /* muted light */
+  --global-theme-color: #2d6b6d; /* teal (primary in dark) */
+  --global-hover-color: #3c8b90;
+  --global-hover-text-color: #0f1a17;
+  --global-footer-bg-color: #1b2623;
+  --global-footer-text-color: #eae1c6;
+  --global-footer-link-color: #fcf6de;
+  --global-distill-app-color: #c4911e; /* ochre accent in dark */
+  --global-divider-color: #2a3532;
+  --global-card-bg-color: #1b2623; /* slightly lifted card */
+  --global-highlight-color: #e5a45b;
 
-  /* Avoid sass:color interpolation — hard-code rgba(252,246,222,0.50) */
-  --global-back-to-top-bg-color: rgba(252, 246, 222, 0.50);
-  --global-back-to-top-text-color: #0F1A17;
+  /* Hard-coded rgba to avoid sass:color */
+  --global-back-to-top-bg-color: rgba(252, 246, 222, 0.5);
+  --global-back-to-top-text-color: #0f1a17;
 
-  --global-newsletter-bg-color: #1B2623;
-  --global-newsletter-text-color: #FCF6DE;
+  --global-newsletter-bg-color: #1b2623;
+  --global-newsletter-text-color: #fcf6de;
 
   /* Admonitions (dark-tuned) */
-  --global-tip-block: #6FB0B3;
+  --global-tip-block: #6fb0b3;
   --global-tip-block-bg: #122623;
-  --global-tip-block-text: #CFE8E9;
-  --global-tip-block-title: #A8D4D6;
+  --global-tip-block-text: #cfe8e9;
+  --global-tip-block-title: #a8d4d6;
 
-  --global-warning-block: #E0B04A;
-  --global-warning-block-bg: #2A2213;
-  --global-warning-block-text: #FFE9B8;
-  --global-warning-block-title: #F5CD79;
+  --global-warning-block: #e0b04a;
+  --global-warning-block-bg: #2a2213;
+  --global-warning-block-text: #ffe9b8;
+  --global-warning-block-title: #f5cd79;
 
-  --global-danger-block: #D26060;
-  --global-danger-block-bg: #2A1414;
-  --global-danger-block-text: #FFD6D6;
-  --global-danger-block-title: #F29A9A;
+  --global-danger-block: #d26060;
+  --global-danger-block-bg: #2a1414;
+  --global-danger-block-text: #ffd6d6;
+  --global-danger-block-title: #f29a9a;
 
-  .only-light { display: none; }
-  .only-dark  { display: block; }
+  .only-light {
+    display: none;
+  }
+  .only-dark {
+    display: block;
+  }
 }
 
 /* ---------- Toggle state helpers (unchanged logic) ---------- */
 html[data-theme-setting="dark"] {
-  #light-toggle-system { display: none; }
+  #light-toggle-system {
+    display: none;
+  }
   #light-toggle-dark {
     padding-left: 10px;
     padding-top: 12px;
     display: block;
   }
-  #light-toggle-light { display: none; }
+  #light-toggle-light {
+    display: none;
+  }
 
   #back-to-top {
     color: var(--global-back-to-top-text-color);
@@ -141,8 +152,12 @@ html[data-theme-setting="dark"] {
 }
 
 html[data-theme-setting="light"] {
-  #light-toggle-system { display: none; }
-  #light-toggle-dark   { display: none; }
+  #light-toggle-system {
+    display: none;
+  }
+  #light-toggle-dark {
+    display: none;
+  }
   #light-toggle-light {
     padding-left: 10px;
     padding-top: 12px;
