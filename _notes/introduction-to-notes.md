@@ -1,6 +1,6 @@
 ---
 layout: page
-title: introduction
+title: "introduction"
 description: a test page
 importance: 2
 category: introduction-astronomy

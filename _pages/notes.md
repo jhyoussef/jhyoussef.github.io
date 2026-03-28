@@ -5,7 +5,7 @@ permalink: /notes/
 description: notes and review content hub
 nav: true
 nav_order: 3
-display_categories: [earth-history, intro-astronomy]
+display_categories: [earth-history, introduction-astronomy]
 horizontal: false
 ---
 
