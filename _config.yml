@@ -136,7 +136,8 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
-  # get rid of books? but maybe art is a collection?
+  art:
+    output: true
   notes:
     output: true
   news:

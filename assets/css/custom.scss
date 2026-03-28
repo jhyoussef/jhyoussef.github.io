@@ -97,3 +97,32 @@
   border-radius: 6px;
   cursor: zoom-out;
 }
+
+.art-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.art-item {
+  position: relative;
+}
+
+.art-item img {
+  width: 100%;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  opacity: 0;
+  transition: 0.2s;
+  padding: 1rem;
+}
+
+.art-item:hover .overlay {
+  opacity: 1;
+}

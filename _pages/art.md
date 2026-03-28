@@ -12,5 +12,14 @@ horizontal: false
 Welcome to my art gallery.  
 Select a section below:
 
-- [Professional illustration](/art/professional/)
-- [Personal & sketchbook work](/art/personal/)
+<div class="art-grid">
+{% for piece in site.art %}
+  <a href="{{ piece.url }}" class="art-item">
+    <img src="{{ piece.image }}">
+    <div class="overlay">
+      <div>{{ piece.title }} ({{ piece.year }})</div>
+      <p>{{ piece.description }}</p>
+    </div>
+  </a>
+{% endfor %}
+</div>
