@@ -16,6 +16,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/blog/";
           },
+        },{id: "nav-essays",
+          title: "essays",
+          description: "",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/essays/index.html";
+          },
         },{id: "nav-projects",
           title: "projects",
           description: "A growing collection of projects.",
@@ -48,12 +55,7 @@ ninja.data = [{
             window.location.href = "/blog/2025/testing-out-the-format/";
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
-            },},{id: "news-my-first-announcement-sparkles-smile",
+      },{id: "news-my-first-announcement-sparkles-smile",
           title: 'My first announcement! :sparkles: :smile:',
           description: "",
           section: "News",},{id: "projects-learning-anatomy",
@@ -61,6 +63,11 @@ ninja.data = [{
           description: "a project where I post my progress learning generalized vertebrate anatomy",
           section: "Projects",handler: () => {
               window.location.href = "/projects/learning-anatomy/";
+            },},{id: "projects-reviewing-geosciences",
+          title: 'Reviewing Geosciences',
+          description: "a place where I will post some of the completed reviews of my prior coursework, with updates on the blog.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/reviewing-geosciences/";
             },},{
         id: 'social-bluesky',
         title: 'Bluesky',
@@ -80,7 +87,7 @@ ninja.data = [{
         title: 'Instagram',
         section: 'Socials',
         handler: () => {
-          window.open("https://instagram.com/offthefossilrecord", "_blank");
+          window.open("https://instagram.com/juliayoussef.science", "_blank");
         },
       },{
         id: 'social-rss',
