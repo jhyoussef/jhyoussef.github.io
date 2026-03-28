@@ -126,3 +126,15 @@
 .art-item:hover .overlay {
   opacity: 1;
 }
+
+.site-banner {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.site-banner img {
+  width: 100%;
+  max-height: 280px;
+  object-fit: cover;
+  display: block;
+}
