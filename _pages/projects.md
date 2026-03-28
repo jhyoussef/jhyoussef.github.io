@@ -5,7 +5,7 @@ permalink: /projects/
 description: A growing collection of projects.
 nav: true
 nav_order: 3
-display_categories: [paleontology, art]
+display_categories: [paleontology, art, review]
 horizontal: false
 ---
 

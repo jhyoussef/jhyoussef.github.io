@@ -8,4 +8,4 @@ category: art
 giscus_comments: true
 ---
 
-Ill post some of my old work here, my current capacity, and then notes, etc. as I proceed :)
+I'll post some of my old work here, my current capacity, and then notes, etc. as I proceed :)
