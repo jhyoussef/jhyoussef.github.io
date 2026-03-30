@@ -4,8 +4,8 @@ title: "introduction"
 description: a test page
 img: 
 importance: 2
-category: introduction-astronomy
+category: intro-astro
 giscus_comments: true
 ---
 
-testing making a notes page! failed first time - why?
+welcome to the first 'notes' hub, which will hold the running notes per course, for now...
