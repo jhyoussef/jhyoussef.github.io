@@ -63,7 +63,17 @@ ninja.data = [{
             },},{id: "news-my-first-announcement-sparkles-smile",
           title: 'My first announcement! :sparkles: :smile:',
           description: "",
-          section: "News",},{id: "projects-learning-anatomy",
+          section: "News",},{id: "note_areas-earth-history",
+          title: 'Earth History',
+          description: "Big-picture Earth systems, stratigraphy, major transitions, and review material.",
+          section: "Note_areas",handler: () => {
+              window.location.href = "/notes/earth-history/";
+            },},{id: "notes-cambrian-explosion-review",
+          title: 'Cambrian Explosion Review',
+          description: "...",
+          section: "Notes",handler: () => {
+              window.location.href = "/notes/earth-history/cambrian-explosion/";
+            },},{id: "projects-learning-anatomy",
           title: 'Learning Anatomy',
           description: "a project where I post my progress learning generalized vertebrate anatomy",
           section: "Projects",handler: () => {
