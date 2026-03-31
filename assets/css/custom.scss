@@ -42,28 +42,40 @@
 }
 
 .masonry-item {
+  display: inline-block;
+  width: 100%;
   break-inside: avoid;
-  margin-bottom: 1.25rem;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  margin: 0 0 1.25rem;
+  box-sizing: border-box;
+  vertical-align: top;
 }
 
 .art-card-link {
   display: block;
+  width: 100%;
   text-decoration: none;
   color: inherit;
+  box-sizing: border-box;
 }
 
 /* ---------- IMAGE CARD ---------- */
 .img-wrapper {
   position: relative;
+  display: block;
+  width: 100%;
   overflow: hidden;
   border-radius: 10px;
   background: #f3f3f3;
+  box-sizing: border-box;
 }
 
 .img-wrapper img {
-  width: 100%;
-  height: auto;
   display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
@@ -90,6 +102,7 @@
 .overlay-text {
   width: 100%;
   padding: 1rem;
+  box-sizing: border-box;
 }
 
 .overlay-text h3 {
@@ -120,9 +133,9 @@
 }
 
 .art-piece-image img {
+  display: block;
   max-width: 100%;
   height: auto;
-  display: block;
   border-radius: 10px;
 }
 
@@ -139,7 +152,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0, 0, 0, 0.8);
   display: none;
   justify-content: center;
   align-items: center;
