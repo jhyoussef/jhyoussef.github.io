@@ -30,19 +30,19 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-cv",
-          title: "cv",
-          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/cv/";
-          },
         },{id: "nav-art",
           title: "art",
           description: "selected work and process",
           section: "Navigation",
           handler: () => {
             window.location.href = "/art/";
+          },
+        },{id: "nav-cv",
+          title: "cv",
+          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/cv/";
           },
         },{id: "post-launching-off-the-fossil-record",
         
@@ -56,6 +56,21 @@ ninja.data = [{
           
         },
       },{id: "art-skull-studies",
+          title: 'Skull Studies',
+          description: "Short description",
+          section: "Art",handler: () => {
+              window.location.href = "/art/skull-studies/";
+            },},{id: "art-skull-studies",
+          title: 'Skull Studies',
+          description: "Short description",
+          section: "Art",handler: () => {
+              window.location.href = "/art/skull-studies/";
+            },},{id: "art-skull-studies",
+          title: 'Skull Studies',
+          description: "Short description",
+          section: "Art",handler: () => {
+              window.location.href = "/art/skull-studies/";
+            },},{id: "art-skull-studies",
           title: 'Skull Studies',
           description: "Short description",
           section: "Art",handler: () => {
