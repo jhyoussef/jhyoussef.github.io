@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-description">
+      {% if page.year %}{{ page.year }}{% endif %}
+      {% if page.medium %} · {{ page.medium }}{% endif %}
+      {% if page.series %} · {{ page.series }}{% endif %}
+    </p>
+  </header>
+
+  <div class="art-piece-page">
+    {% if page.image %}
+      <div class="art-piece-image">
+        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+      </div>
+    {% endif %}
+
+    <div class="art-piece-content">
+      {% if page.description %}
+        <p class="art-piece-summary">{{ page.description }}</p>
+      {% endif %}
+
+      {{ content }}
+    </div>
+  </div>
+</div>
