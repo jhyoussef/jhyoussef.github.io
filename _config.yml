@@ -136,6 +136,12 @@ newsletter:
 # -----------------------------------------------------------------------------
 
 collections:
+  art:
+    output: true
+  notes:
+    output: true
+  note_areas:
+    output: true
   books:
     output: true
   news:
