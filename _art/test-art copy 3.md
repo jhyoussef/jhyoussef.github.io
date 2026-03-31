@@ -2,7 +2,7 @@
 layout: art_piece
 title: "Skull Studies 3"
 year: 2025
-image: /assets\img\art\personal\pastel_hands.jpg
+image: /assets/img/art/pastel_hands.jpg
 description: "Short description"
 medium: "Ink and digital"
 series: "Paleo Forms"
