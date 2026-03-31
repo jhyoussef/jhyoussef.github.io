@@ -55,11 +55,11 @@ ninja.data = [{
             window.location.href = "/blog/2025/testing-out-the-format/";
           
         },
-      },{id: "art-test-title",
-          title: 'Test Title',
+      },{id: "art-skull-studies",
+          title: 'Skull Studies',
           description: "Short description",
           section: "Art",handler: () => {
-              window.location.href = "/art/test-art/";
+              window.location.href = "/art/skull-studies/";
             },},{id: "news-my-first-announcement-sparkles-smile",
           title: 'My first announcement! :sparkles: :smile:',
           description: "",
