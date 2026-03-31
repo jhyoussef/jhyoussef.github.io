@@ -2,24 +2,33 @@
 layout: page
 title: art
 permalink: /art/
-description: my work
+description: selected work and process
 nav: true
-nav_order: 5
-display_categories: [paleontology, art]
-horizontal: false
+nav_order: 6
 ---
 
-Welcome to my art gallery.  
-Select a section below:
+{% assign sorted_art = site.art | sort: "importance" %}
 
-<div class="art-grid">
-{% for piece in site.art %}
-  <a href="{{ piece.url }}" class="art-item">
-    <img src="{{ piece.image }}">
-    <div class="overlay">
-      <div>{{ piece.title }} ({{ piece.year }})</div>
-      <p>{{ piece.description }}</p>
+<div class="masonry-grid">
+  {% for piece in site.art %}
+    <div class="masonry-item">
+      <a href="{{ piece.url | relative_url }}" class="art-card-link">
+        <div class="img-wrapper">
+          <img src="{{ piece.image | relative_url }}" alt="{{ piece.title }}">
+          <div class="overlay">
+            <div class="overlay-text">
+              <h3>{{ piece.title }}</h3>
+              <p class="art-meta">{{ piece.year }}</p>
+              {% if piece.medium %}
+                <p class="art-meta">{{ piece.medium }}</p>
+              {% endif %}
+              {% if piece.description %}
+                <p class="art-description">{{ piece.description }}</p>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </a>
     </div>
-  </a>
-{% endfor %}
+  {% endfor %}
 </div>

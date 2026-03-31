@@ -23,18 +23,22 @@
   color: white;
 }
 
-/* ---------- MASONRY GRID ---------- */
+/* ---------- MASONRY ART GRID ---------- */
 .masonry-grid {
   column-count: 3;
   column-gap: 1.25rem;
 }
 
-@media (max-width: 900px) {
-  .masonry-grid { column-count: 2; }
+@media (max-width: 1000px) {
+  .masonry-grid {
+    column-count: 2;
+  }
 }
 
 @media (max-width: 600px) {
-  .masonry-grid { column-count: 1; }
+  .masonry-grid {
+    column-count: 1;
+  }
 }
 
 .masonry-item {
@@ -42,49 +46,97 @@
   margin-bottom: 1.25rem;
 }
 
-/* ---------- IMAGE WRAPPER + OVERLAY ---------- */
+.art-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------- IMAGE CARD ---------- */
 .img-wrapper {
   position: relative;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 10px;
+  background: #f3f3f3;
 }
 
 .img-wrapper img {
   width: 100%;
+  height: auto;
   display: block;
-  cursor: zoom-in;
-  transition: transform .3s ease, opacity .3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .img-wrapper:hover img {
-  transform: scale(1.05);
-  opacity: 0.9;
+  transform: scale(1.03);
+  opacity: 0.92;
 }
 
 .img-wrapper .overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  padding: 0.8rem;
-  background: rgba(0,0,0,0.65);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
   color: white;
-
   opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .3s ease, transform .3s ease;
+  transition: opacity 0.25s ease;
+  display: flex;
+  align-items: end;
 }
 
 .img-wrapper:hover .overlay {
   opacity: 1;
-  transform: translateY(0);
+}
+
+.overlay-text {
+  width: 100%;
+  padding: 1rem;
+}
+
+.overlay-text h3 {
+  margin: 0 0 0.3rem 0;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.art-meta {
+  margin: 0 0 0.2rem 0;
+  font-size: 0.9rem;
+  line-height: 1.3;
+}
+
+.art-description {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  line-height: 1.35;
+}
+
+/* ---------- INDIVIDUAL ART PAGE ---------- */
+.art-piece-page {
+  margin-top: 1.5rem;
+}
+
+.art-piece-image {
+  margin-bottom: 1.5rem;
+}
+
+.art-piece-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.art-piece-summary {
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
 /* ---------- LIGHTBOX ---------- */
 #lightbox {
   position: fixed;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0,0,0,0.8);
@@ -101,35 +153,7 @@
   cursor: zoom-out;
 }
 
-.art-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-}
-
-.art-item {
-  position: relative;
-}
-
-.art-item img {
-  width: 100%;
-  display: block;
-}
-
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  opacity: 0;
-  transition: 0.2s;
-  padding: 1rem;
-}
-
-.art-item:hover .overlay {
-  opacity: 1;
-}
-
+/* ---------- SITE BANNER ---------- */
 .site-banner {
   width: 100%;
   margin-bottom: 2rem;
