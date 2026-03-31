@@ -30,19 +30,19 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "nav-art",
-          title: "art",
-          description: "my work",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/art/";
-          },
         },{id: "nav-cv",
           title: "cv",
           description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
+          },
+        },{id: "nav-art",
+          title: "art",
+          description: "selected work and process",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/art/";
           },
         },{id: "post-launching-off-the-fossil-record",
         
