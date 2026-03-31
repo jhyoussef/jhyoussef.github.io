@@ -4,7 +4,7 @@ title: art
 permalink: /art/
 description: selected work and process
 nav: true
-nav_order: 6
+nav_order: 5
 ---
 
 {% assign sorted_art = site.art | sort: "importance" %}
