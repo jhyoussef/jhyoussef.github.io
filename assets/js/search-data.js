@@ -55,16 +55,16 @@ ninja.data = [{
             window.location.href = "/blog/2025/testing-out-the-format/";
           
         },
-      },{id: "art-skull-studies",
-          title: 'Skull Studies',
+      },{id: "art-skull-studies-2",
+          title: 'Skull Studies 2',
           description: "Short description",
           section: "Art",handler: () => {
-              window.location.href = "/art/skull-studies/";
-            },},{id: "art-skull-studies",
-          title: 'Skull Studies',
+              window.location.href = "/art/skull-studies2/";
+            },},{id: "art-skull-studies-3",
+          title: 'Skull Studies 3',
           description: "Short description",
           section: "Art",handler: () => {
-              window.location.href = "/art/skull-studies/";
+              window.location.href = "/art/skull-studies3/";
             },},{id: "art-skull-studies",
           title: 'Skull Studies',
           description: "Short description",
