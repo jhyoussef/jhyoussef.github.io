@@ -10,7 +10,7 @@ nav_order: 5
 {% assign sorted_art = site.art | sort: "importance" %}
 
 <div class="masonry-grid">
-  {% for piece in site.art %}
+  {% for piece in sorted_art %}
     <div class="masonry-item">
       <a href="{{ piece.url | relative_url }}" class="art-card-link">
         <div class="img-wrapper">
