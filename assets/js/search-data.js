@@ -62,7 +62,12 @@ ninja.data = [{
             window.location.href = "/blog/2025/testing-out-the-format/";
           
         },
-      },{id: "news-my-first-announcement-sparkles-smile",
+      },{id: "art-test-title",
+          title: 'Test Title',
+          description: "Short description",
+          section: "Art",handler: () => {
+              window.location.href = "/art/test-art/";
+            },},{id: "news-my-first-announcement-sparkles-smile",
           title: 'My first announcement! :sparkles: :smile:',
           description: "",
           section: "News",},{id: "projects-learning-anatomy",
