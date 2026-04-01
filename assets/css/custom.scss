@@ -16,7 +16,6 @@
   background: #ddd;
   cursor: pointer;
   font-size: 0.9rem;
-  line-height: 1.2;
 }
 
 #filter-buttons button.active {
@@ -122,11 +121,6 @@
   margin-top: 0.5rem;
   font-size: 0.9rem;
   line-height: 1.35;
-}
-
-/* ---------- HIDDEN FILTERED ITEMS ---------- */
-.masonry-item.is-hidden {
-  display: none !important;
 }
 
 /* ---------- INDIVIDUAL ART PAGE ---------- */
