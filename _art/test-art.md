@@ -4,6 +4,7 @@ title: "Skull Studies"
 year: 2025
 image: /assets/img/skulls_edited.jpg
 description: "Short description"
+tags: [sketches, science]
 medium: "Ink and digital"
 series: "Paleo Forms"
 importance: 1
