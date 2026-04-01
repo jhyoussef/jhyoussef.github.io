@@ -55,24 +55,19 @@ ninja.data = [{
             window.location.href = "/blog/2025/testing-out-the-format/";
           
         },
-      },{id: "art-skull-studies-2",
-          title: 'Skull Studies 2',
-          description: "Short description",
+      },{id: "art-beach-collage",
+          title: 'Beach Collage',
+          description: "",
           section: "Art",handler: () => {
-              window.location.href = "/art/skull-studies2/";
-            },},{id: "art-skull-studies-3",
-          title: 'Skull Studies 3',
-          description: "Short description",
+              window.location.href = "/art/beach-collage/";
+            },},{id: "art-pastel-hands",
+          title: 'Pastel Hands',
+          description: "",
           section: "Art",handler: () => {
-              window.location.href = "/art/skull-studies3/";
+              window.location.href = "/art/pastel-hands/";
             },},{id: "art-skull-studies",
           title: 'Skull Studies',
-          description: "Short description",
-          section: "Art",handler: () => {
-              window.location.href = "/art/skull-studies/";
-            },},{id: "art-skull-studies",
-          title: 'Skull Studies',
-          description: "Short description",
+          description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/skull-studies/";
             },},{id: "news-my-first-announcement-sparkles-smile",
