@@ -60,11 +60,36 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/beach-collage/";
+            },},{id: "art-birds",
+          title: 'Birds',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/birds/";
+            },},{id: "art-eckhart",
+          title: 'Eckhart',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/eckhart-ink/";
+            },},{id: "art-eve-in-the-garden",
+          title: 'Eve in the Garden',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/eve-in-the-garden/";
+            },},{id: "art-hyde-park-flowers",
+          title: 'Hyde Park Flowers',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/flowers/";
             },},{id: "art-pastel-hands",
           title: 'Pastel Hands',
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/pastel-hands/";
+            },},{id: "art-pterodactylus",
+          title: 'Pterodactylus',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/pterodactylus/";
             },},{id: "art-skull-studies",
           title: 'Skull Studies',
           description: "",
