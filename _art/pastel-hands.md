@@ -2,7 +2,7 @@
 layout: art_piece
 title: "Pastel Hands"
 year: 2022
-image: /assets/img/art/pastel_hands.jpg
+image: /assets/img/art/pastel-hands.jpg
 description: 
 tags: [pastel, personal]
 medium: "Pastel"
