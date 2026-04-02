@@ -32,7 +32,7 @@ ninja.data = [{
           },
         },{id: "nav-art",
           title: "art",
-          description: "selected work and process",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/art/";
@@ -48,7 +48,7 @@ ninja.data = [{
         
           title: "Launching Off the Fossil Record!",
         
-        description: "Blog introduction and greeting and who the hell am I",
+        description: "Introduction, and who the heck am I?",
         section: "Posts",
         handler: () => {
           
