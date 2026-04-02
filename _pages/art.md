@@ -7,6 +7,117 @@ nav: true
 nav_order: 5
 ---
 
+<style>
+  #art-gallery.masonry-grid {
+    column-count: 3 !important;
+    column-gap: 1rem !important;
+  }
+
+  @media (max-width: 1000px) {
+    #art-gallery.masonry-grid {
+      column-count: 2 !important;
+    }
+  }
+
+  @media (max-width: 600px) {
+    #art-gallery.masonry-grid {
+      column-count: 1 !important;
+    }
+  }
+
+  #art-gallery .masonry-item {
+    display: inline-block !important;
+    width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+    vertical-align: top !important;
+    break-inside: avoid !important;
+    -webkit-column-break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  #art-gallery .masonry-item[hidden] {
+    display: none !important;
+  }
+
+  #art-gallery .art-card-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  #art-gallery .img-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  #art-gallery .img-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  #art-gallery .overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.58);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: end;
+  }
+
+  #art-gallery .img-wrapper:hover .overlay {
+    opacity: 1;
+  }
+
+  #art-gallery .overlay-text {
+    width: 100%;
+    padding: 0.9rem;
+    box-sizing: border-box;
+  }
+
+  #art-gallery .overlay-text h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  #art-gallery .art-meta {
+    margin: 0;
+    font-size: 0.88rem;
+    line-height: 1.25;
+  }
+
+  #art-gallery .art-description {
+    margin-top: 0.4rem;
+    font-size: 0.88rem;
+    line-height: 1.3;
+  }
+
+  .art-tags {
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .art-tag-link {
+    text-decoration: none;
+  }
+
+  .art-tag-link.active {
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  .art-tag-separator {
+    margin: 0 0.45rem;
+    opacity: 0.7;
+  }
+</style>
+
 {% assign sorted_art = site.art | sort: "importance" %}
 {% assign all_tags = "" | split: "" %}
 
@@ -63,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const params = new URLSearchParams(window.location.search);
   const activeTag = params.get("tag");
   const items = document.querySelectorAll(".art-filter-item");
-  const links = document.querySelectorAll(".art-tag-link");
+  const links = document.querySelectorAll(".art-tags .art-tag-link");
 
   if (activeTag) {
     items.forEach((item) => {
