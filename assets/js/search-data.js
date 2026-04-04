@@ -39,7 +39,7 @@ ninja.data = [{
           },
         },{id: "nav-cv",
           title: "cv",
-          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
+          description: "",
           section: "Navigation",
           handler: () => {
             window.location.href = "/cv/";
@@ -113,11 +113,6 @@ ninja.data = [{
           description: "a project where I post my progress learning generalized vertebrate anatomy",
           section: "Projects",handler: () => {
               window.location.href = "/projects/learning-anatomy/";
-            },},{id: "projects-reviewing-geosciences",
-          title: 'Reviewing Geosciences',
-          description: "a place where I will post some of the completed reviews of my prior coursework, with updates on the blog.",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/reviewing-geosciences/";
             },},{
         id: 'social-bluesky',
         title: 'Bluesky',
