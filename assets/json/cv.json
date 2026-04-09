@@ -113,6 +113,29 @@
     }
   ],
 
+  "volunteer": [
+    {
+      "name": "Phoenix Farms",
+      "position": "Volunteer",
+      "url": "https://www.phoenixfarmschicago.org/",
+      "location": "Chicago, IL",
+      "summary": "A non-for-profit organization focused on establishing food forests in the Woodlawn, Hyde Park, and Washington Park areas"
+    },
+    {
+      "name": "UChicago Paleontology Club",
+      "position": "President",
+      "url": "https://studentorganizations.uchicago.edu/",
+      "location": "Chicago, IL",
+      "startDate": "2023-09-01",
+      "endDate": "2025-06-07",
+      "summary": "Student leadership and outreach in paleontology.",
+      "highlights": [
+        "Organized talks, field trips, and annual events.",
+        "Coordinated guest speakers and museum collaborations."
+      ]
+    }
+  ],
+
   "education": [
     {
       "institution": "University of Chicago",
@@ -214,29 +237,6 @@
         "Drafted and proposed an independent research project on theropod dinosaurs, including budgeting and planning.",
         "Researched phylogeny, ecology, appearance, and anatomy of multiple theropod species.",
         "Produced paleoart and a series of illustrated, data-informed pages for science communication."
-      ]
-    }
-  ],
- 
-  "volunteer": [
-    {
-      "name": "Phoenix Farms",
-      "position": "Volunteer",
-      "url": "https://www.phoenixfarmschicago.org/",
-      "location": "Chicago, IL",
-      "summary": "A non-for-profit organization focused on establishing food forests in the Woodlawn, Hyde Park, and Washington Park areas"
-    },
-    {
-      "name": "UChicago Paleontology Club",
-      "position": "President",
-      "url": "https://studentorganizations.uchicago.edu/",
-      "location": "Chicago, IL",
-      "startDate": "2023-09-01",
-      "endDate": "2025-06-07",
-      "summary": "Student leadership and outreach in paleontology.",
-      "highlights": [
-        "Organized talks, field trips, and annual events.",
-        "Coordinated guest speakers and museum collaborations."
       ]
     }
   ],
