@@ -7,6 +7,8 @@ nav: true
 nav_order: 3
 ---
 
+In progress! Here, I want to eventually post my consolidated visualizations and notes from my astrophysics and geosciences education over time, given the overlap in a number of subjects covered.
+
 <div class="projects">
   {% assign sorted_areas = site.note_areas | sort: "importance" %}
 
