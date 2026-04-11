@@ -29,7 +29,6 @@
       "url": "https://geosci.uchicago.edu/",
       "location": "Chicago, IL",
       "startDate": "2023-06-30",
-      "endDate": "Present",
       "summary": "Developing quantitative frameworks linking mammalian molar morphology to herbivorous diet across extant and fossil taxa.",
       "highlights": [
         "Built a standardized dataset of herbivore diets by assigning ranked importances to plant food items from primary literature.",
@@ -44,7 +43,6 @@
       "url": "https://geosci.uchicago.edu/",
       "location": "Chicago, IL",
       "startDate": "2024-02-15",
-      "endDate": "Present",
       "summary": "Morphometric and character coding for Paleozoic trilobite disparity studies.",
       "highlights": [
         "Cleaned, stained, and photographed dozens of mm-scale eodiscid trilobites.",
@@ -145,7 +143,7 @@
     }
   ],
 
-  "publications & presentations": [
+  "publications": [
     {
       "title": "Quantitative analysis of multivariate diet clarifies ecological diversity of mammalian herbivores ",
       "publisher": "SICB Presentation",
@@ -177,7 +175,7 @@
       "summary": "Python tools for querying, cleaning, and stratigraphically binning Paleobiology Database occurrences.",
       "highlights": [
         "Implemented taxonomic reconciliation and data cleaning workflows for PBDB occurrence data.",
-        "Developed configurable filters and stratigraphic binning for specimen- and occurrence-level analyses.".
+        "Developed configurable filters and stratigraphic binning for specimen- and occurrence-level analyses.",
         "Designed pipeline for reuse in macroevolutionary and ecological analyses."
       ],
       "startDate": "2022-01-01",
@@ -192,7 +190,6 @@
         "Created visuals for outreach, education, and research communication"
       ],
       "startDate": "2019-01-01",
-      "endDate": "Present",
       "url": "https://jhyoussef.github.io/"
     },
     {
