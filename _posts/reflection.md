@@ -1,15 +1,30 @@
 ---
 layout: post
-title: Post-graduat
-date: '2025-08-31 10:00:00 -0500'
-description: Introduction, and who the heck am I?
+title: Return & Aims
+date: '2026-04-14'
+description: I'm Back?
 tags:
-  - paleontology
+  - general
   - introductory
-thumbnail: /assets/img/film-field.jpg
+thumbnail: /assets/img/blog/old-notes.jpeg
 categories: intro-posts
 toc: false
 featured: true
 ---
 
+If you've come across this site before (or, more likely, you've spotted the publish date on the last post), you may have noticed that there hasn't been an update in some time. Counterintuitively, its not for a lack of ideas -- I've had lists and lists of jotted down brain-dump ideas and prompts recorded in my back-pocket journal at work. The problem has been twofold: the starting, and the quality.
 
+I come up with the ideas, but never sit down and write...if there's anything I've now learned about post-college life, its that its a constant cycle: dishes, cooking, laundry...Sisyphus, I imagine, did not need to spend so much time exchanging cash for quarters (a coin-only machine in my 2026?!). There's too much time and never-enough for all the projects I want to complete -- all the things I should do but equally am prohibited from beginning by...some reason or another take priority over creative work. 
+
+I used to write quite often. My digital sticky-notes filled with my seminar thoughts, notes between classes, and tasks; essay-outlines, rambles, and rants would fill 50 pages of a word doc, and crash the Sticky Notes program. I've had 10 paper journals or so since ~the start of the Covid pandemic. But I was a STEM major in university - writing became code comments, lab reports, and networking emails. I didn't read as often. My friends graduated, or moved off campus. Conversations and practice articulating my thoughts faded to the back-burner in lieu of PSets and Reddit to pass the time. Getting back into the habit has been...more difficult than I thought it would be. It feels like riding a bike after years and falling - its not supposed to be something that you can forget. 
+
+I am a creative -- I, nominally, am used to the hardship of the process. Its supposed to be challenging! But in academics, there are 'rules.' There are explicit styles for scientific writing; lab reports are a genre. In a 8-10 week quarter, why not use something that helps move things along more quickly? In a fast-paced environment, why not reach for the tool that, nominally, can quickly evaluate your work with a body of human knowledge behind it? ChatGPT, and any of these new LLMs, feel like a drug. Steroids. A quick-fix. There are practical uses - I've been able to explore data in ways I never could before - but in writing? I feel my work being homogenized. I tell it to point out flaws, and lose the ability to recognize them myself. Suddenly everything I create it getting passed through its computerized-filter. Incentivized to promote engagement, there is always some flaw, always something wrong. It wants to turn my paragraphs into its own style. A corporate style. A style with wide appeal. My own style, my own writing ability, atrophies -- and when I open my laptop, I feel the urge to pull up a tab for ChatGPT.
+
+Any kind of writing for me, these days, is personal. Existential topics churning in the back of my mind bleed into whatever post, essay, or journal entry I start. Efforts to say something poignant about some particular issue expand in scope until its too much for a single work, and too unfocused for anything other than a diary. In many ways, I've forgotten how to start, and I've forgotten how to edit. But, and maybe this is the worst thing that LLMs have done to me, despite holding off for so long, despite hopping on the bandwagon so late, is that I am beginning to lose confidence in my abilities. To no longer trust my own writing, or my ideas. ChatGPT can always come up with something better -- my voice more clear through its text than my own writing. I can feel that fear constant in my mind, despite the work I produce. The dependency encouraged and projected onto a software that portends to be our culture's magnum opus. As a scientist, I risk losing what makes my perspective distinct. As an individual, I risk losing the abilities I once held dear. 
+
+I want to write - I want to add my opinions to the pile. I have takes! I have ideas! I just...need to do it, like most other things in my life. I want to recover from the brain-rot AI social media atrophy of abilities, recover from the ... averaging of my positions. 
+
+I went to the University of Chicago. We are known for being a little quirky. In the coming weeks, I hope to rekindle that side of my work. My writing will not hold back from being too personal, but nor will it avoid the intersection of science and the experience of being a scientist - embedded in social issues and political crises. I will write about post-college experiences. How I organize information to retain autonomy over my collections. The despair I feel reading the news - and how I avoid doomerism. What my goals are. What I have accomplished. And how I am moving forward.
+
+Enjoy,
+Julia. 
