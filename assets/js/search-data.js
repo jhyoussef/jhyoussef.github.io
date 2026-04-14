@@ -44,7 +44,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-launching-off-the-fossil-record",
+        },{id: "post-return-amp-aims",
+        
+          title: "Return &amp; Aims",
+        
+        description: "I&#39;m Back?",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/return/";
+          
+        },
+      },{id: "post-launching-off-the-fossil-record",
         
           title: "Launching Off the Fossil Record!",
         
