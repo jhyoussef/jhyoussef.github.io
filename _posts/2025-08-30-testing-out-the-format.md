@@ -10,6 +10,7 @@ thumbnail: /assets/img/film-field.jpg
 categories: intro-posts
 toc: false
 featured: true
+giscus_comments: true
 ---
 # Welcome!
 
