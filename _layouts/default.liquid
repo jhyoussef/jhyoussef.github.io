@@ -20,11 +20,11 @@
     <!-- Header -->
     {% include header.liquid %}
 
-    {% if site.banner %}
-      <div class="site-banner">
+    <div class="site-banner">
+      {% if site.banner %}
         <img src="{{ site.banner | relative_url }}" alt="banner">
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
 
     <!-- Content -->
     <div class="container mt-5" role="main">
