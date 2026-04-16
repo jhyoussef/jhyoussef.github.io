@@ -1,7 +1,8 @@
 ---
 layout: home_hub
-title: Julia Youssef
+title: home
 subtitle: Paleobiology · quantitative modeling · scientific illustration
+permalink: /
 profile:
   image: prof_pic.jpg
   image_circular: false
