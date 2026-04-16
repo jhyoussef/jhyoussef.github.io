@@ -2,10 +2,13 @@
 layout: default
 ---
 
-<div class="home-hub">
+<div class="home-hub home-hub-container">
   <div class="row">
     <div class="col-lg-4 mb-4">
       <aside class="home-sidebar">
+        
+        <h1 class="home-title">{{ page.title }}</h1>
+
         {% if page.profile and page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
           {% if page.profile.image_circular %}
@@ -22,8 +25,6 @@ layout: default
             cache_bust=true
           %}
         {% endif %}
-
-        <h1 class="home-title">{{ page.title }}</h1>
 
         {% if page.subtitle %}
           <p class="home-subtitle">{{ page.subtitle }}</p>
