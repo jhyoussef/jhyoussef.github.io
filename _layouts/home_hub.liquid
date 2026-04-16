@@ -1,0 +1,135 @@
+---
+layout: default
+---
+
+<div class="home-hub">
+  <div class="row">
+    <div class="col-lg-4 mb-4">
+      <aside class="home-sidebar">
+        {% if page.profile and page.profile.image %}
+          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {% if page.profile.image_circular %}
+            {% assign profile_image_class = 'img-fluid rounded-circle z-depth-1 home-profile-img' %}
+          {% else %}
+            {% assign profile_image_class = 'img-fluid rounded z-depth-1 home-profile-img' %}
+          {% endif %}
+
+          {% include figure.liquid
+            loading="eager"
+            path=profile_image_path
+            class=profile_image_class
+            alt=page.title
+            cache_bust=true
+          %}
+        {% endif %}
+
+        <h1 class="home-title">{{ page.title }}</h1>
+
+        {% if page.subtitle %}
+          <p class="home-subtitle">{{ page.subtitle }}</p>
+        {% endif %}
+
+        {% if page.short_bio %}
+          <p class="home-blurb">{{ page.short_bio }}</p>
+        {% endif %}
+
+        {% if page.home_buttons %}
+          <div class="home-buttons">
+            {% for button in page.home_buttons %}
+              <a class="home-button" href="{{ button.url | relative_url }}">{{ button.label }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if page.social %}
+          <div class="social mt-4">
+            <div class="contact-icons">{% include social.liquid %}</div>
+            <div class="contact-note">{{ site.contact_note }}</div>
+          </div>
+        {% endif %}
+      </aside>
+    </div>
+
+    <div class="col-lg-8">
+      <section class="home-section mb-5">
+        <h2 class="section-title">
+          <a href="{{ '/projects/' | relative_url }}" style="color: inherit;">what i'm working on</a>
+        </h2>
+
+        {% assign featured_projects = site.projects | where: "featured", true | sort: "importance" %}
+        {% assign project_limit = page.featured_project_limit | default: 3 %}
+
+        {% if featured_projects.size > 0 %}
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for project in featured_projects limit: project_limit %}
+              <div class="col mb-4">
+                <div class="card h-100 hoverable">
+                  {% if project.img %}
+                    <a href="{{ project.url | relative_url }}">
+                      <img src="{{ project.img | relative_url }}" class="card-img-top" alt="{{ project.title }}">
+                    </a>
+                  {% endif %}
+                  <div class="card-body">
+                    <h5 class="card-title">
+                      <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+                    </h5>
+                    {% if project.description %}
+                      <p class="card-text">{{ project.description }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>No featured projects yet.</p>
+        {% endif %}
+      </section>
+
+      <section class="home-section">
+        <h2 class="section-title">
+          <a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a>
+        </h2>
+
+        {% assign post_limit = page.featured_post_limit | default: 3 %}
+
+        {% if site.posts.size > 0 %}
+          <div class="row row-cols-1 g-4">
+            {% for post in site.posts limit: post_limit %}
+              <div class="col mb-4">
+                <div class="card h-100 hoverable">
+                  <div class="row no-gutters align-items-center">
+                    {% if post.thumbnail %}
+                      <div class="col-md-4">
+                        <a href="{{ post.url | relative_url }}">
+                          <img src="{{ post.thumbnail | relative_url }}" class="img-fluid rounded-start" alt="{{ post.title }}">
+                        </a>
+                      </div>
+                      <div class="col-md-8">
+                    {% else %}
+                      <div class="col-12">
+                    {% endif %}
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                          </h5>
+                          {% if post.description %}
+                            <p class="card-text">{{ post.description }}</p>
+                          {% endif %}
+                          <p class="card-text">
+                            <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
+                          </p>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <p>No posts yet.</p>
+        {% endif %}
+      </section>
+    </div>
+  </div>
+</div>
