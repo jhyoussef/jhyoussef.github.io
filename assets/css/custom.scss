@@ -157,20 +157,27 @@
   margin-bottom: 2rem;
 }
 
+.home-main-wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem 0 2rem;
+}
+
 .home-hub-page {
-  max-width: 1180px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
 .home-hub-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin: 0 auto 3rem auto;
 }
 
 .home-hub-title {
   font-size: 3rem;
   line-height: 1.05;
-  margin-bottom: 0.5rem;
+  margin: 0 0 0.5rem 0;
+  text-align: center;
 }
 
 .home-hub-subtitle {
@@ -179,30 +186,36 @@
   max-width: 720px;
   margin: 0 auto;
   opacity: 0.85;
+  text-align: center;
+}
+
+.home-hub-row {
+  align-items: start;
 }
 
 .home-column-label,
 .home-section-title {
-  font-size: 2rem;
+  font-size: 1.75rem;
   line-height: 1.1;
   margin-bottom: 1rem;
 }
 
 .home-sidebar {
   text-align: center;
+  padding-right: 1rem;
 }
 
 .home-profile-img {
   width: 100%;
-  max-width: 220px;
+  max-width: 180px;
   margin: 0 auto 1.25rem auto;
   display: block;
 }
 
 .home-blurb {
-  font-size: 1.02rem;
-  line-height: 1.65;
-  max-width: 26rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  max-width: 22rem;
   margin: 0 auto 1.25rem auto;
   text-align: left;
 }
@@ -217,7 +230,7 @@
 
 .home-button {
   display: inline-block;
-  padding: 0.55rem 1rem;
+  padding: 0.6rem 1rem;
   border: 1px solid rgba(0, 0, 0, 0.18);
   border-radius: 999px;
   text-decoration: none;
@@ -232,7 +245,7 @@
 }
 
 .home-mini-heading {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   margin-bottom: 0.75rem;
 }
 
@@ -254,15 +267,38 @@
 }
 
 .home-section {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
+}
+
+.home-section .card-img-top {
+  max-height: 180px;
+  object-fit: cover;
+}
+
+.home-section .card {
+  max-width: 100%;
 }
 
 .home-social {
   text-align: center;
-  margin-top: 2.5rem;
+  margin: 3rem auto 0 auto;
+}
+
+.home-social .contact-icons {
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+.home-social .contact-note {
+  margin-top: 0.75rem;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
+  .home-main-wrap {
+    padding: 2rem 1rem 0 1rem;
+  }
+
   .home-hub-title {
     font-size: 2.35rem;
   }
@@ -272,7 +308,11 @@
   }
 
   .home-profile-img {
-    max-width: 180px;
+    max-width: 160px;
+  }
+
+  .home-sidebar {
+    padding-right: 0;
   }
 
   .home-blurb {

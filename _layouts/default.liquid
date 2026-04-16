@@ -27,7 +27,7 @@
     </div>
 
     <!-- Content -->
-    <div class="container mt-5" role="main">
+    <div class="{% if page.layout == 'home_hub' %}home-main-wrap{% else %}container mt-5{% endif %}" role="main">
       {% if page.toc and page.toc.sidebar %}
         {% if page.toc.sidebar == 'right' %}
           <div class="row">
