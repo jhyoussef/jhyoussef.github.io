@@ -39,19 +39,14 @@ layout: default
         {% endif %}
 
         {% if page.announcements and page.announcements.enabled %}
-          <section class="home-news-mini">
-            <h3 class="home-mini-heading">news</h3>
-            <ul class="home-news-list">
-              {% assign news_items = site.news | reverse %}
-              {% for item in news_items limit: 3 %}
-                <li>
-                  <span class="home-news-date">{{ item.date | date: "%b %-d, %Y" }}</span>
-                  <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </section>
+            <section class="home-section mb-5">
+                <h2 class="section-title">
+                <a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a>
+                </h2>
+                {% include news.liquid limit=true %}
+            </section>
         {% endif %}
+        
       </aside>
     </div>
 
