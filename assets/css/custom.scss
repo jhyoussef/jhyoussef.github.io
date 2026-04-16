@@ -221,3 +221,21 @@
     max-width: 180px;
   }
 }
+
+.home-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.home-button {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 999px;
+  text-decoration: none;
+  color: inherit;
+  line-height: 1.2;
+}

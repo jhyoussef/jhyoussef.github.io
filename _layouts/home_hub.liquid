@@ -51,6 +51,16 @@ layout: default
     </div>
 
     <div class="col-lg-8">
+
+      {% if page.announcements and page.announcements.enabled %}
+        <section class="home-section mb-5">
+            <h2 class="section-title">
+            <a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a>
+            </h2>
+            {% include news.liquid limit=true %}
+        </section>
+      {% endif %}
+
       <section class="home-section mb-5">
         <h2 class="section-title">
           <a href="{{ '/projects/' | relative_url }}" style="color: inherit;">what i'm working on</a>
@@ -94,41 +104,28 @@ layout: default
         {% assign post_limit = page.featured_post_limit | default: 3 %}
 
         {% if site.posts.size > 0 %}
-          <div class="row row-cols-1 g-4">
-            {% for post in site.posts limit: post_limit %}
-              <div class="col mb-4">
-                <div class="card h-100 hoverable">
-                  <div class="row no-gutters align-items-center">
-                    {% if post.thumbnail %}
-                      <div class="col-md-4">
-                        <a href="{{ post.url | relative_url }}">
-                          <img src="{{ post.thumbnail | relative_url }}" class="img-fluid rounded-start" alt="{{ post.title }}">
-                        </a>
-                      </div>
-                      <div class="col-md-8">
-                    {% else %}
-                      <div class="col-12">
-                    {% endif %}
-                        <div class="card-body">
-                          <h5 class="card-title">
-                            <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                          </h5>
-                          {% if post.description %}
-                            <p class="card-text">{{ post.description }}</p>
-                          {% endif %}
-                          <p class="card-text">
-                            <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
-                          </p>
-                        </div>
-                      </div>
-                  </div>
+            <div class="row row-cols-1 g-4">
+                {% for post in site.posts limit: post_limit %}
+                <div class="col mb-3">
+                    <div class="card h-100 hoverable">
+                    <div class="card-body">
+                        <h5 class="card-title mb-1">
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        </h5>
+                        {% if post.description %}
+                        <p class="card-text mb-2">{{ post.description }}</p>
+                        {% endif %}
+                        <p class="card-text">
+                        <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
+                        </p>
+                    </div>
+                    </div>
                 </div>
-              </div>
-            {% endfor %}
-          </div>
-        {% else %}
-          <p>No posts yet.</p>
-        {% endif %}
+                {% endfor %}
+            </div>
+            {% else %}
+            <p>No posts yet.</p>
+            {% endif %}
       </section>
     </div>
   </div>
