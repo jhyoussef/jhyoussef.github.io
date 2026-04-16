@@ -2,32 +2,28 @@
 layout: default
 ---
 
-<div class="home-hub home-hub-container">
-  <div class="row">
-    <div class="col-lg-4 mb-4">
+<div class="home-hub-page">
+  <header class="home-hub-header">
+    <h1 class="home-hub-title">{{ page.title }}</h1>
+    {% if page.subtitle %}
+      <p class="home-hub-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+  </header>
+
+  <div class="row home-hub-row">
+    <div class="col-lg-3 col-md-4">
       <aside class="home-sidebar">
-        
-        <h1 class="home-title">{{ page.title }}</h1>
+        <h2 class="home-column-label">profile</h2>
 
         {% if page.profile and page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid rounded-circle z-depth-1 home-profile-img' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid rounded z-depth-1 home-profile-img' %}
-          {% endif %}
-
           {% include figure.liquid
             loading="eager"
             path=profile_image_path
-            class=profile_image_class
+            class="img-fluid rounded z-depth-1 home-profile-img"
             alt=page.title
             cache_bust=true
           %}
-        {% endif %}
-
-        {% if page.subtitle %}
-          <p class="home-subtitle">{{ page.subtitle }}</p>
         {% endif %}
 
         {% if page.short_bio %}
@@ -42,92 +38,75 @@ layout: default
           </div>
         {% endif %}
 
-        {% if page.social %}
-          <div class="social mt-4">
-            <div class="contact-icons">{% include social.liquid %}</div>
-            <div class="contact-note">{{ site.contact_note }}</div>
-          </div>
+        {% if page.announcements and page.announcements.enabled %}
+          <section class="home-news-mini">
+            <h3 class="home-mini-heading">news</h3>
+            <ul class="home-news-list">
+              {% assign news_items = site.news | reverse %}
+              {% for item in news_items limit: 3 %}
+                <li>
+                  <span class="home-news-date">{{ item.date | date: "%b %-d, %Y" }}</span>
+                  <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
         {% endif %}
       </aside>
     </div>
 
-    <div class="col-lg-8">
-
-      {% if page.announcements and page.announcements.enabled %}
-        <section class="home-section mb-5">
-            <h2 class="section-title">
-            <a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a>
-            </h2>
-            {% include news.liquid limit=true %}
-        </section>
-      {% endif %}
-
-      <section class="home-section mb-5">
-        <h2 class="section-title">
-          <a href="{{ '/projects/' | relative_url }}" style="color: inherit;">what i'm working on</a>
-        </h2>
+    <div class="col-lg-9 col-md-8">
+      <section class="home-section">
+        <h2 class="home-section-title">projects</h2>
 
         {% assign featured_projects = site.projects | where: "featured", true | sort: "importance" %}
-        {% assign project_limit = page.featured_project_limit | default: 3 %}
-
-        {% if featured_projects.size > 0 %}
-          <div class="row row-cols-1 row-cols-md-2 g-4">
-            {% for project in featured_projects limit: project_limit %}
-              <div class="col mb-4">
-                <div class="card h-100 hoverable">
-                  {% if project.img %}
-                    <a href="{{ project.url | relative_url }}">
-                      <img src="{{ project.img | relative_url }}" class="card-img-top" alt="{{ project.title }}">
-                    </a>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+          {% for project in featured_projects limit: 3 %}
+            <div class="col mb-4">
+              <div class="card h-100 hoverable">
+                {% if project.img %}
+                  <a href="{{ project.url | relative_url }}">
+                    <img src="{{ project.img | relative_url }}" class="card-img-top" alt="{{ project.title }}">
+                  </a>
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+                  </h5>
+                  {% if project.description %}
+                    <p class="card-text">{{ project.description }}</p>
                   {% endif %}
-                  <div class="card-body">
-                    <h5 class="card-title">
-                      <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
-                    </h5>
-                    {% if project.description %}
-                      <p class="card-text">{{ project.description }}</p>
-                    {% endif %}
-                  </div>
                 </div>
               </div>
-            {% endfor %}
-          </div>
-        {% else %}
-          <p>No featured projects yet.</p>
-        {% endif %}
+            </div>
+          {% endfor %}
+        </div>
       </section>
 
       <section class="home-section">
-        <h2 class="section-title">
-          <a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a>
-        </h2>
+        <h2 class="home-section-title">latest posts</h2>
 
-        {% assign post_limit = page.featured_post_limit | default: 3 %}
-
-        {% if site.posts.size > 0 %}
-            <div class="row row-cols-1 g-4">
-                {% for post in site.posts limit: post_limit %}
-                <div class="col mb-3">
-                    <div class="card h-100 hoverable">
-                    <div class="card-body">
-                        <h5 class="card-title mb-1">
-                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                        </h5>
-                        {% if post.description %}
-                        <p class="card-text mb-2">{{ post.description }}</p>
-                        {% endif %}
-                        <p class="card-text">
-                        <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
-                        </p>
-                    </div>
-                    </div>
-                </div>
-                {% endfor %}
+        {% for post in site.posts limit: 3 %}
+          <div class="card mb-3 hoverable">
+            <div class="card-body">
+              <h5 class="card-title mb-1">
+                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </h5>
+              {% if post.description %}
+                <p class="card-text mb-2">{{ post.description }}</p>
+              {% endif %}
+              <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
             </div>
-            {% else %}
-            <p>No posts yet.</p>
-            {% endif %}
+          </div>
+        {% endfor %}
       </section>
     </div>
   </div>
+
+  {% if page.social %}
+    <div class="home-social">
+      <div class="contact-icons">{% include social.liquid %}</div>
+      <div class="contact-note">{{ site.contact_note }}</div>
+    </div>
+  {% endif %}
 </div>
