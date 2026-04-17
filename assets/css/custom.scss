@@ -216,16 +216,21 @@
 }
 
 .home-sidebar {
-  text-align: center;
+  text-align: left;
   padding-left: 1rem;
-  max-width: 250px;
+  max-width: 320px;
   margin: 0 auto;
+}
+
+.home-sidebar figure {
+  width: 100%;
+  margin: 0 0 1rem 0;
 }
 
 .home-profile-img {
   width: 100%;
-  max-width: 170px;
-  margin: 0 auto 1rem auto;
+  max-width: 100%;
+  margin: 0 0 1rem 0;
   display: block;
 }
 
@@ -240,7 +245,7 @@
 .home-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 0.6rem;
   margin: 1rem 0 1.5rem 0;
 }
@@ -248,12 +253,28 @@
 .home-button {
   display: inline-block;
   padding: 0.5rem 0.9rem;
-  border: 1px solid rgba(0, 0, 0, 0.16);
+  border: 1px solid var(--global-theme-color);
   border-radius: 999px;
+  background: rgba(200, 155, 60, 0.14);
   text-decoration: none;
-  color: inherit;
+  color: var(--global-text-color);
   font-size: 0.95rem;
   line-height: 1.1;
+}
+
+.home-button:hover {
+  background: rgba(200, 155, 60, 0.24);
+  color: var(--global-text-color);
+  text-decoration: none;
+}
+
+.home-sidebar .home-column-label,
+.home-sidebar .home-section-title {
+  text-align: left;
+}
+
+.home-sidebar .news table th {
+  white-space: nowrap;
 }
 
 .home-news-mini {
@@ -332,10 +353,12 @@
   }
 
   .home-profile-img {
-    max-width: 160px;
+    max-width: 100%;
   }
 
   .home-sidebar {
+    max-width: 100%;
+    padding-left: 0;
     padding-right: 0;
   }
 
