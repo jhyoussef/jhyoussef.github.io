@@ -119,8 +119,23 @@ ninja.data = [{
           description: "...",
           section: "Notes",handler: () => {
               window.location.href = "/notes/earth-history/cambrian-explosion/";
-            },},{id: "projects-learning-anatomy",
-          title: 'Learning Anatomy',
+            },},{id: "projects-learning-anatomy-1",
+          title: 'Learning Anatomy 1',
+          description: "a project where I post my progress learning generalized vertebrate anatomy",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/learning-anatomy%20copy%202/";
+            },},{id: "projects-learning-anatomy-2",
+          title: 'Learning Anatomy 2',
+          description: "a project where I post my progress learning generalized vertebrate anatomy",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/learning-anatomy%20copy%203/";
+            },},{id: "projects-learning-anatomy-3",
+          title: 'Learning Anatomy 3',
+          description: "a project where I post my progress learning generalized vertebrate anatomy",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/learning-anatomy%20copy/";
+            },},{id: "projects-learning-anatomy-4",
+          title: 'Learning Anatomy 4',
           description: "a project where I post my progress learning generalized vertebrate anatomy",
           section: "Projects",handler: () => {
               window.location.href = "/projects/learning-anatomy/";
