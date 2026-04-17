@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Learning Anatomy 4
+title: Learning Anatomy 2
 description: a project where I post my progress learning generalized vertebrate anatomy
 img: assets/img/skulls_edited.jpg
 featured: true

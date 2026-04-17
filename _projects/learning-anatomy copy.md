@@ -1,9 +1,9 @@
 ---
 layout: page
-title: Learning Anatomy 4
+title: Learning Anatomy 3
 description: a project where I post my progress learning generalized vertebrate anatomy
 img: assets/img/skulls_edited.jpg
-featured: true
+featured: false
 importance: 2
 category: art
 giscus_comments: true
