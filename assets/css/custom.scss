@@ -197,17 +197,11 @@
 .home-section-title {
   font-size: 1.75rem;
   line-height: 1.1;
-  color: var(--global-text-color);
-  border-bottom: 1px solid var(--global-divider-color);
-  padding-top: 0.5rem;
-  padding-bottom: 0.35rem;
-  margin-top: 0;
   margin-bottom: 1rem;
-  text-align: left;
 }
 
 .home-sidebar {
-  text-align: left;
+  text-align: center;
   padding-left: 1rem;
   max-width: 250px;
   margin: 0 auto;
@@ -215,8 +209,8 @@
 
 .home-profile-img {
   width: 100%;
-  max-width: 100%;
-  margin: 0 0 1rem 0;
+  max-width: 170px;
+  margin: 0 auto 1rem auto;
   display: block;
 }
 
@@ -231,7 +225,7 @@
 .home-buttons {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.6rem;
   margin: 1rem 0 1.5rem 0;
 }
@@ -239,19 +233,12 @@
 .home-button {
   display: inline-block;
   padding: 0.5rem 0.9rem;
-  border: 1px solid var(--global-theme-color);
-  border-radius: 8px;
-  background: rgba(200, 155, 60, 0.14);
+  border: 1px solid rgba(0, 0, 0, 0.16);
+  border-radius: 999px;
   text-decoration: none;
-  color: var(--global-text-color);
+  color: inherit;
   font-size: 0.95rem;
   line-height: 1.1;
-}
-
-.home-button:hover {
-  background: var(--global-theme-color);
-  color: var(--global-hover-text-color);
-  text-decoration: none;
 }
 
 .home-news-mini {
@@ -330,11 +317,10 @@
   }
 
   .home-profile-img {
-    max-width: 100%;
+    max-width: 160px;
   }
 
   .home-sidebar {
-    padding-left: 0;
     padding-right: 0;
   }
 
@@ -344,18 +330,18 @@
 }
 
 .home-projects-grid {
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .home-projects-grid .col {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 }
 
 .home-projects-grid .card {
   width: 100%;
   max-width: 280px;
-  margin: 0;
+  margin: 0 auto;
 }
 
 .home-projects-grid .card-img-top {
@@ -377,37 +363,4 @@
   font-size: 0.9rem;
   line-height: 1.45;
   margin-bottom: 0;
-}
-
-.home-writing-card {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  overflow: hidden;
-}
-
-.home-writing-thumb {
-  flex: 0 0 112px;
-  width: 112px;
-  aspect-ratio: 4 / 3;
-  display: block;
-  overflow: hidden;
-}
-
-.home-writing-thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.home-writing-body {
-  min-width: 0;
-}
-
-@media (max-width: 420px) {
-  .home-writing-thumb {
-    flex-basis: 88px;
-    width: 88px;
-  }
 }
