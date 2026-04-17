@@ -330,12 +330,14 @@
 }
 
 .home-projects-grid {
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 280px));
+  justify-content: start;
+  gap: 1.5rem;
 }
 
-.home-projects-grid .col {
-  display: flex;
-  justify-content: flex-start;
+.home-project-card {
+  min-width: 0;
 }
 
 .home-projects-grid .card {

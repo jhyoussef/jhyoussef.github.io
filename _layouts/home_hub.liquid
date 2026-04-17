@@ -16,9 +16,9 @@ layout: default
         <h2 class="home-section-title">projects</h2>
 
         {% assign featured_projects = site.projects | where: "featured", true | sort: "importance" %}
-        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-3 justify-content-start home-projects-grid">
+        <div class="home-projects-grid">
           {% for project in featured_projects limit: 3 %}
-            <div class="col mb-4">
+            <div class="home-project-card">
               <div class="card h-100 hoverable">
                 {% if project.img %}
                   <a href="{{ project.url | relative_url }}">
