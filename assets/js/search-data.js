@@ -106,8 +106,8 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/skull-studies/";
-            },},{id: "news-my-first-announcement-sparkles-smile",
-          title: 'My first announcement! :sparkles: :smile:',
+            },},{id: "news-welcome-to-my-blog-sparkles-smile",
+          title: 'Welcome to my blog! :sparkles: :smile:',
           description: "",
           section: "News",},{id: "note_areas-earth-history",
           title: 'Earth History',
