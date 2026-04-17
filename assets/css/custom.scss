@@ -417,16 +417,14 @@
 }
 
 .home-writing-card {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
   overflow: hidden;
 }
 
 .home-writing-thumb {
-  flex: 0 0 112px;
   width: 112px;
-  aspect-ratio: 4 / 3;
+  height: 84px;
   display: block;
   overflow: hidden;
 }
@@ -434,6 +432,7 @@
 .home-writing-thumb img {
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   display: block;
 }
@@ -443,8 +442,12 @@
 }
 
 @media (max-width: 420px) {
+  .home-writing-card {
+    grid-template-columns: 88px minmax(0, 1fr);
+  }
+
   .home-writing-thumb {
-    flex-basis: 88px;
     width: 88px;
+    height: 66px;
   }
 }

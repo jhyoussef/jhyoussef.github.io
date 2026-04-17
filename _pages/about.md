@@ -12,8 +12,8 @@ short_bio: >
 home_buttons:
   - label: Projects
     url: /projects/
-  - label: Writing
-    url: /blog/
+  - label: Writings
+    url: /writings/
   - label: CV
     url: /cv/
 featured_project_limit: 3
