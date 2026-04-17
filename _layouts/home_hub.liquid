@@ -43,15 +43,20 @@ layout: default
         <h2 class="home-section-title">latest posts</h2>
 
         {% for post in site.posts limit: 3 %}
-          <div class="card mb-3 hoverable">
-            <div class="card-body">
+          <div class="card mb-3 hoverable home-writing-card">
+            {% if post.thumbnail %}
+              <a class="home-writing-thumb" href="{{ post.url | relative_url }}">
+                <img src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}">
+              </a>
+            {% endif %}
+            <div class="card-body home-writing-body">
               <h5 class="card-title mb-1">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
               </h5>
               {% if post.description %}
                 <p class="card-text mb-2">{{ post.description }}</p>
               {% endif %}
-              <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
+              <small class="text-muted">{{ post.date | date: "%m/%d/%y" }}</small>
             </div>
           </div>
         {% endfor %}
@@ -87,7 +92,7 @@ layout: default
 
         {% if page.announcements and page.announcements.enabled %}
             <section class="home-section mb-5">
-                <h2 class="section-title">
+                <h2 class="home-section-title">
                 <a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a>
                 </h2>
                 {% include news.liquid limit=true %}
