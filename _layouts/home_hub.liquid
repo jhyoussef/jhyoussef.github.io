@@ -11,46 +11,7 @@ layout: default
   </header>
 
   <div class="row home-hub-row">
-    <div class="col-lg-3 col-md-4">
-      <aside class="home-sidebar">
-        <h2 class="home-column-label">profile</h2>
-
-        {% if page.profile and page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% include figure.liquid
-            loading="eager"
-            path=profile_image_path
-            class="img-fluid rounded z-depth-1 home-profile-img"
-            alt=page.title
-            cache_bust=true
-          %}
-        {% endif %}
-
-        {% if page.short_bio %}
-          <p class="home-blurb">{{ page.short_bio }}</p>
-        {% endif %}
-
-        {% if page.home_buttons %}
-          <div class="home-buttons">
-            {% for button in page.home_buttons %}
-              <a class="home-button" href="{{ button.url | relative_url }}">{{ button.label }}</a>
-            {% endfor %}
-          </div>
-        {% endif %}
-
-        {% if page.announcements and page.announcements.enabled %}
-            <section class="home-section mb-5">
-                <h2 class="section-title">
-                <a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a>
-                </h2>
-                {% include news.liquid limit=true %}
-            </section>
-        {% endif %}
-        
-      </aside>
-    </div>
-
-    <div class="col-lg-9 col-md-8">
+    <div class="col-lg-9 col-md-8 order-1 order-lg-1">
       <section class="home-section">
         <h2 class="home-section-title">projects</h2>
 
@@ -95,6 +56,45 @@ layout: default
           </div>
         {% endfor %}
       </section>
+    </div>
+
+    <div class="col-lg-3 col-md-4 order-2 order-lg-2">
+      <aside class="home-sidebar">
+        <h2 class="home-column-label">profile</h2>
+
+        {% if page.profile and page.profile.image %}
+          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+          {% include figure.liquid
+            loading="eager"
+            path=profile_image_path
+            class="img-fluid rounded z-depth-1 home-profile-img"
+            alt=page.title
+            cache_bust=true
+          %}
+        {% endif %}
+
+        {% if page.short_bio %}
+          <p class="home-blurb">{{ page.short_bio }}</p>
+        {% endif %}
+
+        {% if page.home_buttons %}
+          <div class="home-buttons">
+            {% for button in page.home_buttons %}
+              <a class="home-button" href="{{ button.url | relative_url }}">{{ button.label }}</a>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if page.announcements and page.announcements.enabled %}
+            <section class="home-section mb-5">
+                <h2 class="section-title">
+                <a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a>
+                </h2>
+                {% include news.liquid limit=true %}
+            </section>
+        {% endif %}
+        
+      </aside>
     </div>
   </div>
 
