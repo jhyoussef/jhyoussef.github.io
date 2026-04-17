@@ -203,7 +203,7 @@
   padding-bottom: 0.35rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
-  text-align: right;
+  text-align: left;
 }
 
 .home-section:first-child .home-section-title,
@@ -403,4 +403,37 @@
   font-size: 0.9rem;
   line-height: 1.45;
   margin-bottom: 0;
+}
+
+.home-writing-card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.home-writing-thumb {
+  flex: 0 0 112px;
+  width: 112px;
+  aspect-ratio: 4 / 3;
+  display: block;
+  overflow: hidden;
+}
+
+.home-writing-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.home-writing-body {
+  min-width: 0;
+}
+
+@media (max-width: 420px) {
+  .home-writing-thumb {
+    flex-basis: 88px;
+    width: 88px;
+  }
 }

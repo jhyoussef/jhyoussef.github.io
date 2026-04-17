@@ -43,8 +43,13 @@ layout: default
         <h2 class="home-section-title">latest posts</h2>
 
         {% for post in site.posts limit: 3 %}
-          <div class="card mb-3 hoverable">
-            <div class="card-body">
+          <div class="card mb-3 hoverable home-writing-card">
+            {% if post.thumbnail %}
+              <a class="home-writing-thumb" href="{{ post.url | relative_url }}">
+                <img src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}">
+              </a>
+            {% endif %}
+            <div class="card-body home-writing-body">
               <h5 class="card-title mb-1">
                 <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
               </h5>
