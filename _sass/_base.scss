@@ -4,6 +4,36 @@
 
 // Typography
 
+body {
+  font-family: "Public Sans", sans-serif;
+  font-weight: 300;
+}
+
+input,
+textarea,
+select {
+  font-family: "Public Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.post-title,
+.navbar-brand,
+.navbar-nav .nav-item .nav-link,
+button,
+.btn,
+.home-button,
+.newsletter-form-button,
+.newsletter-loading-button,
+.newsletter-back-button,
+.btncv {
+  font-family: "Libre Baskerville", serif;
+}
+
 p,
 h1,
 h2,
