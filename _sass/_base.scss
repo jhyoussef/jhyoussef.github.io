@@ -21,7 +21,16 @@ h3,
 h4,
 h5,
 h6,
-.post-title,
+.header-bar h1,
+.publications h1,
+.publications h2,
+.projects h2.category,
+.home-column-label,
+.home-section-title,
+.post-title {
+  font-family: "Spectral", serif;
+}
+
 .navbar-brand,
 .navbar-nav .nav-item .nav-link,
 button,
@@ -31,7 +40,23 @@ button,
 .newsletter-loading-button,
 .newsletter-back-button,
 .btncv {
-  font-family: "Libre Baskerville", serif;
+  font-family: "Public Sans", sans-serif;
+}
+
+.caption,
+.post-description,
+.post-meta,
+.post-tags,
+.home-news-date,
+.tag-category-list ul p,
+.tag-category-list ul li,
+.featured-posts .post-meta,
+.post-list li .post-meta,
+.post-list li .post-tags,
+.publications ol.bibliography li .links a.btn,
+.publications ol.bibliography li .abbr .award,
+.cv .card .list-group-item .badge {
+  font-family: "IBM Plex Mono", monospace;
 }
 
 p,
@@ -277,7 +302,7 @@ ul.task-list input[type="checkbox"] {
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
-  opacity: 0.95;
+  opacity: 1;
 }
 
 .navbar .dropdown-menu {

@@ -439,7 +439,7 @@ third_party_libraries:
     version: "5.5.0"
   google_fonts:
     url:
-      fonts: "https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Public+Sans:wght@300;400;500;600&display=swap"
+      fonts: "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@300;400;500;600&family=Spectral:wght@400;500;600;700&display=swap"
   highlightjs:
     integrity:
       css:
