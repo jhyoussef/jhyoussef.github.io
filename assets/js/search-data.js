@@ -57,9 +57,9 @@ ninja.data = [{
         },
       },{id: "post-launching-off-the-fossil-record",
         
-          title: "Launching Off the Fossil Record!",
+          title: "Launching Off the Fossil Record",
         
-        description: "Introduction, and who the heck am I?",
+        description: "an introduction - paleontology - introductory",
         section: "Posts",
         handler: () => {
           
