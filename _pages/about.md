@@ -4,7 +4,7 @@ title: Julia Youssef
 subtitle: Paleobiology · quantitative modeling · scientific illustration
 permalink: /
 profile:
-  image: prof_pic.jpg
+  image: /assets/img/pano-wyoming-thin.jpg
   image_circular: false
 short_bio: >
   Paleobiologist and illustrator interested in reconstructing ecosystems through time
