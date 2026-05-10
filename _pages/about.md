@@ -10,11 +10,11 @@ short_bio: >
   Paleobiologist and illustrator interested in reconstructing ecosystems through time
   through fossils, phylogenetics, and quantitative models.
 home_buttons:
-  - label: Projects
+  - label: projects
     url: /projects/
-  - label: Writings
+  - label: writings
     url: /writings/
-  - label: CV
+  - label: cv
     url: /cv/
 featured_project_limit: 3
 featured_post_limit: 3

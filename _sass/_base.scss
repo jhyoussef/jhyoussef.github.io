@@ -298,7 +298,15 @@ ul.task-list input[type="checkbox"] {
 
 // Navbar customization
 
+header {
+  position: relative;
+  z-index: 1030;
+  background-color: var(--global-bg-color);
+}
+
 .navbar {
+  position: relative;
+  z-index: 1031;
   box-shadow: none;
   border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color) !important;
