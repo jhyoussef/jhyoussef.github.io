@@ -296,10 +296,7 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
-// Navbar customization
-
 header {
-  position: relative;
   z-index: 1030;
   background-color: var(--global-bg-color);
   width: 100%;
@@ -320,6 +317,10 @@ header {
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='paper-noise-header'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.58' numOctaves='4' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.18'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23paper-noise-header)' opacity='1'/%3E%3C/svg%3E");
     background-size: auto, auto, auto, 100% 100%, 280px 280px;
     background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+  }
+
+  &.fixed-top {
+    position: fixed;
   }
 }
 
