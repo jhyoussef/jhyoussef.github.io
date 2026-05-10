@@ -1,6 +1,6 @@
 ---
 layout: home_hub
-title: Julia Youssef
+title: juliayoussef.science
 subtitle: Paleobiology · quantitative modeling · scientific illustration
 permalink: /
 profile:
