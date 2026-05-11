@@ -122,7 +122,7 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "note_areas-earth-history",
           title: 'Earth History',
-          description: "Big-picture Earth systems, stratigraphy, major transitions, and review material.",
+          description: "History of the Earth, as we know it.",
           section: "Note_areas",handler: () => {
               window.location.href = "/notes/earth-history/";
             },},{id: "notes-cambrian-explosion-review",
