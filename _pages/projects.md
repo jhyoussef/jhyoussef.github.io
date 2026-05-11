@@ -5,9 +5,11 @@ permalink: /projects/
 description: A growing collection of projects.
 nav: true
 nav_order: 3
-display_categories: [paleontology, art, review]
-horizontal: false
+display_categories: [geosciences, art]
+horizontal: true
 ---
+
+Here, I display my current, longer-term projects in both science- and art- related categories. These may be specific commisions, paper research, literature review, or anything else that more parsimoniously falls into the idea of a "project." Pun intended. 
 
 <!-- pages/projects.md -->
 <div class="projects">

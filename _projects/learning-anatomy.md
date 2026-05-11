@@ -9,4 +9,4 @@ category: art
 giscus_comments: true
 ---
 
-I'll post some of my old work here, my current capacity, and then notes, etc. as I proceed :)
+As I work through this, I'll upload sketches, drafts, quick-notes, and resources, I think. 

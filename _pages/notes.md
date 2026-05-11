@@ -7,7 +7,7 @@ nav: true
 nav_order: 3
 ---
 
-In progress! Here, I want to eventually post my consolidated visualizations and notes from my astrophysics and geosciences education over time, given the overlap in a number of subjects covered.
+Very much in progress! Here, I want to document and post my consolidated visualizations and notes from my own study, as well as my astrophysics and geosciences education over time -- especially given the overlap in a number of the subjects covered. Cards here are broader subjects or courses - click to see specific topics. 
 
 <div class="projects">
   {% assign sorted_areas = site.note_areas | sort: "importance" %}

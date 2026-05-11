@@ -39,9 +39,8 @@ body > * {
   z-index: 1;
 }
 
-body > header {
+body > .site-header {
   z-index: 1030;
-  position: static;
 }
 
 body.fixed-top-nav {
