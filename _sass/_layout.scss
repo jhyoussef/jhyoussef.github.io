@@ -41,6 +41,7 @@ body > * {
 
 body > header {
   z-index: 1030;
+  position: static;
 }
 
 body.fixed-top-nav {
