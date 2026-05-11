@@ -81,7 +81,7 @@ ninja.data = [{
         
           title: "Launching Off the Fossil Record",
         
-        description: "an introduction - paleontology - introductory",
+        description: "an introduction - meta - introductory",
         section: "Posts",
         handler: () => {
           
