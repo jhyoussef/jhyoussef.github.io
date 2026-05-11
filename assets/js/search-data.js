@@ -48,6 +48,17 @@ ninja.data = [{
         
           title: "about me",
         
+        description: "Thoughts on working with GitHub Sites",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/gitvent/";
+          
+        },
+      },{id: "post-about-me",
+        
+          title: "about me",
+        
         description: "Who am I?",
         section: "Posts",
         handler: () => {
