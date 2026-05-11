@@ -12,7 +12,7 @@ Very much in progress! Here, I want to document and post my consolidated visuali
 <div class="projects">
   {% assign sorted_areas = site.note_areas | sort: "importance" %}
 
-  <div class="row row-cols-1 row-cols-md-3">
+  <div class="projects-cards-grid">
     {% for project in sorted_areas %}
       {% include projects.liquid %}
     {% endfor %}
