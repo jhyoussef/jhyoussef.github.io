@@ -145,8 +145,8 @@ ninja.data = [{
           description: "a project where I post my progress learning generalized vertebrate anatomy",
           section: "Projects",handler: () => {
               window.location.href = "/projects/learning-anatomy%20copy/";
-            },},{id: "projects-learning-anatomy-4",
-          title: 'Learning Anatomy 4',
+            },},{id: "projects-reviewing-vertebrate-anatomy",
+          title: 'Reviewing Vertebrate Anatomy',
           description: "a project where I post my progress learning generalized vertebrate anatomy",
           section: "Projects",handler: () => {
               window.location.href = "/projects/learning-anatomy/";
