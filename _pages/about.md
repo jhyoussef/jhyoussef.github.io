@@ -11,7 +11,7 @@ short_bio: >
   through fossils, phylogenetics, and quantitative models.
 home_buttons:
   - label: about me
-    url: /_pages/about.md
+    url: /_posts/2026-05-10-about-me.md
   - label: projects
     url: /projects/
   - label: writings
