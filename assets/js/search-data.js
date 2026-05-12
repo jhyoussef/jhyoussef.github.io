@@ -14,7 +14,14 @@ ninja.data = [{
           description: "",
           section: "Navigation",
           handler: () => {
-            window.location.href = "/writings/index.html";
+            window.location.href = "/writings/";
+          },
+        },{id: "nav-research",
+          title: "research",
+          description: "A growing collection of projects &amp; descriptions of my work",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/research/";
           },
         },{id: "nav-notes",
           title: "notes",
@@ -22,13 +29,6 @@ ninja.data = [{
           section: "Navigation",
           handler: () => {
             window.location.href = "/notes/";
-          },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "A growing collection of projects.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
           },
         },{id: "nav-art",
           title: "art",
@@ -44,9 +44,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-about-me",
+        },{id: "post-github-gitvent",
         
-          title: "about me",
+          title: "GitHub GitVent",
         
         description: "Thoughts on working with GitHub Sites",
         section: "Posts",
@@ -108,11 +108,6 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/eve-in-the-garden/";
-            },},{id: "art-hyde-park-flowers",
-          title: 'Hyde Park Flowers',
-          description: "",
-          section: "Art",handler: () => {
-              window.location.href = "/art/flowers/";
             },},{id: "art-pastel-hands",
           title: 'Pastel Hands',
           description: "",
@@ -123,6 +118,11 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/pterodactylus/";
+            },},{id: "art-pterosaur-skulls",
+          title: 'Pterosaur Skulls',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/pteosaur-skulls/";
             },},{id: "art-skull-studies",
           title: 'Skull Studies',
           description: "",
@@ -141,26 +141,21 @@ ninja.data = [{
           description: "...",
           section: "Notes",handler: () => {
               window.location.href = "/notes/earth-history/cambrian-explosion/";
-            },},{id: "projects-learning-anatomy-1",
-          title: 'Learning Anatomy 1',
-          description: "a project where I post my progress learning generalized vertebrate anatomy",
+            },},{id: "projects-multivariate-ecological-traits",
+          title: 'Multivariate Ecological Traits',
+          description: "Exploring diet - and other ecological areas - as multivariate traits, and notes on different representations of it in literature",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/learning-anatomy%20copy%202/";
-            },},{id: "projects-learning-anatomy-2",
-          title: 'Learning Anatomy 2',
-          description: "a project where I post my progress learning generalized vertebrate anatomy",
+              window.location.href = "/projects/multivariate-ecology/";
+            },},{id: "projects-phylogenetics-amp-pterosaurs",
+          title: 'Phylogenetics &amp;amp; Pterosaurs',
+          description: "reviewing the state and history of pterosaur phylogenetics and phylogenetics as a whole",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/learning-anatomy%20copy%203/";
-            },},{id: "projects-learning-anatomy-3",
-          title: 'Learning Anatomy 3',
-          description: "a project where I post my progress learning generalized vertebrate anatomy",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/learning-anatomy%20copy/";
+              window.location.href = "/projects/pterosaur-phylogenetics/";
             },},{id: "projects-reviewing-vertebrate-anatomy",
           title: 'Reviewing Vertebrate Anatomy',
           description: "a project where I post my progress learning generalized vertebrate anatomy",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/learning-anatomy/";
+              window.location.href = "/projects/reviewing-vert-anatomy/";
             },},{
         id: 'social-bluesky',
         title: 'Bluesky',
