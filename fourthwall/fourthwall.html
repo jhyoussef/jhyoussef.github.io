@@ -1,0 +1,374 @@
+<style>
+  #fw-gallery-root {
+    --bg: #f6f0e8;
+    --surface: rgba(255, 251, 246, 0.88);
+    --surface-strong: rgba(255, 248, 241, 0.96);
+    --text: #261a12;
+    --muted: #705a4d;
+    --shadow: 0 24px 60px rgba(73, 49, 27, 0.14);
+    --radius-xl: 28px;
+    --radius-lg: 22px;
+    --radius-md: 16px;
+    --tag: #efe4d4;
+    --tag-active: #261a12;
+    --tag-active-text: #fffaf3;
+    box-sizing: border-box;
+    width: min(1200px, 100%);
+    margin: 0 auto;
+    padding: 20px 0 56px;
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  #fw-gallery-root *,
+  #fw-gallery-root *::before,
+  #fw-gallery-root *::after {
+    box-sizing: border-box;
+  }
+
+  #fw-gallery-root .fw-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: var(--radius-xl);
+    background:
+      radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 32%),
+      linear-gradient(145deg, rgba(255, 253, 249, 0.92), rgba(244, 229, 210, 0.9));
+    box-shadow: var(--shadow);
+  }
+
+  #fw-gallery-root .fw-hero::after {
+    content: "";
+    position: absolute;
+    right: -48px;
+    top: -48px;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(193, 138, 72, 0.24), transparent 68%);
+  }
+
+  #fw-gallery-root .fw-eyebrow {
+    margin: 0 0 8px;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  #fw-gallery-root .fw-title {
+    margin: 0;
+    max-width: 10ch;
+    font-size: clamp(2.8rem, 8vw, 5.5rem);
+    line-height: 0.94;
+    font-weight: 700;
+  }
+
+  #fw-gallery-root .fw-copy {
+    margin: 18px 0 0;
+    max-width: 650px;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  #fw-gallery-root .fw-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 28px 0 0;
+  }
+
+  #fw-gallery-root .fw-filter-chip {
+    border: 1px solid transparent;
+    border-radius: 999px;
+    padding: 11px 18px;
+    font: inherit;
+    font-size: 0.96rem;
+    color: var(--text);
+    background: var(--tag);
+    cursor: pointer;
+    transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  #fw-gallery-root .fw-filter-chip:hover,
+  #fw-gallery-root .fw-filter-chip:focus-visible {
+    transform: translateY(-1px);
+    border-color: rgba(38, 26, 18, 0.18);
+    outline: none;
+  }
+
+  #fw-gallery-root .fw-filter-chip.is-active {
+    color: var(--tag-active-text);
+    background: var(--tag-active);
+  }
+
+  #fw-gallery-root .fw-gallery-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 2px 16px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  #fw-gallery-root .fw-gallery {
+    column-count: 1;
+    column-gap: 20px;
+  }
+
+  #fw-gallery-root .fw-card {
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 20px;
+    border: 1px solid rgba(255, 255, 255, 0.58);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--surface-strong);
+    box-shadow: 0 12px 36px rgba(49, 34, 18, 0.11);
+    break-inside: avoid;
+    transform: translateY(14px);
+    opacity: 0;
+    animation: fw-rise-in 500ms ease forwards;
+  }
+
+  #fw-gallery-root .fw-card-media {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: linear-gradient(180deg, rgba(238, 225, 211, 0.8), rgba(221, 204, 186, 0.9));
+  }
+
+  #fw-gallery-root .fw-card-body {
+    padding: 16px 16px 18px;
+  }
+
+  #fw-gallery-root .fw-card-title {
+    margin: 0;
+    font-size: 1.08rem;
+    line-height: 1.25;
+  }
+
+  #fw-gallery-root .fw-card-caption {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  #fw-gallery-root .fw-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0 0;
+  }
+
+  #fw-gallery-root .fw-card-tag {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(38, 26, 18, 0.08);
+    color: var(--muted);
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+    text-transform: lowercase;
+  }
+
+  #fw-gallery-root .fw-empty-state {
+    display: none;
+    padding: 24px 20px;
+    border: 1px dashed rgba(38, 26, 18, 0.2);
+    border-radius: var(--radius-md);
+    background: rgba(255, 251, 246, 0.65);
+    color: var(--muted);
+    text-align: center;
+  }
+
+  #fw-gallery-root .fw-empty-state.is-visible {
+    display: block;
+  }
+
+  @keyframes fw-rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (min-width: 680px) {
+    #fw-gallery-root .fw-gallery {
+      column-count: 2;
+    }
+
+    #fw-gallery-root .fw-hero {
+      padding: 40px;
+    }
+  }
+
+  @media (min-width: 960px) {
+    #fw-gallery-root .fw-gallery {
+      column-count: 3;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #fw-gallery-root .fw-filter-chip,
+    #fw-gallery-root .fw-card {
+      transition: none;
+      animation: none;
+    }
+
+    #fw-gallery-root .fw-card {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
+
+<div id="fw-gallery-root">
+  <section class="fw-hero">
+    <p class="fw-eyebrow">Fourthwall gallery</p>
+    <h1 class="fw-title">Collected work, sorted by mood.</h1>
+    <p class="fw-copy">
+      Update the gallery data in the script below with direct image links from
+      <code>https://juliayoussef.github.io/fourthwall/gallery/...</code> and assign any tags you want to filter by.
+    </p>
+    <div class="fw-filter-bar" id="fwFilterBar" aria-label="Gallery filters"></div>
+  </section>
+
+  <div class="fw-gallery-meta">
+    <span id="fwResultsLabel">0 works</span>
+    <span>Click an image to open the full file.</span>
+  </div>
+
+  <section class="fw-gallery" id="fwGallery" aria-live="polite"></section>
+  <div class="fw-empty-state" id="fwEmptyState">No pieces match that filter yet.</div>
+</div>
+
+<script>
+  (function () {
+    const root = document.getElementById("fw-gallery-root");
+    if (!root) return;
+
+    const galleryItems = [
+      {
+        title: "Otter",
+        imageUrl: "https://juliayoussef.github.io/fourthwall/gallery/otter.jpg",
+        alt: "Artwork of an otter.",
+        caption: "Replace or duplicate this entry with more images from the Fourthwall gallery folder.",
+        tags: ["featured", "animals", "study"]
+      }
+    ];
+
+    const normalizedItems = galleryItems.map((item, index) => ({
+      ...item,
+      id: index + 1,
+      tags: Array.from(new Set((item.tags || []).map((tag) => String(tag).trim().toLowerCase()).filter(Boolean)))
+    }));
+
+    const filterBar = root.querySelector("#fwFilterBar");
+    const gallery = root.querySelector("#fwGallery");
+    const resultsLabel = root.querySelector("#fwResultsLabel");
+    const emptyState = root.querySelector("#fwEmptyState");
+
+    const tagSet = new Set(["all"]);
+    normalizedItems.forEach((item) => item.tags.forEach((tag) => tagSet.add(tag)));
+    const tags = Array.from(tagSet);
+
+    let activeTag = "all";
+
+    function formatTag(tag) {
+      return tag.charAt(0).toUpperCase() + tag.slice(1);
+    }
+
+    function buildFilters() {
+      filterBar.innerHTML = "";
+
+      tags.forEach((tag) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "fw-filter-chip" + (tag === activeTag ? " is-active" : "");
+        button.textContent = formatTag(tag);
+        button.setAttribute("aria-pressed", String(tag === activeTag));
+        button.addEventListener("click", function () {
+          activeTag = tag;
+          buildFilters();
+          renderGallery();
+        });
+        filterBar.appendChild(button);
+      });
+    }
+
+    function getFilteredItems() {
+      if (activeTag === "all") return normalizedItems;
+      return normalizedItems.filter((item) => item.tags.includes(activeTag));
+    }
+
+    function renderGallery() {
+      const visibleItems = getFilteredItems();
+      gallery.innerHTML = "";
+
+      visibleItems.forEach((item, index) => {
+        const article = document.createElement("article");
+        article.className = "fw-card";
+        article.style.animationDelay = (index * 55) + "ms";
+
+        const link = document.createElement("a");
+        link.href = item.imageUrl;
+        link.target = "_blank";
+        link.rel = "noreferrer";
+
+        const image = document.createElement("img");
+        image.className = "fw-card-media";
+        image.src = item.imageUrl;
+        image.alt = item.alt || item.title;
+        link.appendChild(image);
+
+        const body = document.createElement("div");
+        body.className = "fw-card-body";
+
+        const title = document.createElement("h2");
+        title.className = "fw-card-title";
+        title.textContent = item.title;
+        body.appendChild(title);
+
+        if (item.caption) {
+          const caption = document.createElement("p");
+          caption.className = "fw-card-caption";
+          caption.textContent = item.caption;
+          body.appendChild(caption);
+        }
+
+        const visibleTags = item.tags.filter((tag) => tag !== "all");
+        if (visibleTags.length) {
+          const tagsWrap = document.createElement("div");
+          tagsWrap.className = "fw-card-tags";
+
+          visibleTags.forEach((tag) => {
+            const tagEl = document.createElement("span");
+            tagEl.className = "fw-card-tag";
+            tagEl.textContent = tag;
+            tagsWrap.appendChild(tagEl);
+          });
+
+          body.appendChild(tagsWrap);
+        }
+
+        article.appendChild(link);
+        article.appendChild(body);
+        gallery.appendChild(article);
+      });
+
+      resultsLabel.textContent = visibleItems.length + " " + (visibleItems.length === 1 ? "work" : "works");
+      emptyState.classList.toggle("is-visible", visibleItems.length === 0);
+    }
+
+    buildFilters();
+    renderGallery();
+  }());
+</script>
