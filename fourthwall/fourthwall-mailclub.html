@@ -1,0 +1,193 @@
+<!--
+  Fourthwall custom code snippet for the Mail Club page.
+  Goal: place the membership tier section and the member recent posts section side by side.
+
+  If the automatic text matching does not find the right sections, update the two regexes
+  in the script below so they match the visible headings on your page exactly.
+-->
+
+<style>
+  .fw-mailclub-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+    width: min(1200px, calc(100% - 2rem));
+    margin: 0 auto;
+    padding: 1rem 0 3rem;
+  }
+
+  .fw-mailclub-layout * {
+    box-sizing: border-box;
+  }
+
+  .fw-mailclub-layout > .fw-mailclub-card,
+  .fw-mailclub-layout > .fw-mailclub-posts {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .fw-mailclub-layout > .fw-mailclub-card > *:first-child,
+  .fw-mailclub-layout > .fw-mailclub-posts > *:first-child {
+    margin-top: 0;
+  }
+
+  @media (max-width: 900px) {
+    .fw-mailclub-layout {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      width: min(100%, calc(100% - 1.25rem));
+      padding-bottom: 2rem;
+    }
+  }
+</style>
+
+<script>
+  (() => {
+    const MAIL_CLUB_MATCH = /\bmail club\b|\bmembership\b|\bmember(ship)? tier\b/i;
+    const RECENT_POSTS_MATCH = /\brecent posts\b|\blatest posts\b|\bmember posts\b|\bposts\b/i;
+    const WRAPPER_CLASS = "fw-mailclub-layout";
+    const CARD_CLASS = "fw-mailclub-card";
+    const POSTS_CLASS = "fw-mailclub-posts";
+    const BLOCK_SELECTOR = "section, [data-section], [data-testid*='section'], [class*='section']";
+
+    function findHeadingText(node) {
+      const headings = node.querySelectorAll("h1, h2, h3, h4, [role='heading']");
+      return Array.from(headings)
+        .map((heading) => heading.textContent.trim())
+        .filter(Boolean)
+        .join(" \n ");
+    }
+
+    function getMain() {
+      return document.querySelector("main") || document.body;
+    }
+
+    function resolveBlock(node) {
+      const main = getMain();
+      let current = node;
+
+      while (current && current !== main && current.parentElement) {
+        if (current.matches(BLOCK_SELECTOR) && current.parentElement.closest("main")) {
+          return current;
+        }
+
+        if (current.parentElement === main) {
+          return current;
+        }
+
+        current = current.parentElement;
+      }
+
+      return null;
+    }
+
+    function findSectionCandidates() {
+      const selectors = [
+        "h1, h2, h3, h4, [role='heading']",
+        "main section",
+        "main > div",
+      ];
+
+      const seen = new Set();
+      const results = [];
+
+      selectors.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((node) => {
+          const block = selector.includes("h") || selector.includes("[role='heading']")
+            ? resolveBlock(node)
+            : node;
+
+          if (!block || seen.has(block)) return;
+          seen.add(block);
+
+          const text = findHeadingText(block) || block.textContent.trim();
+          if (!text) return;
+
+          results.push({ node: block, text });
+        });
+      });
+
+      return results;
+    }
+
+    function findMatch(regex, candidates, excludeNode) {
+      return candidates.find(({ node, text }) => node !== excludeNode && regex.test(text))?.node;
+    }
+
+    function findSharedParent(firstNode, secondNode) {
+      const firstParents = new Set();
+      let current = firstNode?.parentElement;
+
+      while (current) {
+        firstParents.add(current);
+        current = current.parentElement;
+      }
+
+      current = secondNode?.parentElement;
+      while (current) {
+        if (firstParents.has(current)) return current;
+        current = current.parentElement;
+      }
+
+      return null;
+    }
+
+    function getSiblingBlock(parent, target) {
+      if (!parent || !target) return null;
+
+      let current = target;
+      while (current && current.parentElement !== parent) {
+        current = current.parentElement;
+      }
+
+      return current?.parentElement === parent ? current : null;
+    }
+
+    function buildLayout() {
+      const candidates = findSectionCandidates();
+      const mailClubSection = findMatch(MAIL_CLUB_MATCH, candidates);
+      const recentPostsSection = findMatch(RECENT_POSTS_MATCH, candidates, mailClubSection);
+
+      if (!mailClubSection || !recentPostsSection) return;
+      if (mailClubSection.contains(recentPostsSection) || recentPostsSection.contains(mailClubSection)) return;
+
+      const existingWrapper = document.querySelector("." + WRAPPER_CLASS);
+      if (existingWrapper?.contains(mailClubSection) && existingWrapper.contains(recentPostsSection)) return;
+
+      const sharedParent = findSharedParent(mailClubSection, recentPostsSection);
+      const cardTarget = getSiblingBlock(sharedParent, mailClubSection);
+      const postsTarget = getSiblingBlock(sharedParent, recentPostsSection);
+
+      if (!sharedParent || !cardTarget || !postsTarget || cardTarget === postsTarget) return;
+
+      const wrapper = document.createElement("div");
+      wrapper.className = WRAPPER_CLASS;
+
+      const cardCol = document.createElement("div");
+      cardCol.className = CARD_CLASS;
+
+      const postsCol = document.createElement("div");
+      postsCol.className = POSTS_CLASS;
+
+      sharedParent.insertBefore(wrapper, cardTarget);
+      wrapper.appendChild(cardCol);
+      wrapper.appendChild(postsCol);
+      cardCol.appendChild(cardTarget);
+      postsCol.appendChild(postsTarget);
+    }
+
+    const observer = new MutationObserver(() => buildLayout());
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", buildLayout, { once: true });
+    } else {
+      buildLayout();
+    }
+
+    observer.observe(document.documentElement, {
+      childList: true,
+      subtree: true,
+    });
+  })();
+</script>
