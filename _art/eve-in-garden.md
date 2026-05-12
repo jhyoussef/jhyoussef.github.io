@@ -6,7 +6,6 @@ image: /assets/img/art/eve-in-garden.jpg
 description: 
 tags: [pencil, science]
 medium: "Pencil"
-series: "General"
 importance: 1
 permalink: /art/eve-in-the-garden/
 ---

@@ -1,0 +1,63 @@
+{% assign project_url_key = page.url | downcase | remove: site.baseurl | replace: '/', '' | replace: '.html', '' %}
+{% assign has_associated_posts = false %}
+
+{% for post in site.posts | sort: "date" | reverse %}
+  {% if post.project != blank %}
+    {% assign post_project_key = post.project | downcase | remove: site.baseurl | replace: '/', '' | replace: '.html', '' %}
+
+    {% if post_project_key == project_url_key %}
+      {% unless has_associated_posts %}
+        {% assign has_associated_posts = true %}
+        <section class="associated-posts-section">
+          <p class="associated-posts-label">associated posts</p>
+          <div class="projects-cards-grid projects-cards-grid--contained associated-posts-grid">
+      {% endunless %}
+
+      {% capture post_href %}
+        {% if post.redirect == blank %}
+          {{ post.url | relative_url }}
+        {% elsif post.redirect contains '://' %}
+          {{ post.redirect }}
+        {% else %}
+          {{ post.redirect | relative_url }}
+        {% endif %}
+      {% endcapture %}
+
+      {% assign post_summary = post.description %}
+      {% if post_summary == blank %}
+        {% assign post_summary = post.content | strip_html | truncatewords: 18 %}
+      {% endif %}
+
+      <article class="card h-100 hoverable project-card associated-post-card{% unless post.thumbnail %} project-card--no-media{% endunless %}">
+        {% if post.thumbnail %}
+          <a
+            href="{{ post_href | strip }}"
+            class="card-media"
+            {% if post.redirect contains '://' %}target="_blank" rel="noopener noreferrer"{% endif %}
+          >
+            <img src="{{ post.thumbnail | relative_url }}" class="card-img-top" alt="{{ post.title }}">
+          </a>
+        {% endif %}
+        <div class="card-body">
+          <p class="post-meta associated-post-meta">{{ post.date | date: '%B %d, %Y' }}</p>
+          <h2 class="card-title">
+            <a
+              href="{{ post_href | strip }}"
+              {% if post.redirect contains '://' %}target="_blank" rel="noopener noreferrer"{% endif %}
+            >
+              {{ post.title }}
+            </a>
+          </h2>
+          {% if post_summary != blank %}
+            <p class="card-text">{{ post_summary }}</p>
+          {% endif %}
+        </div>
+      </article>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+{% if has_associated_posts %}
+      </div>
+    </section>
+{% endif %}

@@ -12,8 +12,8 @@ short_bio: >
 home_buttons:
   - label: about me
     url: /_posts/2026-05-10-about-me.md
-  - label: projects
-    url: /projects/
+  - label: research
+    url: /research/
   - label: writings
     url: /writings/
   - label: cv

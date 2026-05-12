@@ -7,6 +7,7 @@ description: an introduction
   - introductory
 thumbnail: /assets/img/film-field.jpg
 categories: intro-posts
+project: /projects/pterosaur-phylogenetics/
 toc: false
 featured: true
 giscus_comments: true

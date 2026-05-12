@@ -4,8 +4,12 @@ title: art
 permalink: /art/
 description: selected work and process
 nav: true
-nav_order: 5
+nav_order: 4
 ---
+
+A place to host my science-related artistic content. For more general work, see my site on Fourthwall: (in progress)
+
+Click each work to see full-screen along with any metadata and progress notes. 
 
 <style>
   #art-gallery.masonry-grid {

@@ -3,10 +3,10 @@ layout: default
 ---
 
 <div class="home-hub-page">
-  <header class="home-hub-header">
-    <h1 class="home-hub-title">{{ page.title }}</h1>
+  <header class="home-hub-header page-hero">
+    <h1 class="home-hub-title page-hero-title">{{ page.title }}</h1>
     {% if page.subtitle %}
-      <p class="home-hub-subtitle">{{ page.subtitle }}</p>
+      <p class="home-hub-subtitle page-hero-subtitle">{{ page.subtitle }}</p>
     {% endif %}
   </header>
 
@@ -19,9 +19,9 @@ layout: default
         <div class="home-projects-grid">
           {% for project in featured_projects limit: 3 %}
             <div class="home-project-card">
-              <div class="card h-100 hoverable">
+              <div class="card h-100 hoverable project-card">
                 {% if project.img %}
-                  <a href="{{ project.url | relative_url }}">
+                  <a href="{{ project.url | relative_url }}" class="card-media">
                     <img src="{{ project.img | relative_url }}" class="card-img-top" alt="{{ project.title }}">
                   </a>
                 {% endif %}
@@ -42,23 +42,30 @@ layout: default
       <section class="home-section">
         <h2 class="home-section-title">latest posts</h2>
 
-        {% for post in site.posts limit: 3 %}
-          <div class="card mb-3 hoverable home-writing-card">
-            {% if post.thumbnail %}
-              <a class="home-writing-thumb" href="{{ post.url | relative_url }}">
-                <img src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}">
-              </a>
-            {% endif %}
-            <div class="card-body home-writing-body">
-              <h5 class="card-title mb-1">
-                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              </h5>
-              {% if post.description %}
-                <p class="card-text mb-2">{{ post.description }}</p>
+        {% assign latest_writings_count = 0 %}
+        {% for post in site.posts %}
+          {% unless post.tags contains "notes" %}
+            <div class="card mb-3 hoverable home-writing-card{% unless post.thumbnail %} home-writing-card--no-thumb{% endunless %}">
+              {% if post.thumbnail %}
+                <a class="home-writing-thumb" href="{{ post.url | relative_url }}">
+                  <img src="{{ post.thumbnail | relative_url }}" alt="{{ post.title }}">
+                </a>
               {% endif %}
-              <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
+              <div class="card-body home-writing-body">
+                <h5 class="card-title mb-1">
+                  <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </h5>
+                {% if post.description %}
+                  <p class="card-text mb-2">{{ post.description }}</p>
+                {% endif %}
+                <small class="text-muted">{{ post.date | date: "%B %-d, %Y" }}</small>
+              </div>
             </div>
-          </div>
+            {% assign latest_writings_count = latest_writings_count | plus: 1 %}
+            {% if latest_writings_count >= 3 %}
+              {% break %}
+            {% endif %}
+          {% endunless %}
         {% endfor %}
       </section>
     </div>

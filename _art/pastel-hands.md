@@ -6,7 +6,6 @@ image: /assets/img/art/pastel-hands.jpg
 description: 
 tags: [pastel, personal]
 medium: "Pastel"
-series: "General"
 importance: 1
 permalink: /art/pastel-hands/
 ---

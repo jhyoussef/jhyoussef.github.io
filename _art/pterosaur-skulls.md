@@ -1,13 +1,13 @@
 ---
 layout: art_piece
-title: "Pterodactylus"
+title: "Pterosaur Skulls"
 year: 2023
-image: /assets/img/art/pterodactylus-sketch.jpg
+image: /assets/img/art/pterosaur-diagram.jpg
 description: 
 tags: [digital, science]
 medium: "Digital"
 importance: 1
-permalink: /art/pterodactylus/
+permalink: /art/pteosaur-skulls/
 ---
 
 process, notes

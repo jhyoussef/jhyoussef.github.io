@@ -6,7 +6,6 @@ image: /assets/img/art/beach-collage.jpg
 description: 
 tags: [collage, personal]
 medium: "Paper"
-series: "Emotions"
 importance: 1
 permalink: /art/beach-collage/
 ---

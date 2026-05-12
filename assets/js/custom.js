@@ -1,23 +1,103 @@
-// -------------------- FILTER BUTTONS --------------------
-const filterButtons = document.querySelectorAll("#filter-buttons button");
-const items = document.querySelectorAll(".masonry-item");
+document.addEventListener("DOMContentLoaded", () => {
+  // -------------------- FILTER BUTTONS --------------------
+  const filterButtons = document.querySelectorAll("#filter-buttons button");
+  const items = document.querySelectorAll(".masonry-item");
 
-filterButtons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    filterButtons.forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((button) => button.classList.remove("active"));
+      btn.classList.add("active");
 
-    const filter = btn.dataset.filter;
+      const filter = btn.dataset.filter;
 
-    items.forEach(item => {
-      const tags = item.dataset.tags.split(" ");
-      if (filter === "all" || tags.includes(filter)) {
-        item.style.display = "block";
-      } else {
-        item.style.display = "none";
-      }
+      items.forEach((item) => {
+        const tags = item.dataset.tags.split(" ");
+        item.style.display = filter === "all" || tags.includes(filter) ? "block" : "none";
+      });
     });
   });
+
+  // -------------------- WRITINGS PAGE --------------------
+  const writingsLayout = document.querySelector(".writings-layout-row");
+  if (writingsLayout) {
+    const writingsItems = Array.from(document.querySelectorAll("[data-writings-item]"));
+    const pagination = document.querySelector("[data-writings-pagination]");
+    const pageButtons = document.querySelector("[data-writings-pages]");
+    const prevButton = document.querySelector("[data-writings-prev]");
+    const nextButton = document.querySelector("[data-writings-next]");
+    const writingsPageSize = parseInt(writingsLayout.dataset.writingsPageSize || "4", 10);
+    const totalPages = Math.max(1, Math.ceil(writingsItems.length / writingsPageSize));
+    let currentPage = 1;
+
+    const renderWritingsPage = (page) => {
+      currentPage = Math.min(Math.max(page, 1), totalPages);
+      const startIndex = (currentPage - 1) * writingsPageSize;
+      const endIndex = startIndex + writingsPageSize;
+
+      writingsItems.forEach((item, index) => {
+        item.hidden = index < startIndex || index >= endIndex;
+      });
+
+      if (pageButtons) {
+        pageButtons.innerHTML = "";
+
+        for (let pageNumber = 1; pageNumber <= totalPages; pageNumber += 1) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "writings-pagination-page";
+          button.textContent = String(pageNumber);
+          button.disabled = pageNumber === currentPage;
+
+          if (pageNumber === currentPage) {
+            button.classList.add("is-active");
+          }
+
+          button.addEventListener("click", () => renderWritingsPage(pageNumber));
+          pageButtons.appendChild(button);
+        }
+      }
+
+      if (prevButton) {
+        prevButton.disabled = currentPage === 1;
+      }
+
+      if (nextButton) {
+        nextButton.disabled = currentPage === totalPages;
+      }
+    };
+
+    if (pagination && writingsItems.length > writingsPageSize) {
+      pagination.hidden = false;
+
+      prevButton?.addEventListener("click", () => renderWritingsPage(currentPage - 1));
+      nextButton?.addEventListener("click", () => renderWritingsPage(currentPage + 1));
+    }
+
+    renderWritingsPage(1);
+
+    const notesItems = Array.from(document.querySelectorAll("[data-note-item]"));
+    const notesLoadMoreButton = document.querySelector("[data-notes-load-more]");
+    const notesInitialCount = parseInt(writingsLayout.dataset.notesInitialCount || "4", 10);
+    const notesLoadIncrement = parseInt(writingsLayout.dataset.notesLoadIncrement || "3", 10);
+    let visibleNotesCount = notesInitialCount;
+
+    const renderNotes = () => {
+      notesItems.forEach((item, index) => {
+        item.hidden = index >= visibleNotesCount;
+      });
+
+      if (notesLoadMoreButton) {
+        notesLoadMoreButton.hidden = visibleNotesCount >= notesItems.length;
+      }
+    };
+
+    notesLoadMoreButton?.addEventListener("click", () => {
+      visibleNotesCount = Math.min(visibleNotesCount + notesLoadIncrement, notesItems.length);
+      renderNotes();
+    });
+
+    renderNotes();
+  }
 });
 
 // -------------------- LIGHTBOX --------------------

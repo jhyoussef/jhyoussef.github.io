@@ -7,6 +7,7 @@ description: History of the Earth, as we know it.
 importance: 1
 img: /assets/img/notes/suomi-npp-earth.jpg
 pretty_name: Earth History
+category: geosciences
 ---
 
 NASA ID (image data): a-sky-view-of-earth-from-suomi-npp_16611703184_o

@@ -1,10 +1,10 @@
 ---
 layout: page
-title: projects
-permalink: /projects/
-description: A growing collection of projects.
+title: research
+permalink: /research/
+description: A growing collection of projects & descriptions of my work
 nav: true
-nav_order: 3
+nav_order: 2
 display_categories: [geosciences, art]
 horizontal: true
 ---
@@ -22,7 +22,7 @@ Here, I display my current, longer-term projects in both science- and art- relat
   {% assign categorized_projects = site.projects | where: "category", category %}
   {% assign sorted_projects = categorized_projects | sort: "importance" %}
   <!-- Generate cards for each project -->
-  <div class="projects-cards-grid">
+  <div class="projects-cards-grid projects-cards-grid--fill">
     {% for project in sorted_projects %}
       {% include projects.liquid %}
     {% endfor %}
@@ -37,7 +37,7 @@ Here, I display my current, longer-term projects in both science- and art- relat
 
   <!-- Generate cards for each project -->
 
-<div class="projects-cards-grid">
+<div class="projects-cards-grid projects-cards-grid--fill">
   {% for project in sorted_projects %}
     {% include projects.liquid %}
   {% endfor %}
