@@ -691,6 +691,21 @@
   margin-bottom: 2rem;
 }
 
+.writings-tag-filter {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: var(--global-theme-color);
+  cursor: pointer;
+}
+
+.writings-tag-filter:hover,
+.writings-tag-filter.is-active {
+  color: var(--global-hover-color);
+  text-decoration: underline;
+}
+
 .writings-featured-section {
   margin-bottom: 1.5rem;
 }

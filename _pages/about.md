@@ -1,17 +1,16 @@
 ---
 layout: home_hub
 title: juliayoussef.science
-subtitle: Paleobiology · quantitative modeling · scientific illustration
+subtitle: paleobiology · quantitative modeling · scientific illustration
 permalink: /
 profile:
   image: pano-wyoming-thin.jpg
   image_circular: false
 short_bio: >
-  Paleobiologist and illustrator interested in reconstructing ecosystems through time
-  through fossils, phylogenetics, and quantitative models.
+  Aspiring paleobiologist and illustrator intrested in building datasets to reconstruct ecosystems through time using fossils, phylogenetics, and quantitative models
 home_buttons:
   - label: about me
-    url: /_posts/2026-05-10-about-me.md
+    url: _posts/2026-05-10-about-me.md
   - label: research
     url: /research/
   - label: writings

@@ -92,7 +92,40 @@ layout: default
         {% if page.home_buttons %}
           <div class="home-buttons">
             {% for button in page.home_buttons %}
-              <a class="home-button" href="{{ button.url | relative_url }}">{{ button.label }}</a>
+              {% assign button_href = button.url | strip %}
+
+              {% unless button_href contains '://' or button_href contains '#' or button_href contains 'mailto:' or button_href contains 'tel:' %}
+                {% assign resolved_button_doc = nil %}
+
+                {% if button_href contains '.md' or button_href contains '.html' %}
+                  {% assign resolved_button_doc = site.pages | where: "path", button_href | first %}
+
+                  {% if resolved_button_doc == nil %}
+                    {% assign resolved_button_doc = site.posts | where: "path", button_href | first %}
+                  {% endif %}
+
+                  {% if resolved_button_doc == nil %}
+                    {% for collection in site.collections %}
+                      {% assign collection_match = collection.docs | where: "path", button_href | first %}
+                      {% if collection_match %}
+                        {% assign resolved_button_doc = collection_match %}
+                        {% break %}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+
+                  {% if resolved_button_doc %}
+                    {% assign button_href = resolved_button_doc.url %}
+                  {% endif %}
+                {% endif %}
+
+                {% assign button_href_prefix = button_href | slice: 0, 1 %}
+                {% unless button_href_prefix == '/' %}
+                  {% assign button_href = button_href | prepend: '/' %}
+                {% endunless %}
+              {% endunless %}
+
+              <a class="home-button" href="{{ button_href | relative_url }}">{{ button.label }}</a>
             {% endfor %}
           </div>
         {% endif %}

@@ -121,7 +121,14 @@ nav_order: 1
                   {% if tag != "" %}
                     <li>
                       <i class="fa-solid fa-hashtag fa-sm"></i>
-                      <a href="{{ tag | slugify | prepend: '/blog/tag/' | relative_url }}">{{ tag }}</a>
+                      <button
+                        type="button"
+                        class="writings-tag-filter"
+                        data-tag-filter="{{ tag | escape }}"
+                        aria-pressed="false"
+                      >
+                        {{ tag }}
+                      </button>
                     </li>
                     {% unless forloop.last %}
                       <p>&bull;</p>
@@ -157,6 +164,7 @@ nav_order: 1
                   class="card mb-3 hoverable home-writing-card writings-feed-card{% unless post.thumbnail %} home-writing-card--no-thumb{% endunless %}"
                   data-writings-item
                   data-writings-index="{{ writing_index }}"
+                  data-writings-tags="{{ post.tags | join: '|' | escape }}"
                 >
                   {% if post.thumbnail %}
                     <a
@@ -263,16 +271,37 @@ nav_order: 1
     const pageButtons = document.querySelector("[data-writings-pages]");
     const prevButton = document.querySelector("[data-writings-prev]");
     const nextButton = document.querySelector("[data-writings-next]");
+    const tagFilterButtons = Array.from(document.querySelectorAll("[data-tag-filter]"));
     const writingsPageSize = parseInt(writingsLayout.dataset.writingsPageSize || "4", 10);
-    const totalPages = Math.max(1, Math.ceil(writingsItems.length / writingsPageSize));
     let currentPage = 1;
+    let activeTag = "";
+
+    const getFilteredWritings = () => {
+      if (!activeTag) {
+        return writingsItems;
+      }
+
+      return writingsItems.filter((item) => {
+        const tagList = (item.dataset.writingsTags || "")
+          .split("|")
+          .map((tag) => tag.trim())
+          .filter(Boolean);
+        return tagList.includes(activeTag);
+      });
+    };
 
     const renderWritingsPage = (page) => {
+      const filteredItems = getFilteredWritings();
+      const totalPages = Math.max(1, Math.ceil(filteredItems.length / writingsPageSize));
       currentPage = Math.min(Math.max(page, 1), totalPages);
       const startIndex = (currentPage - 1) * writingsPageSize;
       const endIndex = startIndex + writingsPageSize;
 
-      writingsItems.forEach((item, index) => {
+      writingsItems.forEach((item) => {
+        item.hidden = true;
+      });
+
+      filteredItems.forEach((item, index) => {
         item.hidden = index < startIndex || index >= endIndex;
       });
 
@@ -295,6 +324,10 @@ nav_order: 1
         }
       }
 
+      if (pagination) {
+        pagination.hidden = filteredItems.length <= writingsPageSize;
+      }
+
       if (prevButton) {
         prevButton.disabled = currentPage === 1;
       }
@@ -304,11 +337,23 @@ nav_order: 1
       }
     };
 
-    if (pagination && writingsItems.length > writingsPageSize) {
-      pagination.hidden = false;
-      prevButton?.addEventListener("click", () => renderWritingsPage(currentPage - 1));
-      nextButton?.addEventListener("click", () => renderWritingsPage(currentPage + 1));
-    }
+    prevButton?.addEventListener("click", () => renderWritingsPage(currentPage - 1));
+    nextButton?.addEventListener("click", () => renderWritingsPage(currentPage + 1));
+
+    tagFilterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedTag = button.dataset.tagFilter || "";
+        activeTag = activeTag === selectedTag ? "" : selectedTag;
+
+        tagFilterButtons.forEach((tagButton) => {
+          const isActive = (tagButton.dataset.tagFilter || "") === activeTag && activeTag !== "";
+          tagButton.setAttribute("aria-pressed", isActive ? "true" : "false");
+          tagButton.classList.toggle("is-active", isActive);
+        });
+
+        renderWritingsPage(1);
+      });
+    });
 
     renderWritingsPage(1);
 

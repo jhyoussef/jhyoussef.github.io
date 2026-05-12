@@ -25,7 +25,9 @@ $(document).ready(function () {
     });
     var navSelector = "#toc-sidebar";
     var $myNav = $(navSelector);
-    Toc.init($myNav);
+    if (!$myNav.children().length) {
+      Toc.init($myNav);
+    }
     $("body").scrollspy({
       target: navSelector,
     });
