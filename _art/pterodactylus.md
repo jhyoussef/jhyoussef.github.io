@@ -10,4 +10,4 @@ importance: 1
 permalink: /art/pterodactylus/
 ---
 
-process, notes
+process, notes - would love to redo this one
