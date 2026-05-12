@@ -66,9 +66,9 @@ ninja.data = [{
             window.location.href = "/blog/2026/about-me/";
           
         },
-      },{id: "post-return-amp-aims",
+      },{id: "post-returning",
         
-          title: "Return &amp; Aims",
+          title: "returning",
         
         description: "I&#39;m Back?",
         section: "Posts",
@@ -77,42 +77,42 @@ ninja.data = [{
             window.location.href = "/blog/2026/return/";
           
         },
-      },{id: "post-launching-off-the-fossil-record",
+      },{id: "post-launching-39-off-the-fossil-record-39",
         
-          title: "Launching Off the Fossil Record",
+          title: "launching &#39;off the fossil record&#39;",
         
-        description: "an introduction - meta - introductory",
+        description: "an introduction",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/testing-out-the-format/";
+            window.location.href = "/blog/2025/launch/";
           
         },
-      },{id: "art-beach-collage",
-          title: 'Beach Collage',
-          description: "",
-          section: "Art",handler: () => {
-              window.location.href = "/art/beach-collage/";
-            },},{id: "art-birds",
+      },{id: "art-birds",
           title: 'Birds',
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/birds/";
-            },},{id: "art-eckhart",
-          title: 'Eckhart',
-          description: "",
-          section: "Art",handler: () => {
-              window.location.href = "/art/eckhart-ink/";
             },},{id: "art-eve-in-the-garden",
           title: 'Eve in the Garden',
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/eve-in-the-garden/";
-            },},{id: "art-pastel-hands",
-          title: 'Pastel Hands',
+            },},{id: "art-stegosaur-sketch",
+          title: 'Stegosaur Sketch',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/art/pastel-hands/";
+              window.location.href = "/art/field-stego/";
+            },},{id: "art-hips-sketch",
+          title: 'Hips Sketch',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/hips-sketch/";
+            },},{id: "art-otter",
+          title: 'Otter',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/otter/";
             },},{id: "art-pterodactylus",
           title: 'Pterodactylus',
           description: "",
@@ -128,6 +128,11 @@ ninja.data = [{
           description: "",
           section: "Art",handler: () => {
               window.location.href = "/art/skull-studies/";
+            },},{id: "art-tiger",
+          title: 'Tiger',
+          description: "",
+          section: "Art",handler: () => {
+              window.location.href = "/art/tiger/";
             },},{id: "news-welcome-to-my-blog-sparkles-smile",
           title: 'Welcome to my blog! :sparkles: :smile:',
           description: "",
