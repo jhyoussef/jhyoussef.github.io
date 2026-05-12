@@ -1,12 +1,8 @@
 <style>
   #fw-gallery-root {
-    --bg: #f6f0e8;
-    --surface: rgba(255, 251, 246, 0.88);
     --surface-strong: rgba(255, 248, 241, 0.96);
     --text: #261a12;
     --muted: #705a4d;
-    --shadow: 0 24px 60px rgba(73, 49, 27, 0.14);
-    --radius-xl: 28px;
     --radius-lg: 22px;
     --radius-md: 16px;
     --tag: #efe4d4;
@@ -15,7 +11,7 @@
     box-sizing: border-box;
     width: min(1200px, 100%);
     margin: 0 auto;
-    padding: 20px 0 56px;
+    padding: 12px 0 56px;
     color: var(--text);
     font-family: Georgia, "Times New Roman", serif;
   }
@@ -26,58 +22,11 @@
     box-sizing: border-box;
   }
 
-  #fw-gallery-root .fw-hero {
-    position: relative;
-    overflow: hidden;
-    padding: 32px;
-    border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: var(--radius-xl);
-    background:
-      radial-gradient(circle at top left, rgba(255, 255, 255, 0.75), transparent 32%),
-      linear-gradient(145deg, rgba(255, 253, 249, 0.92), rgba(244, 229, 210, 0.9));
-    box-shadow: var(--shadow);
-  }
-
-  #fw-gallery-root .fw-hero::after {
-    content: "";
-    position: absolute;
-    right: -48px;
-    top: -48px;
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(193, 138, 72, 0.24), transparent 68%);
-  }
-
-  #fw-gallery-root .fw-eyebrow {
-    margin: 0 0 8px;
-    font-size: 0.78rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-
-  #fw-gallery-root .fw-title {
-    margin: 0;
-    max-width: 10ch;
-    font-size: clamp(2.8rem, 8vw, 5.5rem);
-    line-height: 0.94;
-    font-weight: 700;
-  }
-
-  #fw-gallery-root .fw-copy {
-    margin: 18px 0 0;
-    max-width: 650px;
-    font-size: 1.02rem;
-    line-height: 1.7;
-    color: var(--muted);
-  }
-
   #fw-gallery-root .fw-filter-bar {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    margin: 28px 0 0;
+    margin: 0 0 18px;
   }
 
   #fw-gallery-root .fw-filter-chip {
@@ -109,7 +58,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 12px;
-    margin: 24px 2px 16px;
+    margin: 0 2px 16px;
     color: var(--muted);
     font-size: 0.92rem;
   }
@@ -204,10 +153,6 @@
     #fw-gallery-root .fw-gallery {
       column-count: 2;
     }
-
-    #fw-gallery-root .fw-hero {
-      padding: 40px;
-    }
   }
 
   @media (min-width: 960px) {
@@ -231,14 +176,7 @@
 </style>
 
 <div id="fw-gallery-root">
-  <section class="fw-hero">
-    <p class="fw-eyebrow">Fourthwall gallery</p>
-    <h1 class="fw-title">Collected work, sorted by mood.</h1>
-    <p class="fw-copy">
-      Explore and filter my work below
-    </p>
-    <div class="fw-filter-bar" id="fwFilterBar" aria-label="Gallery filters"></div>
-  </section>
+  <div class="fw-filter-bar" id="fwFilterBar" aria-label="Gallery filters"></div>
 
   <div class="fw-gallery-meta">
     <span id="fwResultsLabel">0 works</span>
@@ -254,15 +192,72 @@
     const root = document.getElementById("fw-gallery-root");
     if (!root) return;
 
-    const galleryItems = [
-      {
+    const imageFiles = [
+      "abbys_album_reduced.jpg",
+      "angels_edited.jpg",
+      "as_night_falls_nearer_now_I_start_to_forget_the_day_edited.jpg",
+      "bananas-i-try.jpg",
+      "beach-collage.jpg",
+      "birbs.jpg",
+      "eckert_horizontal.jpg",
+      "four solarized_resized.jpg",
+      "four-dinosaurs.jpg",
+      "grunge lwoer_reduced.jpg",
+      "grunge_repeated_reduced.jpg",
+      "harper.jpg",
+      "otter.jpg",
+      "pastel-hands.jpg",
+      "pastel_edited.jpg",
+      "pterosaur sketch_reduced.jpg",
+      "pterosaur_reduced.jpg",
+      "sad-collage.jpg",
+      "skele_edited_edited.jpg",
+      "skulls_edited.jpg",
+      "solarized.jpg",
+      "stock background removed.PNG",
+      "wave.JPG"
+    ];
+
+    const imageMeta = {
+      "otter.jpg": {
         title: "Otter",
-        imageUrl: "https://juliayoussef.github.io/fourthwall/gallery/otter.jpg",
         alt: "Artwork of an otter.",
-        caption: "Replace or duplicate this entry with more images from the Fourthwall gallery folder.",
         tags: ["featured", "animals", "study"]
       }
-    ];
+    };
+
+    function titleFromFilename(filename) {
+      const withoutExtension = filename.replace(/\.[^.]+$/, "");
+      const cleaned = withoutExtension
+        .replace(/[_-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .replace(/\b(edited|reduced|resized|horizontal)\b/gi, "")
+        .replace(/\s+/g, " ")
+        .trim();
+
+      return cleaned.replace(/\b\w/g, function (letter) {
+        return letter.toUpperCase();
+      });
+    }
+
+    function buildImageUrl(filename) {
+      return "https://juliayoussef.github.io/fourthwall/gallery/" + encodeURIComponent(filename);
+    }
+
+    const galleryItems = imageFiles.map(function (filename) {
+      const defaults = {
+        title: titleFromFilename(filename) || filename,
+        imageUrl: buildImageUrl(filename),
+        alt: (titleFromFilename(filename) || filename) + " artwork.",
+        caption: "",
+        tags: []
+      };
+      const overrides = imageMeta[filename] || {};
+
+      return Object.assign({}, defaults, overrides, {
+        imageUrl: buildImageUrl(filename)
+      });
+    });
 
     const normalizedItems = galleryItems.map((item, index) => ({
       ...item,
