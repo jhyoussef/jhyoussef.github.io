@@ -7,7 +7,7 @@ description:
 tags: [digital]
 medium: "Digital"
 importance: 1
-permalink: /art/pteosaur-skulls/
+permalink: /art/pterosaur-skulls/
 ---
 
 process, notes
