@@ -2,7 +2,7 @@
 layout: page
 title: Reviewing Vertebrate Anatomy
 description: a project where I post my progress learning generalized vertebrate anatomy
-img: assets/img/skulls_edited.jpg
+img: assets/img/art/skulls_edited.jpg
 featured: true
 importance: 2
 category: art
