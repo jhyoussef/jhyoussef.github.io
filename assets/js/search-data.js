@@ -122,7 +122,7 @@ ninja.data = [{
           title: 'Pterosaur Skulls',
           description: "",
           section: "Art",handler: () => {
-              window.location.href = "/art/pteosaur-skulls/";
+              window.location.href = "/art/pterosaur-skulls/";
             },},{id: "art-skull-studies",
           title: 'Skull Studies',
           description: "",
