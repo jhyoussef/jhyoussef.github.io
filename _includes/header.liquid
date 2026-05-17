@@ -2,25 +2,49 @@
   <!-- Nav Bar -->
   <nav id="navbar" class="navbar navbar-light navbar-expand-sm" role="navigation">
     <div class="container">
-      {% if page.permalink != '/' %}
+      {% assign navbar_logo = site.navbar_brand.logo %}
+      {% assign navbar_show_logo = false %}
+      {% if site.navbar_brand.show_logo and navbar_logo %}
+        {% assign navbar_show_logo = true %}
+      {% endif %}
+      {% assign navbar_show_title = true %}
+      {% if site.navbar_brand.show_title == false %}
+        {% assign navbar_show_title = false %}
+      {% endif %}
+      {% if navbar_show_logo or navbar_show_title %}
         <a class="navbar-brand title font-weight-lighter" href="{{ site.baseurl }}/">
-          {% if site.title == 'blank' %}
-            {% if site.first_name %}
-              <span class="font-weight-bold">
-                {{- site.first_name -}}
-              </span>
-            {% endif %}
-            {% if site.middle_name %}
-              {{- site.middle_name -}}
-            {% endif %}
-            {% if site.last_name %}
-              {{- site.last_name -}}
-            {% endif %}
-          {% else %}
-            {{- site.title -}}
+          {% if navbar_show_logo %}
+            <img
+              class="navbar-logo"
+              src="{{ navbar_logo | relative_url }}"
+              alt="{% unless navbar_show_title %}{% if site.title == 'blank' %}{{ site.first_name }} {{ site.last_name }}{% else %}{{ site.title }}{% endif %}{% endunless %}"
+              {% if navbar_show_title %}
+                aria-hidden="true"
+              {% endif %}
+            >
+          {% endif %}
+          {% if navbar_show_title %}
+            <span class="navbar-brand-text">
+              {% if site.title == 'blank' %}
+                {% if site.first_name %}
+                  <span class="font-weight-bold">
+                    {{- site.first_name -}}
+                  </span>
+                {% endif %}
+                {% if site.middle_name %}
+                  {{- site.middle_name -}}
+                {% endif %}
+                {% if site.last_name %}
+                  {{- site.last_name -}}
+                {% endif %}
+              {% else %}
+                {{- site.title -}}
+              {% endif %}
+            </span>
           {% endif %}
         </a>
-      {% elsif site.enable_navbar_social %}
+      {% endif %}
+      {% if page.permalink == '/' and site.enable_navbar_social %}
         <!-- Social Icons -->
         <div class="navbar-brand social">{% include social.liquid %}</div>
       {% endif %}
