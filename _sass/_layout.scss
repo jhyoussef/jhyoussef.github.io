@@ -17,28 +17,6 @@ body {
   }
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: var(--global-paper-overlay-opacity);
-  background-image:
-    radial-gradient(circle at 14% 18%, var(--global-paper-shadow-color), transparent 30%),
-    radial-gradient(circle at 82% 28%, var(--global-paper-highlight-color), transparent 34%),
-    radial-gradient(circle at 44% 78%, var(--global-paper-shadow-color), transparent 24%),
-    linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.12) 48%, transparent 100%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320' viewBox='0 0 320 320'%3E%3Cfilter id='paper-noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.58' numOctaves='4' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='table' tableValues='0 0.18'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='320' height='320' filter='url(%23paper-noise)' opacity='1'/%3E%3C/svg%3E");
-  background-size: auto, auto, auto, 100% 100%, 280px 280px;
-  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
-}
-
-body > * {
-  position: relative;
-  z-index: 1;
-}
-
 body > .site-header {
   z-index: 1030;
 }

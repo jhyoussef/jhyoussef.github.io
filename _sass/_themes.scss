@@ -10,8 +10,8 @@
   color-scheme: light;
 
   /* ---------- Core surfaces ---------- */
-  --global-bg-color: #FBF0C9;          /* parchment */
-  --global-card-bg-color: #FCF4D4;     /* lifted paper */
+  --global-bg-color: #FBF0C9;          /* warm cream */
+  --global-card-bg-color: #FCF4D4;     /* lifted surface */
   --global-code-bg-color: #F8F0D7;
 
   /* ---------- Text ---------- */
@@ -26,16 +26,13 @@
   --global-distill-app-color: #4E6F73; /* slate */
   --global-highlight-color: #C89B3C;
 
-  /* ---------- Footer ---------- */
+  /* ---------- Header/Footer ---------- */
   --global-footer-bg-color: #4E5F3A;   /* olive */
   --global-footer-text-color: #FCF4D4;
   --global-footer-link-color: #FCF4D4;
 
   /* ---------- UI ---------- */
   --global-divider-color: rgba(58, 47, 40, 0.14);
-  --global-paper-overlay-opacity: 0.05;
-  --global-paper-shadow-color: rgba(92, 73, 43, 0.11);
-  --global-paper-highlight-color: rgba(255, 250, 236, 0.18);
 
   /* Back to top */
   --global-back-to-top-bg-color: rgba(58, 47, 40, 0.40);
@@ -58,7 +55,7 @@ html[data-theme="dark"] {
   --global-code-bg-color: #2B241E;
 
   /* ---------- Text ---------- */
-  --global-text-color: #E6DDC8;        /* parchment-light */
+  --global-text-color: #E6DDC8;        /* warm light */
   --global-text-color-light: #BEB39A;
 
   /* ---------- Accents ---------- */
@@ -76,9 +73,6 @@ html[data-theme="dark"] {
 
   /* ---------- UI ---------- */
   --global-divider-color: #3A332C;
-  --global-paper-overlay-opacity: 0.025;
-  --global-paper-shadow-color: rgba(0, 0, 0, 0.12);
-  --global-paper-highlight-color: rgba(255, 248, 230, 0.06);
 
   /* Back to top */
   --global-back-to-top-bg-color: rgba(230, 221, 200, 0.45);
