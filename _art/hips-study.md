@@ -6,7 +6,7 @@ image: /assets/img/art/hip-study.jpg
 description: 
 tags: [pencil, sketch]
 medium: "Pencil"
-importance: 1
+featured: false
 permalink: /art/hips-sketch/
 ---
 

@@ -6,6 +6,7 @@ image: /assets/img/art/pterosaur-diagram.jpg
 description: 
 tags: [digital]
 medium: "Digital"
+featured: true
 importance: 1
 permalink: /art/pterosaur-skulls/
 ---

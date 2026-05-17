@@ -18,7 +18,8 @@ home_buttons:
     url: /writings/
   - label: cv
     url: /cv/
-featured_project_limit: 3
+featured_project_limit: 2
+featured_art_limit: 2
 featured_post_limit: 3
 social: true
 announcements:  

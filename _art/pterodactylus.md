@@ -6,7 +6,7 @@ image: /assets/img/art/pterodactylus-sketch.jpg
 description: 
 tags: [digital]
 medium: "Digital"
-importance: 1
+featured: false
 permalink: /art/pterodactylus/
 ---
 

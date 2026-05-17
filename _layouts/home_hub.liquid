@@ -20,30 +20,71 @@ layout: default
         </section>
       {% endif %}
 
-      <section class="home-section">
-        <h2 class="home-section-title">projects</h2>
+      <section class="home-section home-feature-section">
+        <div class="home-feature-panels">
+          <div class="home-feature-panel">
+            <h2 class="home-section-title">
+              <a href="{{ '/projects/' | relative_url }}">featured projects</a>
+            </h2>
 
-        {% assign featured_projects = site.projects | where: "featured", true | sort: "importance" %}
-        <div class="home-projects-grid">
-          {% for project in featured_projects limit: 3 %}
-            <div class="home-project-card">
-              <div class="card h-100 hoverable project-card">
-                {% if project.img %}
-                  <a href="{{ project.url | relative_url }}" class="card-media">
-                    <img src="{{ project.img | relative_url }}" class="card-img-top" alt="{{ project.title }}">
-                  </a>
-                {% endif %}
-                <div class="card-body">
-                  <h5 class="card-title">
-                    <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
-                  </h5>
-                  {% if project.description %}
-                    <p class="card-text">{{ project.description }}</p>
-                  {% endif %}
+            {% assign featured_project_limit = page.featured_project_limit | default: 2 %}
+            {% assign featured_projects = site.projects | where: "featured", true | sort: "importance" %}
+            <div class="home-projects-grid home-feature-card-grid">
+              {% for project in featured_projects limit: featured_project_limit %}
+                <div class="home-project-card">
+                  <div class="card h-100 hoverable project-card home-feature-card">
+                    {% if project.img %}
+                      <a href="{{ project.url | relative_url }}" class="card-media">
+                        <img src="{{ project.img | relative_url }}" class="card-img-top" alt="{{ project.title }}">
+                      </a>
+                    {% endif %}
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
+                      </h5>
+                      {% if project.description %}
+                        <p class="card-text">{{ project.description }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              {% endfor %}
             </div>
-          {% endfor %}
+          </div>
+
+          <div class="home-feature-panel">
+            <h2 class="home-section-title">
+              <a href="{{ '/art/' | relative_url }}">featured art</a>
+            </h2>
+
+            {% assign featured_art_limit = page.featured_art_limit | default: 2 %}
+            {% assign featured_art = site.art | where: "featured", true | sort: "importance" %}
+            <div class="home-projects-grid home-feature-card-grid">
+              {% for piece in featured_art limit: featured_art_limit %}
+                <div class="home-project-card">
+                  <div class="card h-100 hoverable project-card home-feature-card">
+                    {% if piece.image %}
+                      <a href="{{ piece.url | relative_url }}" class="card-media">
+                        <img src="{{ piece.image | relative_url }}" class="card-img-top" alt="{{ piece.title }}">
+                      </a>
+                    {% endif %}
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <a href="{{ piece.url | relative_url }}">{{ piece.title }}</a>
+                      </h5>
+                      {% if piece.medium or piece.year %}
+                        <p class="card-text home-art-meta">
+                          {% if piece.medium %}{{ piece.medium }}{% endif %}{% if piece.medium and piece.year %}, {% endif %}{% if piece.year %}{{ piece.year }}{% endif %}
+                        </p>
+                      {% elsif piece.description %}
+                        <p class="card-text">{{ piece.description }}</p>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
         </div>
       </section>
 

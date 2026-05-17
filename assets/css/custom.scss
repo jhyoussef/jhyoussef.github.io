@@ -445,6 +445,47 @@
   width: 100%;
 }
 
+.home-feature-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.home-feature-panel {
+  min-width: 0;
+}
+
+.home-feature-panel .home-section-title {
+  margin-top: 0;
+}
+
+.home-feature-card-grid {
+  --card-min-width: 0px;
+  --card-single-max-width: 100%;
+  --card-pair-max-width: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.home-projects-grid.home-feature-card-grid,
+.home-projects-grid.home-feature-card-grid:has(> *:only-child),
+.home-projects-grid.home-feature-card-grid:has(> *:first-child:nth-last-child(2)) {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  justify-content: stretch;
+}
+
+.home-feature-card-grid > *:only-child,
+.home-feature-card-grid > *:first-child:nth-last-child(2),
+.home-feature-card-grid > *:first-child:nth-last-child(2) ~ * {
+  max-width: none;
+  justify-self: stretch;
+}
+
+.home-art-meta {
+  opacity: 0.78;
+}
+
 /* ---------- ADAPTIVE PROJECTS/NOTES GRID ---------- */
 .projects-cards-grid {
   display: grid;
@@ -599,6 +640,35 @@
   font-size: 0.9rem;
 }
 
+.home-projects-grid .home-feature-card {
+  --card-min-height: 14rem;
+  --card-media-height: 7rem;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--card-min-height);
+}
+
+.home-projects-grid .home-feature-card .card-media {
+  height: var(--card-media-height);
+  min-height: 0;
+  flex: 0 0 var(--card-media-height);
+}
+
+.home-projects-grid .home-feature-card .card-body {
+  padding: 0.75rem 0.85rem;
+}
+
+.home-projects-grid .home-feature-card .card-title {
+  font-size: 0.98rem;
+  margin-bottom: 0.4rem;
+}
+
+.home-projects-grid .home-feature-card .card-text {
+  font-size: 0.84rem;
+  line-height: 1.32;
+  -webkit-line-clamp: 2;
+}
+
 .projects-cards-grid--notes .project-card--no-media {
   min-height: 0;
 }
@@ -698,10 +768,19 @@
 }
 
 @media (max-width: 768px) {
+  .home-feature-panels {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .home-projects-grid .project-card,
   .projects-cards-grid .project-card {
     --card-min-height: 19.5rem;
     --card-media-height: 9rem;
+  }
+
+  .home-projects-grid .home-feature-card {
+    --card-min-height: 14rem;
+    --card-media-height: 7rem;
   }
 
   .project-card--no-media {
@@ -714,6 +793,15 @@
   .projects-cards-grid .project-card {
     --card-min-height: 18rem;
     --card-media-height: 8rem;
+  }
+
+  .home-projects-grid .home-feature-card {
+    --card-min-height: 12.5rem;
+    --card-media-height: 6rem;
+  }
+
+  .home-projects-grid .home-feature-card .card-body {
+    padding: 0.65rem 0.75rem;
   }
 
   .project-card--no-media {

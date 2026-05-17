@@ -6,7 +6,7 @@ image: /assets/img/art/otter.jpg
 description: 
 tags: [pastel]
 medium: "Pastel"
-importance: 1
+featured: true
 permalink: /art/otter/
 ---
 
