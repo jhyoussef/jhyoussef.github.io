@@ -4,7 +4,7 @@ title: research
 permalink: /research/
 description: A growing collection of projects & descriptions of my work
 nav: true
-nav_order: 2
+nav_order: 3
 display_categories: [geosciences, art]
 horizontal: true
 ---

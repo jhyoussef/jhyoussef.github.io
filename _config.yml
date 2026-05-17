@@ -6,7 +6,7 @@ title: juliayoussef.science # the website title (if blank, full name will be use
 first_name: Julia
 last_name: Youssef
 navbar_brand:
-  logo: #/assets/img/logos-n-favicons/light-noname.png # upload/change your header logo in /assets/img/
+  logo: /assets/img/logos-n-favicons/light-noname.png # upload/change your header logo in /assets/img/
   show_logo: true
   show_title: true
 contact_note: >

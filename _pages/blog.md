@@ -3,29 +3,28 @@ layout: default
 permalink: /writings/
 title: writings
 nav: true
-nav_order: 1
+nav_order: 2
 ---
 
 <div class="post writings-page">
   {% assign all_posts = site.posts | sort: "date" | reverse %}
-  {% assign note_posts = all_posts | where_exp: "post", "post.tags contains 'notes'" %}
-  {% assign featured_posts = all_posts | where: "featured", true %}
+  {% assign writing_posts = all_posts | where_exp: "post", "post.path contains '_posts/writings/'" %}
+  {% assign note_posts = all_posts | where_exp: "post", "post.path contains '_posts/notes/'" %}
+  {% assign featured_posts = writing_posts | where: "featured", true %}
   {% assign writings_per_page = 4 %}
   {% assign notes_initial_count = 4 %}
   {% assign notes_load_increment = 2 %}
 
   {% assign essay_tags_csv = "" %}
-  {% for post in all_posts %}
-    {% unless post.tags contains "notes" %}
-      {% if post.tags %}
-        {% assign post_tags_csv = post.tags | join: "|" %}
-        {% if essay_tags_csv == "" %}
-          {% assign essay_tags_csv = post_tags_csv %}
-        {% else %}
-          {% assign essay_tags_csv = essay_tags_csv | append: "|" | append: post_tags_csv %}
-        {% endif %}
+  {% for post in writing_posts %}
+    {% if post.tags %}
+      {% assign post_tags_csv = post.tags | join: "|" %}
+      {% if essay_tags_csv == "" %}
+        {% assign essay_tags_csv = post_tags_csv %}
+      {% else %}
+        {% assign essay_tags_csv = essay_tags_csv | append: "|" | append: post_tags_csv %}
       {% endif %}
-    {% endunless %}
+    {% endif %}
   {% endfor %}
   {% assign essay_tags = essay_tags_csv | split: "|" | sort_natural | uniq %}
 
@@ -52,7 +51,6 @@ nav_order: 1
             <h2 class="home-section-title">featured posts</h2>
             <div class="home-projects-grid writings-featured-grid">
               {% for post in featured_posts %}
-                {% unless post.tags contains "notes" %}
                   {% capture post_href %}
                     {% if post.redirect == blank %}
                       {{ post.url | relative_url }}
@@ -103,13 +101,10 @@ nav_order: 1
                       </p>
                     </div>
                   </article>
-                {% endunless %}
               {% endfor %}
             </div>
           </section>
         {% endif %}
-
-        <hr class="writings-divider">
 
         <section class="home-section writings-feed-section">
           <h2 class="home-section-title">writings</h2>
@@ -141,8 +136,7 @@ nav_order: 1
 
           <div class="writing-posts-grid" data-writings-list>
             {% assign writing_index = 0 %}
-            {% for post in all_posts %}
-              {% unless post.tags contains "notes" %}
+            {% for post in writing_posts %}
                 {% assign writing_index = writing_index | plus: 1 %}
                 {% if post.external_source == blank %}
                   {% assign read_time = post.content | number_of_words | divided_by: 180 | plus: 1 %}
@@ -197,7 +191,6 @@ nav_order: 1
                     {% endif %}
                   </div>
                 </article>
-              {% endunless %}
             {% endfor %}
           </div>
 

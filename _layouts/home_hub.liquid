@@ -11,7 +11,15 @@ layout: default
   </header>
 
   <div class="row home-hub-row">
-    <div class="col-lg-8 col-md-7 order-1 order-lg-1">
+    <div class="col-lg-8 col-md-7 order-2 order-md-1">
+      {% if content and content != "" %}
+        <section class="home-section home-intro-section">
+          <div class="home-intro-copy">
+            {{ content }}
+          </div>
+        </section>
+      {% endif %}
+
       <section class="home-section">
         <h2 class="home-section-title">projects</h2>
 
@@ -43,8 +51,8 @@ layout: default
         <h2 class="home-section-title">latest posts</h2>
 
         {% assign latest_writings_count = 0 %}
-        {% for post in site.posts %}
-          {% unless post.tags contains "notes" %}
+        {% assign latest_writing_posts = site.posts | where_exp: "post", "post.path contains '_posts/writings/'" %}
+        {% for post in latest_writing_posts %}
             <div class="card mb-3 hoverable home-writing-card{% unless post.thumbnail %} home-writing-card--no-thumb{% endunless %}">
               {% if post.thumbnail %}
                 <a class="home-writing-thumb" href="{{ post.url | relative_url }}">
@@ -65,15 +73,12 @@ layout: default
             {% if latest_writings_count >= 3 %}
               {% break %}
             {% endif %}
-          {% endunless %}
         {% endfor %}
       </section>
     </div>
 
-    <div class="col-lg-4 col-md-5 order-2 order-lg-2">
+    <div class="col-lg-4 col-md-5 order-1 order-md-2">
       <aside class="home-sidebar">
-        <h2 class="home-column-label">profile</h2>
-
         {% if page.profile and page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
           {% include figure.liquid

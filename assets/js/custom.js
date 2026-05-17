@@ -1,4 +1,54 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // -------------------- NOTES PAGE SEARCH --------------------
+  const notesIndex = document.querySelector("[data-notes-index]");
+  if (notesIndex) {
+    const searchInput = notesIndex.querySelector("[data-notes-search-input]");
+    const searchItems = Array.from(notesIndex.querySelectorAll("[data-notes-search-item]"));
+    const searchGroups = Array.from(notesIndex.querySelectorAll("[data-notes-search-group]"));
+    const resultSections = Array.from(notesIndex.querySelectorAll("[data-notes-results-section]"));
+    const emptyMessage = notesIndex.querySelector("[data-notes-empty]");
+
+    const normalize = (value) => value.toLowerCase().trim().replace(/\s+/g, " ");
+
+    const filterNotes = () => {
+      const terms = normalize(searchInput?.value || "")
+        .split(" ")
+        .filter(Boolean);
+      let visibleItemCount = 0;
+
+      searchItems.forEach((item) => {
+        const searchText = normalize(item.dataset.notesSearchText || item.textContent || "");
+        const isVisible = terms.every((term) => searchText.includes(term));
+        item.hidden = !isVisible;
+
+        if (isVisible) {
+          visibleItemCount += 1;
+        }
+      });
+
+      searchGroups.forEach((group) => {
+        const hasVisibleItems = Array.from(group.querySelectorAll("[data-notes-search-item]")).some(
+          (item) => !item.hidden
+        );
+        group.hidden = !hasVisibleItems;
+      });
+
+      resultSections.forEach((section) => {
+        const hasVisibleItems = Array.from(section.querySelectorAll("[data-notes-search-item]")).some(
+          (item) => !item.hidden
+        );
+        section.hidden = !hasVisibleItems;
+      });
+
+      if (emptyMessage) {
+        emptyMessage.hidden = visibleItemCount > 0;
+      }
+    };
+
+    searchInput?.addEventListener("input", filterNotes);
+    filterNotes();
+  }
+
   // -------------------- FILTER BUTTONS --------------------
   const filterButtons = document.querySelectorAll("#filter-buttons button");
   const items = document.querySelectorAll(".masonry-item");
