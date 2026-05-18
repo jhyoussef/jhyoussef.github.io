@@ -813,6 +813,93 @@
   min-height: 0;
 }
 
+.research-page {
+  max-width: 100%;
+}
+
+.research-layout-row {
+  align-items: start;
+}
+
+.research-sidebar {
+  max-width: 260px;
+  margin: 0 auto;
+  min-width: 0;
+}
+
+.research-sidebar-section .home-section-title,
+.research-main-section .home-section-title {
+  margin-top: 0;
+}
+
+.research-sidebar-section {
+  margin-bottom: 2rem;
+}
+
+.research-sidebar-copy,
+.research-empty-state,
+.research-mini-list {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.research-empty-state {
+  opacity: 0.72;
+}
+
+.research-mini-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.research-mini-list li {
+  margin-bottom: 0.85rem;
+}
+
+.research-mini-list a,
+.research-mini-list span:first-child {
+  display: block;
+}
+
+.research-mini-meta {
+  display: block;
+  font-size: 0.84rem;
+  opacity: 0.72;
+}
+
+.research-sidebar-actions {
+  margin-top: 0.9rem;
+}
+
+.research-sidebar-link {
+  display: inline-block;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 999px;
+  color: var(--global-text-color);
+  text-decoration: none;
+  line-height: 1.1;
+}
+
+.research-sidebar-link:hover {
+  background: var(--global-hover-color);
+  border-color: var(--global-hover-color);
+  color: var(--global-hover-text-color);
+  text-decoration: none;
+}
+
+.research-intro {
+  width: 100%;
+  font-size: 1.02rem;
+  line-height: 1.68;
+  margin-bottom: 2rem;
+}
+
+.research-intro p:last-child {
+  margin-bottom: 0;
+}
+
 .home-writing-card {
   display: grid;
   grid-template-columns: 112px minmax(0, 1fr);
@@ -1062,13 +1149,14 @@
 }
 
 .about-main-section .home-section-title,
+.about-profile-section .home-section-title,
 .about-current-reading-section .home-section-title,
 .about-book-notes-section .home-section-title {
   margin-top: 0;
 }
 
 .about-copy {
-  max-width: 46rem;
+  width: 100%;
   font-size: 1.04rem;
   line-height: 1.72;
 }
@@ -1081,6 +1169,22 @@
   max-width: 360px;
   margin: 0 auto;
   min-width: 0;
+}
+
+.about-profile-section {
+  margin-bottom: 2rem;
+}
+
+.about-profile-section figure {
+  width: 100%;
+  margin: 0;
+}
+
+.about-profile-img {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  display: block;
 }
 
 .about-current-reading-section {
@@ -1178,6 +1282,12 @@
 }
 
 @media (min-width: 992px) {
+  .research-sidebar {
+    position: sticky;
+    top: 5.5rem;
+    align-self: start;
+  }
+
   .writings-notes-column {
     position: sticky;
     top: 5.5rem;
@@ -1205,7 +1315,7 @@
   .about-book-notes-section {
     display: flex;
     flex-direction: column;
-    max-height: calc(100vh - 21rem);
+    max-height: calc(100vh - 34rem);
   }
 
   .about-book-notes-scroll {
@@ -1231,6 +1341,11 @@
   }
 
   .about-books-column {
+    max-width: 100%;
+    margin-top: 2rem;
+  }
+
+  .research-sidebar {
     max-width: 100%;
     margin-top: 2rem;
   }

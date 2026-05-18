@@ -5,6 +5,8 @@ title: about
 nav: true
 nav_order: 1
 description_heading: who am I?
+profile_heading: profile
+profile_image: about-pic.jpg
 current_reading:
   title: title
   author: author

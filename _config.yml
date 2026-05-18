@@ -6,7 +6,7 @@ title: juliayoussef.science # the website title (if blank, full name will be use
 first_name: Julia
 last_name: Youssef
 navbar_brand:
-  logo: /assets/img/logos-n-favicons/light-noname.PNG # upload/change your header logo in /assets/img/
+  logo: /assets/img/logos-n-favicons/circle-light-noname.png # upload/change your header logo in /assets/img/
   show_logo: true
   show_title: true
 contact_note: >
@@ -18,7 +18,7 @@ footer_text: >
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
 keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
-icon: logos-n-favicons/favicon.PNG # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
+icon: logos-n-favicons/favicon.png # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
 url: https://juliayoussef.github.io # the base hostname & protocol for your site
 baseurl: # the subpath of your site, e.g. /blog/. Leave blank for root

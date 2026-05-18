@@ -8,7 +8,7 @@ profile:
   image: pano-wyoming-square.jpg
   image_circular: false
 short_bio: >
-  Aspiring paleobiologist and illustrator interested in building datasets to reconstruct ecosystems through time using fossils, phylogenetics, and quantitative models.
+  Aspiring paleobiologist and illustrator, stage-by-stage
 home_buttons:
   - label: about me
     url: /about/

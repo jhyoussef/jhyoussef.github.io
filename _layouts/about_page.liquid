@@ -25,6 +25,18 @@ layout: default
 
     <div class="col-lg-4 col-md-5">
       <aside class="about-books-column">
+        <section class="home-section about-profile-section">
+          <h2 class="home-section-title">{{ page.profile_heading | default: "profile" }}</h2>
+          {% assign about_profile_image = page.profile_image | default: "prof_pic.jpg" | prepend: "assets/img/" %}
+          {% include figure.liquid
+            loading="eager"
+            path=about_profile_image
+            class="img-fluid rounded z-depth-1 about-profile-img"
+            alt=page.title
+            cache_bust=true
+          %}
+        </section>
+
         <section class="home-section about-current-reading-section">
           <h2 class="home-section-title">currently reading</h2>
 

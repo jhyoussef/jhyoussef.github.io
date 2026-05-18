@@ -1,0 +1,6 @@
+# Optional venue metadata for publication abbreviations used in _bibliography/papers.bib.
+# Example:
+# "JVP":
+#   url: https://www.tandfonline.com/journals/ujvp20
+#   color: "#2f6f73"
+
