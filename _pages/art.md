@@ -39,86 +39,123 @@ Click each work to see full-screen along with any metadata and progress notes.
     page-break-inside: avoid !important;
   }
 
-  #art-gallery .masonry-item[hidden] {
+  .art-tags {
+    border-bottom: 0;
+    margin-bottom: 1.75rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .art-tags ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0.55rem;
+    align-items: center;
+  }
+
+  .art-tags li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  .art-tag-filter {
+    appearance: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    color: var(--global-theme-color);
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .art-tag-filter:hover,
+  .art-tag-filter.is-active {
+    color: var(--global-hover-color);
+    text-decoration: underline;
+  }
+
+  .art-tag-separator {
+    opacity: 0.7;
+  }
+
+  .masonry-item[hidden] {
     display: none !important;
   }
 
-  #art-gallery .art-card-link {
+  .art-card-link {
     display: block;
     width: 100%;
     text-decoration: none;
     color: inherit;
   }
 
-  #art-gallery .img-wrapper {
+  .img-wrapper {
     position: relative;
     overflow: hidden;
     border-radius: 10px;
+    background: #111;
   }
 
-  #art-gallery .img-wrapper img {
+  .img-wrapper img {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  #art-gallery .overlay {
+  .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.58);
-    color: white;
+    background:
+      linear-gradient(to top, rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.28) 56%, rgba(0, 0, 0, 0.08)),
+      rgba(0, 0, 0, 0.18);
+    color: #f7f4ea;
     opacity: 0;
     transition: opacity 0.2s ease;
     display: flex;
     align-items: end;
   }
 
-  #art-gallery .img-wrapper:hover .overlay {
+  .img-wrapper:hover .overlay,
+  .img-wrapper:focus-within .overlay {
     opacity: 1;
   }
 
-  #art-gallery .overlay-text {
+  .overlay-text {
     width: 100%;
-    padding: 0.9rem;
+    padding: 0.95rem;
     box-sizing: border-box;
+    color: #f7f4ea;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
   }
 
-  #art-gallery .overlay-text h3 {
+  .overlay-text h3,
+  .overlay-text .art-meta,
+  .overlay-text .art-description {
+    color: inherit;
+  }
+
+  .overlay-text h3 {
     margin: 0 0 0.25rem 0;
     font-size: 1rem;
     line-height: 1.2;
   }
 
-  #art-gallery .art-meta {
+  .art-meta {
     margin: 0;
     font-size: 0.88rem;
     line-height: 1.25;
+    opacity: 0.96;
   }
 
-  #art-gallery .art-description {
+  .art-description {
     margin-top: 0.4rem;
     font-size: 0.88rem;
     line-height: 1.3;
-  }
-
-  .art-tags {
-    margin-bottom: 1.5rem;
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .art-tag-link {
-    text-decoration: none;
-  }
-
-  .art-tag-link.active {
-    font-weight: 600;
-    text-decoration: underline;
-  }
-
-  .art-tag-separator {
-    margin: 0 0.45rem;
-    opacity: 0.7;
+    opacity: 0.98;
   }
 </style>
 
@@ -132,14 +169,23 @@ Click each work to see full-screen along with any metadata and progress notes.
 {% endfor %}
 
 {% assign unique_tags = all_tags | uniq | sort %}
-{% assign art_base_url = '/art/' | relative_url %}
 
 <div class="art-tags">
-  <a href="{{ art_base_url }}" class="art-tag-link">all</a>
-  {% for tag in unique_tags %}
-    <span class="art-tag-separator">·</span>
-    <a href="{{ art_base_url }}?tag={{ tag | slugify }}" class="art-tag-link"># {{ tag }}</a>
-  {% endfor %}
+  <ul>
+    <li>
+      <button type="button" class="art-tag-filter" data-art-tag="">
+        all
+      </button>
+    </li>
+    {% for tag in unique_tags %}
+      <li>
+        <span class="art-tag-separator">&middot;</span>
+        <button type="button" class="art-tag-filter" data-art-tag="{{ tag | slugify }}">
+          # {{ tag }}
+        </button>
+      </li>
+    {% endfor %}
+  </ul>
 </div>
 
 <div class="masonry-grid" id="art-gallery">
@@ -175,26 +221,59 @@ Click each work to see full-screen along with any metadata and progress notes.
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  const params = new URLSearchParams(window.location.search);
-  const activeTag = params.get("tag");
-  const items = document.querySelectorAll(".art-filter-item");
-  const links = document.querySelectorAll(".art-tags .art-tag-link");
+  const items = Array.from(document.querySelectorAll(".art-filter-item"));
+  const filterButtons = Array.from(document.querySelectorAll(".art-tag-filter"));
 
-  if (activeTag) {
-    items.forEach((item) => {
-      const tags = (item.dataset.tags || "").split(/\s+/).filter(Boolean);
-      item.hidden = !tags.includes(activeTag);
-    });
+  if (!items.length || !filterButtons.length) {
+    return;
   }
 
-  links.forEach((link) => {
-    const href = link.getAttribute("href") || "";
-    const url = new URL(href, window.location.origin);
-    const linkTag = url.searchParams.get("tag");
+  const readTagFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("tag") || "";
+  };
 
-    if ((!activeTag && !linkTag) || (activeTag && linkTag === activeTag)) {
-      link.classList.add("active");
+  const updateUrl = (tag) => {
+    const url = new URL(window.location.href);
+
+    if (tag) {
+      url.searchParams.set("tag", tag);
+    } else {
+      url.searchParams.delete("tag");
     }
+
+    history.replaceState({}, "", url);
+  };
+
+  const applyFilter = (tag, syncUrl) => {
+    items.forEach((item) => {
+      const tags = (item.dataset.tags || "").split(/\s+/).filter(Boolean);
+      item.hidden = tag !== "" && !tags.includes(tag);
+    });
+
+    filterButtons.forEach((button) => {
+      const buttonTag = button.dataset.artTag || "";
+      const isActive = buttonTag === tag;
+      button.classList.toggle("is-active", isActive);
+      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+    });
+
+    if (syncUrl) {
+      updateUrl(tag);
+    }
+  };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedTag = button.dataset.artTag || "";
+      applyFilter(selectedTag, true);
+    });
   });
+
+  window.addEventListener("popstate", () => {
+    applyFilter(readTagFromUrl(), false);
+  });
+
+  applyFilter(readTagFromUrl(), false);
 });
 </script>
