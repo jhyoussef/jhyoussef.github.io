@@ -4,7 +4,7 @@ permalink: /about/
 title: about
 nav: true
 nav_order: 1
-description_heading: self-description
+description_heading: who am I?
 current_reading:
   title: title
   author: author
