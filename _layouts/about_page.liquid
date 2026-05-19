@@ -2,11 +2,196 @@
 layout: default
 ---
 
-<div class="post about-page" data-books-initial-count="{{ page.books_initial_count | default: 4 }}" data-books-load-increment="{{ page.books_load_increment | default: 3 }}">
+<style>
+  .about-page {
+    --about-profile-image-width: 66.666%;
+    max-width: 100%;
+  }
+
+  .about-hero {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-layout-row {
+    align-items: start;
+  }
+
+  .about-main-section .home-section-title,
+  .about-profile-section .home-section-title,
+  .about-current-reading-section .home-section-title,
+  .about-book-notes-section .home-section-title {
+    margin-top: 0;
+  }
+
+  .about-copy {
+    width: 100%;
+    font-size: 1.04rem;
+    line-height: 1.72;
+  }
+
+  .about-copy p:last-child {
+    margin-bottom: 0;
+  }
+
+  .about-books-column {
+    max-width: 360px;
+    margin: 0 auto;
+    min-width: 0;
+  }
+
+  .about-profile-section {
+    margin-bottom: 2rem;
+  }
+
+  .about-profile-section figure {
+    width: 100%;
+    margin: 0;
+  }
+
+  .about-profile-img {
+    width: var(--about-profile-image-width);
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .about-current-reading-section {
+    margin-bottom: 2rem;
+  }
+
+  .about-current-reading-link {
+    display: block;
+    padding: 1rem;
+    border-left: 3px solid var(--global-theme-color);
+    background: rgba(255, 255, 255, 0.35);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .about-current-reading-link:hover {
+    color: inherit;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.55);
+  }
+
+  .about-current-reading-link--static {
+    cursor: default;
+  }
+
+  .about-book-title,
+  .about-book-author,
+  .about-book-action {
+    display: block;
+  }
+
+  .about-book-title {
+    font-family: "Spectral", serif;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--global-theme-color);
+  }
+
+  .about-book-author {
+    margin-top: 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  .about-book-action {
+    margin-top: 0.75rem;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.82rem;
+    opacity: 0.72;
+  }
+
+  .about-book-notes-section {
+    margin-top: 2.5rem;
+    margin-bottom: 0;
+    min-height: 0;
+  }
+
+  .about-section-meta {
+    max-width: 42rem;
+    margin: -0.35rem 0 1rem 0;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    opacity: 0.72;
+  }
+
+  .about-book-notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+    align-items: stretch;
+  }
+
+  .about-book-card {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .about-book-note-title {
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-bottom: 0.65rem;
+  }
+
+  .about-book-note-content {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-book-note-preview {
+    display: -webkit-box;
+    overflow: hidden;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    margin-bottom: 0;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+
+  .about-book-card--faded .about-book-note-content::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 3rem;
+    background: linear-gradient(to bottom, rgba(247, 238, 201, 0), rgba(247, 238, 201, 0.98));
+    pointer-events: none;
+  }
+
+  .about-books-pagination {
+    margin-top: 1.25rem;
+  }
+
+  @media (min-width: 992px) {
+    .about-books-column {
+      position: sticky;
+      top: 5.5rem;
+      align-self: start;
+    }
+
+    .about-book-notes-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 767.98px) {
+    .about-books-column {
+      max-width: 100%;
+      margin-top: 2rem;
+    }
+  }
+</style>
+
+<div class="post about-page" data-books-page-size="{{ page.books_page_size | default: 6 }}">
   {% assign all_posts = site.posts | sort: "date" | reverse %}
   {% assign book_posts = all_posts | where_exp: "post", "post.path contains '_posts/book-notes/'" %}
-  {% assign current_reading_post = book_posts | first %}
-  {% assign read_book_count = book_posts.size | minus: 1 %}
+  {% assign reading_posts = book_posts | where: "status", "reading" %}
+  {% assign read_posts = book_posts | where: "status", "read" %}
+  {% assign current_reading_post = reading_posts | first %}
+  {% assign read_book_count = read_posts.size %}
 
   <header class="page-hero about-hero">
     <h1 class="page-hero-title">{{ page.title }}</h1>
@@ -69,56 +254,68 @@ layout: default
           {% endif %}
         </section>
 
-        <section class="home-section about-book-notes-section">
-          <h2 class="home-section-title">books read</h2>
-
-          {% if read_book_count > 0 %}
-            <div class="about-book-notes-scroll" data-book-notes-list>
-              {% assign book_index = 0 %}
-              {% for post in book_posts offset: 1 %}
-                {% assign book_index = book_index | plus: 1 %}
-                {% assign note_word_count = post.content | strip_html | number_of_words %}
-                {% assign note_preview = post.description | default: post.content | strip_html | truncatewords: 42 %}
-                {% assign book_title = post.book_title | default: post.title %}
-                {% assign book_author = post.book_author | default: post.author %}
-
-                <article
-                  class="card mb-3 hoverable about-book-card{% if note_word_count > 42 %} about-book-card--faded{% endif %}"
-                  data-book-note-item
-                  data-book-note-index="{{ book_index }}"
-                >
-                  <div class="card-body">
-                    <p class="post-meta writings-meta-row mb-2">
-                      <span>{{ post.date | date: '%B %d, %Y' }}</span>
-                      {% if book_author %}
-                        <span>{{ book_author }}</span>
-                      {% endif %}
-                    </p>
-                    <h3 class="card-title about-book-note-title">
-                      <a class="stretched-link" href="{{ post.url | relative_url }}">{{ book_title }}</a>
-                    </h3>
-                    {% if note_preview and note_preview != "" %}
-                      <div class="about-book-note-content">
-                        <p class="about-book-note-preview">{{ note_preview }}</p>
-                      </div>
-                    {% endif %}
-                  </div>
-                </article>
-              {% endfor %}
-            </div>
-
-            {% if read_book_count > page.books_initial_count %}
-              <div class="writings-notes-actions">
-                <button type="button" class="writings-load-more-button" data-book-notes-load-more>Load more books</button>
-              </div>
-            {% endif %}
-          {% else %}
-            <p class="writings-empty-state">No finished book notes yet.</p>
-          {% endif %}
-        </section>
       </aside>
     </div>
   </div>
+
+  <section class="home-section about-book-notes-section">
+    <h2 class="home-section-title">books read</h2>
+    {% if page.books_read_description %}
+      <p class="about-section-meta">{{ page.books_read_description }}</p>
+    {% endif %}
+
+    {% if read_book_count > 0 %}
+      <div class="about-book-notes-grid" data-book-notes-list>
+        {% assign book_index = 0 %}
+        {% for post in read_posts %}
+          {% assign book_index = book_index | plus: 1 %}
+          {% assign note_word_count = post.content | strip_html | number_of_words %}
+          {% assign note_preview = post.description | default: post.content | strip_html | truncatewords: 24 %}
+          {% assign book_title = post.book_title | default: post.title %}
+          {% assign book_author = post.book_author | default: post.author %}
+          {% assign book_date_label = post.date_label %}
+          {% if book_date_label == blank %}
+            {% if post.undated %}
+              {% assign book_date_label = "undated" %}
+            {% else %}
+              {% capture book_date_label %}{{ post.date | date: '%b %Y' }}{% endcapture %}
+            {% endif %}
+          {% endif %}
+
+          <article
+            class="card hoverable about-book-card{% if note_word_count > 24 %} about-book-card--faded{% endif %}"
+            data-book-note-item
+            data-book-note-index="{{ book_index }}"
+          >
+            <div class="card-body">
+              <p class="post-meta writings-meta-row mb-2">
+                <span>{{ book_date_label }}</span>
+                {% if book_author %}
+                  <span>{{ book_author }}</span>
+                {% endif %}
+              </p>
+              <h3 class="card-title about-book-note-title">
+                <a class="stretched-link" href="{{ post.url | relative_url }}">{{ book_title }}</a>
+              </h3>
+              {% if note_preview and note_preview != "" %}
+                <div class="about-book-note-content">
+                  <p class="about-book-note-preview">{{ note_preview }}</p>
+                </div>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      </div>
+
+      <nav class="writings-pagination about-books-pagination" aria-label="Book reading history pagination" data-book-notes-pagination hidden>
+        <button type="button" class="writings-pagination-button" data-book-notes-prev>Previous</button>
+        <div class="writings-pagination-pages" data-book-notes-pages></div>
+        <button type="button" class="writings-pagination-button" data-book-notes-next>Next</button>
+      </nav>
+    {% else %}
+      <p class="writings-empty-state">No finished book notes yet.</p>
+    {% endif %}
+  </section>
 </div>
 
 <script>
@@ -129,26 +326,58 @@ layout: default
     }
 
     const bookItems = Array.from(document.querySelectorAll("[data-book-note-item]"));
-    const loadMoreButton = document.querySelector("[data-book-notes-load-more]");
-    const initialCount = parseInt(aboutPage.dataset.booksInitialCount || "4", 10);
-    const loadIncrement = parseInt(aboutPage.dataset.booksLoadIncrement || "3", 10);
-    let visibleBookCount = initialCount;
+    const pagination = document.querySelector("[data-book-notes-pagination]");
+    const pageButtons = document.querySelector("[data-book-notes-pages]");
+    const prevButton = document.querySelector("[data-book-notes-prev]");
+    const nextButton = document.querySelector("[data-book-notes-next]");
+    const pageSize = parseInt(aboutPage.dataset.booksPageSize || "6", 10);
+    let currentPage = 1;
 
-    const renderBookNotes = () => {
+    const renderBookNotesPage = (page) => {
+      const totalPages = Math.max(1, Math.ceil(bookItems.length / pageSize));
+      currentPage = Math.min(Math.max(page, 1), totalPages);
+      const startIndex = (currentPage - 1) * pageSize;
+      const endIndex = startIndex + pageSize;
+
       bookItems.forEach((item, index) => {
-        item.hidden = index >= visibleBookCount;
+        item.hidden = index < startIndex || index >= endIndex;
       });
 
-      if (loadMoreButton) {
-        loadMoreButton.hidden = visibleBookCount >= bookItems.length;
+      if (pageButtons) {
+        pageButtons.innerHTML = "";
+
+        for (let pageNumber = 1; pageNumber <= totalPages; pageNumber += 1) {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "writings-pagination-page";
+          button.textContent = String(pageNumber);
+          button.disabled = pageNumber === currentPage;
+
+          if (pageNumber === currentPage) {
+            button.classList.add("is-active");
+          }
+
+          button.addEventListener("click", () => renderBookNotesPage(pageNumber));
+          pageButtons.appendChild(button);
+        }
+      }
+
+      if (pagination) {
+        pagination.hidden = bookItems.length <= pageSize;
+      }
+
+      if (prevButton) {
+        prevButton.disabled = currentPage === 1;
+      }
+
+      if (nextButton) {
+        nextButton.disabled = currentPage === totalPages;
       }
     };
 
-    loadMoreButton?.addEventListener("click", () => {
-      visibleBookCount = Math.min(visibleBookCount + loadIncrement, bookItems.length);
-      renderBookNotes();
-    });
+    prevButton?.addEventListener("click", () => renderBookNotesPage(currentPage - 1));
+    nextButton?.addEventListener("click", () => renderBookNotesPage(currentPage + 1));
 
-    renderBookNotes();
+    renderBookNotesPage(1);
   });
 </script>

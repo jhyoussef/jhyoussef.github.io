@@ -11,8 +11,8 @@ current_reading:
   title: title
   author: author
   url:
-books_initial_count: 4
-books_load_increment: 3
+books_page_size: 6
+books_read_description: Books read as of 2026 and a some critical ones, undated, before.
 ---
 
 Hello! My name is Julia, and I am a recent graduate from the University of Chicago, currently based in Hyde Park. Broadly, I am interested in reconstructing paleoecologies through time, using quantitative and comparative approaches to examine organisms as parts of larger ecological and evolutionary systems. Alongside paleontological research, I am also developing a background in scientific illustration and paleoart.

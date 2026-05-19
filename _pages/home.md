@@ -27,3 +27,7 @@ announcements:
 ---
 
 I study ancient ecosystems through fossils, phylogenetics, and quantitative models, with a soft spot for the places where data, fieldwork, and illustration start talking to each other. This site gathers my research projects, writing, notes, and artwork in one place.
+
+Welcome! I am Julia, an aspiring researcher based in Hyde Park. I am interested in using data to answer large-scale questions in 
+
+Is this not the about? 
