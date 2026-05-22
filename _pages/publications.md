@@ -2,7 +2,7 @@
 layout: page
 permalink: /publications/
 title: publications
-description: papers, proceedings, posters, and other scholarly work
+description: WIP #papers, proceedings, posters, and other scholarly work
 nav: false
 ---
 
