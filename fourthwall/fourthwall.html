@@ -100,6 +100,12 @@
     line-height: 1.25;
   }
 
+  #fw-gallery-root .fw-card-year {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+  }
+
   #fw-gallery-root .fw-card-caption {
     margin: 10px 0 0;
     color: var(--muted);
@@ -192,44 +198,12 @@
     const root = document.getElementById("fw-gallery-root");
     if (!root) return;
 
-    const imageFiles = [
-      "abbys-album-reduced.jpg",
-      "angels-edited.jpg",
-      "as-night-falls-nearer-now-I-start-to-forget-the-day-edited.jpg",
-      "bananas-i-try.jpg",
-      "beach-collage.jpg",
-      "birbs.jpg",
-      "eckert-horizontal.jpg",
-      "four-solarized-resized.jpg",
-      "four-dinosaurs.jpg",
-      "grunge.jpg",
-      "grunge-repeated-reduced.jpg",
-      "harper.jpg",
-      "otter.jpg",
-      "pastel-hands.jpg",
-      "pastel-edited.jpg",
-      "pterosaur-sketch-reduced.jpg",
-      "pterosaur-reduced.jpg",
-      "sad-collage.jpg",
-      "skele-edited-edited.jpg",
-      "skulls-edited.jpg",
-      "solarized.jpg",
-      "stock.PNG",
-      "wave.JPG"
-    ];
-
-    const imageMeta = {
-      "otter.jpg": {
-        title: "Otter",
-        alt: "Artwork of an otter.",
-        tags: ["featured", "animals", "study"]
-      }
-    };
+    const manifestUrl = "https://juliayoussef.github.io/fourthwall/gallery.json";
 
     function titleFromFilename(filename) {
       const withoutExtension = filename.replace(/\.[^.]+$/, "");
       const cleaned = withoutExtension
-        .replace(/[_-]+/g, " ")
+        .replace(/[._-]+/g, " ")
         .replace(/\s+/g, " ")
         .replace(/\b(edited|reduced|resized|horizontal)\b/gi, "")
         .replace(/\s+/g, " ")
@@ -244,36 +218,35 @@
       return "https://juliayoussef.github.io/fourthwall/gallery/" + encodeURIComponent(filename);
     }
 
-    const galleryItems = imageFiles.map(function (filename) {
+    function normalizeItem(item, index) {
+      item = item || {};
+      const filename = item.filename || "";
+      const title = item.title || titleFromFilename(filename) || filename;
       const defaults = {
-        title: titleFromFilename(filename) || filename,
+        filename: filename,
+        title: title,
         imageUrl: buildImageUrl(filename),
-        alt: (titleFromFilename(filename) || filename) + " artwork.",
+        alt: title + " artwork.",
+        year: "",
         caption: "",
-        tags: []
+        tags: [],
+        id: index + 1
       };
-      const overrides = imageMeta[filename] || {};
 
-      return Object.assign({}, defaults, overrides, {
-        imageUrl: buildImageUrl(filename)
+      return Object.assign({}, defaults, item, {
+        filename: filename,
+        imageUrl: buildImageUrl(filename),
+        tags: Array.from(new Set((item.tags || []).map((tag) => String(tag).trim().toLowerCase()).filter(Boolean)))
       });
-    });
-
-    const normalizedItems = galleryItems.map((item, index) => ({
-      ...item,
-      id: index + 1,
-      tags: Array.from(new Set((item.tags || []).map((tag) => String(tag).trim().toLowerCase()).filter(Boolean)))
-    }));
+    }
 
     const filterBar = root.querySelector("#fwFilterBar");
     const gallery = root.querySelector("#fwGallery");
     const resultsLabel = root.querySelector("#fwResultsLabel");
     const emptyState = root.querySelector("#fwEmptyState");
 
-    const tagSet = new Set(["all"]);
-    normalizedItems.forEach((item) => item.tags.forEach((tag) => tagSet.add(tag)));
-    const tags = Array.from(tagSet);
-
+    let normalizedItems = [];
+    let tags = ["all"];
     let activeTag = "all";
 
     function formatTag(tag) {
@@ -331,6 +304,13 @@
         title.textContent = item.title;
         body.appendChild(title);
 
+        if (item.year) {
+          const year = document.createElement("p");
+          year.className = "fw-card-year";
+          year.textContent = item.year;
+          body.appendChild(year);
+        }
+
         if (item.caption) {
           const caption = document.createElement("p");
           caption.className = "fw-card-caption";
@@ -362,7 +342,34 @@
       emptyState.classList.toggle("is-visible", visibleItems.length === 0);
     }
 
-    buildFilters();
-    renderGallery();
+    function setItems(items) {
+      normalizedItems = items.map(normalizeItem).filter((item) => item.filename);
+
+      const tagSet = new Set(["all"]);
+      normalizedItems.forEach((item) => item.tags.forEach((tag) => tagSet.add(tag)));
+      tags = Array.from(tagSet);
+
+      buildFilters();
+      renderGallery();
+    }
+
+    fetch(manifestUrl)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Gallery manifest failed to load.");
+        }
+
+        return response.json();
+      })
+      .then((items) => {
+        setItems(Array.isArray(items) ? items : []);
+      })
+      .catch(() => {
+        filterBar.innerHTML = "";
+        gallery.innerHTML = "";
+        resultsLabel.textContent = "0 works";
+        emptyState.textContent = "The gallery could not be loaded right now.";
+        emptyState.classList.add("is-visible");
+      });
   }());
 </script>
