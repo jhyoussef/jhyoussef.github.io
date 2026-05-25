@@ -26,12 +26,8 @@ announcements:
   enabled: true
 ---
 
-Welcome! I am Julia, an aspiring researcher based in Hyde Park interested in using quantitative approaches to answer large-scale questions in vertebrate paleoecology and evolutionary biology. By studying ancient ecosystems through fossils, phylogenetics, and statistical models, I hope to understand how amniote clades and the niches they occupy originate, diversify, and disappear through time.
+Welcome! I am Julia, an aspiring researcher and artist based in Hyde Park interested in vertebrate paleoecology and macroevolution. My work focuses on trying to reconstruct vertebrate ecological and evolutionary dynamics from an incomplete fossil record, particularly through large-scale morphological and ecological datasets. Broadly, I am interested in how vertebrate lineages explore possible niches given environmental and evolutionary constraints -- and how reliably we can reconstruct those dynamics from fragmented fossils, taphonomic biases, and academic artifacts. 
 
-More specifically, I am interested in how vertebrate lineages explore eco-space under evolutionary or environmental constraints -- and how reliably we may reconstruct those dynamics from incomplete morphological and fossil data. Consequently, much of my current work is focused on investigating how we construct, interpret, and reuse datasets in phylogenetics and ecological inference. This includes projects ranging from investigating authorial bias in morphological phylogenetic datasets to analyzing dietary language and ecological categorization in modern herbivory literature. 
+This site gathers together my research, writing, notes, and science-related artwork - check out the navbar above to explore more. 
 
-I increasingly suspect that understanding the relationships between macroevolution and paleoecology will require leveraging the fragmented information dispersed across paleontological literature and transforming it into structured datasets capable of addressing complex questions. Equally, I believe it will be important to make sure such information is as accessible as possible. This site gathers my research areas, writing, notes, and artwork into one place, as I try to understand the systems I study, the frameworks through which I study them, and where I am trying to go. 
-
-Check out the buttons in the profile or the pages in the navbar above to explore more. If you're interested in the totality of my artwork or shop, check out my site at [COMING SOON]
-
-As a side note...the bird flying around your screen is adapted from a fork of the PocketBird repo by Idress (https://idreesinc.itch.io/pocket-bird). Clicking them opens a small menu, where you have the option to leave sticky notes across the site that remain when you return. Try shaking the mouse over the bird to "pet" them!
+The bird flying around your screen is adapted from PocketBird by Idress. Clicking them opens a small menu, where you have the option to leave sticky notes across the site that remain when you return. Try shaking the mouse over the bird to "pet" them!
