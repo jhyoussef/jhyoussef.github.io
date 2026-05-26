@@ -1,11 +1,11 @@
 <style>
   #fw-gallery-root {
-    --surface-strong: rgba(255, 248, 241, 0.96);
+    --surface-strong: rgba(255, 250, 244, 0.96);
     --text: #261a12;
     --muted: #705a4d;
-    --radius-lg: 22px;
-    --radius-md: 16px;
-    --tag: #efe4d4;
+    --radius-lg: 8px;
+    --radius-md: 8px;
+    --tag: rgba(239, 228, 212, 0.7);
     --tag-active: #261a12;
     --tag-active-text: #fffaf3;
     box-sizing: border-box;
@@ -25,32 +25,31 @@
   #fw-gallery-root .fw-filter-bar {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
-    margin: 0 0 18px;
+    gap: 8px 14px;
+    margin: 0 0 22px;
   }
 
   #fw-gallery-root .fw-filter-chip {
-    border: 1px solid transparent;
-    border-radius: 999px;
-    padding: 11px 18px;
+    border: 0;
+    border-radius: 0;
+    padding: 0 0 2px;
     font: inherit;
-    font-size: 0.96rem;
-    color: var(--text);
-    background: var(--tag);
+    font-size: 0.95rem;
+    color: var(--muted);
+    background: transparent;
     cursor: pointer;
-    transition: transform 180ms ease, background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+    transition: color 180ms ease, border-color 180ms ease;
   }
 
   #fw-gallery-root .fw-filter-chip:hover,
   #fw-gallery-root .fw-filter-chip:focus-visible {
-    transform: translateY(-1px);
-    border-color: rgba(38, 26, 18, 0.18);
+    color: var(--text);
     outline: none;
   }
 
   #fw-gallery-root .fw-filter-chip.is-active {
-    color: var(--tag-active-text);
-    background: var(--tag-active);
+    color: var(--text);
+    border-bottom: 1px solid currentColor;
   }
 
   #fw-gallery-root .fw-gallery-meta {
@@ -65,22 +64,29 @@
 
   #fw-gallery-root .fw-gallery {
     column-count: 1;
-    column-gap: 20px;
+    column-gap: 16px;
   }
 
   #fw-gallery-root .fw-card {
     display: inline-block;
+    position: relative;
     width: 100%;
-    margin: 0 0 20px;
-    border: 1px solid rgba(255, 255, 255, 0.58);
+    margin: 0 0 16px;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    background: var(--surface-strong);
-    box-shadow: 0 12px 36px rgba(49, 34, 18, 0.11);
+    background: #14100d;
+    box-shadow: 0 8px 22px rgba(49, 34, 18, 0.1);
     break-inside: avoid;
     transform: translateY(14px);
     opacity: 0;
     animation: fw-rise-in 500ms ease forwards;
+  }
+
+  #fw-gallery-root .fw-card-link {
+    display: block;
+    position: relative;
+    color: inherit;
+    text-decoration: none;
   }
 
   #fw-gallery-root .fw-card-media {
@@ -88,46 +94,79 @@
     width: 100%;
     height: auto;
     background: linear-gradient(180deg, rgba(238, 225, 211, 0.8), rgba(221, 204, 186, 0.9));
+    transition: transform 220ms ease, filter 220ms ease;
   }
 
   #fw-gallery-root .fw-card-body {
-    padding: 16px 16px 18px;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 18px;
+    color: #fffaf3;
+    background: linear-gradient(to top, rgba(20, 13, 8, 0.86), rgba(20, 13, 8, 0.26) 54%, rgba(20, 13, 8, 0.05));
+    opacity: 0;
+    transition: opacity 200ms ease;
+  }
+
+  #fw-gallery-root .fw-card:hover .fw-card-body,
+  #fw-gallery-root .fw-card:focus-within .fw-card-body {
+    opacity: 1;
+  }
+
+  #fw-gallery-root .fw-card:hover .fw-card-media,
+  #fw-gallery-root .fw-card:focus-within .fw-card-media {
+    filter: saturate(0.92) brightness(0.82);
+    transform: scale(1.015);
   }
 
   #fw-gallery-root .fw-card-title {
     margin: 0;
-    font-size: 1.08rem;
+    color: inherit;
+    font-size: 1.04rem;
     line-height: 1.25;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   }
 
-  #fw-gallery-root .fw-card-year {
+  #fw-gallery-root .fw-card-meta {
     margin: 6px 0 0;
-    color: var(--muted);
-    font-size: 0.86rem;
+    color: inherit;
+    font-size: 0.84rem;
+    line-height: 1.35;
+    opacity: 0.9;
   }
 
   #fw-gallery-root .fw-card-caption {
-    margin: 10px 0 0;
-    color: var(--muted);
-    font-size: 0.95rem;
-    line-height: 1.55;
+    margin: 9px 0 0;
+    color: inherit;
+    font-size: 0.88rem;
+    line-height: 1.35;
+    opacity: 0.96;
   }
 
   #fw-gallery-root .fw-card-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin: 14px 0 0;
+    gap: 6px;
+    margin: 12px 0 0;
   }
 
   #fw-gallery-root .fw-card-tag {
-    padding: 6px 10px;
-    border-radius: 999px;
-    background: rgba(38, 26, 18, 0.08);
-    color: var(--muted);
-    font-size: 0.78rem;
-    letter-spacing: 0.03em;
+    color: inherit;
+    font-size: 0.76rem;
+    opacity: 0.84;
     text-transform: lowercase;
+  }
+
+  #fw-gallery-root .fw-card-featured {
+    align-self: flex-start;
+    margin: 0 0 8px;
+    color: inherit;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    opacity: 0.82;
+    text-transform: uppercase;
   }
 
   #fw-gallery-root .fw-empty-state {
@@ -169,7 +208,9 @@
 
   @media (prefers-reduced-motion: reduce) {
     #fw-gallery-root .fw-filter-chip,
-    #fw-gallery-root .fw-card {
+    #fw-gallery-root .fw-card,
+    #fw-gallery-root .fw-card-media,
+    #fw-gallery-root .fw-card-body {
       transition: none;
       animation: none;
     }
@@ -177,6 +218,24 @@
     #fw-gallery-root .fw-card {
       opacity: 1;
       transform: none;
+    }
+  }
+
+  @media (hover: none) {
+    #fw-gallery-root .fw-card-body {
+      position: static;
+      color: var(--text);
+      background: var(--surface-strong);
+      opacity: 1;
+    }
+
+    #fw-gallery-root .fw-card-title,
+    #fw-gallery-root .fw-card-meta,
+    #fw-gallery-root .fw-card-caption,
+    #fw-gallery-root .fw-card-tag,
+    #fw-gallery-root .fw-card-featured {
+      color: inherit;
+      text-shadow: none;
     }
   }
 </style>
@@ -228,8 +287,11 @@
         imageUrl: buildImageUrl(filename),
         alt: title + " artwork.",
         year: "",
+        medium: "",
         caption: "",
         tags: [],
+        show: true,
+        featured: false,
         id: index + 1
       };
 
@@ -286,6 +348,7 @@
         article.style.animationDelay = (index * 55) + "ms";
 
         const link = document.createElement("a");
+        link.className = "fw-card-link";
         link.href = item.imageUrl;
         link.target = "_blank";
         link.rel = "noreferrer";
@@ -299,16 +362,24 @@
         const body = document.createElement("div");
         body.className = "fw-card-body";
 
+        if (item.featured) {
+          const featured = document.createElement("p");
+          featured.className = "fw-card-featured";
+          featured.textContent = "Featured";
+          body.appendChild(featured);
+        }
+
         const title = document.createElement("h2");
         title.className = "fw-card-title";
         title.textContent = item.title;
         body.appendChild(title);
 
-        if (item.year) {
-          const year = document.createElement("p");
-          year.className = "fw-card-year";
-          year.textContent = item.year;
-          body.appendChild(year);
+        const metaParts = [item.year, item.medium].filter(Boolean);
+        if (metaParts.length) {
+          const meta = document.createElement("p");
+          meta.className = "fw-card-meta";
+          meta.textContent = metaParts.join(" · ");
+          body.appendChild(meta);
         }
 
         if (item.caption) {
@@ -326,15 +397,15 @@
           visibleTags.forEach((tag) => {
             const tagEl = document.createElement("span");
             tagEl.className = "fw-card-tag";
-            tagEl.textContent = tag;
+            tagEl.textContent = "#" + tag;
             tagsWrap.appendChild(tagEl);
           });
 
           body.appendChild(tagsWrap);
         }
 
+        link.appendChild(body);
         article.appendChild(link);
-        article.appendChild(body);
         gallery.appendChild(article);
       });
 
@@ -343,7 +414,10 @@
     }
 
     function setItems(items) {
-      normalizedItems = items.map(normalizeItem).filter((item) => item.filename);
+      normalizedItems = items
+        .map(normalizeItem)
+        .filter((item) => item.filename && item.show !== false)
+        .sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)) || a.id - b.id);
 
       const tagSet = new Set(["all"]);
       normalizedItems.forEach((item) => item.tags.forEach((tag) => tagSet.add(tag)));

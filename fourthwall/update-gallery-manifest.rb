@@ -26,9 +26,12 @@ def default_entry(filename, current_year)
     "filename" => filename,
     "title" => title,
     "year" => current_year,
+    "medium" => "",
     "alt" => "#{title} artwork.",
     "caption" => "",
     "tags" => [],
+    "show" => true,
+    "featured" => false,
   }
 end
 
@@ -54,6 +57,8 @@ stale_entries = existing_entries.reject { |entry| files[entry["filename"]] }
 synced_entries = filenames.map do |filename|
   default_entry(filename, current_year).merge(existing_by_filename.fetch(filename, {})).tap do |entry|
     entry["tags"] = [] unless entry["tags"].is_a?(Array)
+    entry["show"] = true unless entry.key?("show")
+    entry["featured"] = false unless entry.key?("featured")
   end
 end
 
