@@ -5,7 +5,9 @@
     "year": 2020,
     "alt": "Album art of a girl with angel wings sitting under a sky full of eyes.",
     "caption": "Album art for Untitled, Abby Hayden.",
-    "tags": ["digital"]
+    "tags": [
+      "digital"
+    ]
   },
   {
     "filename": "angels-edited.jpg",
@@ -13,7 +15,9 @@
     "year": 2020,
     "alt": "Faceless angels fly amidst rainbow, multicolored clouds in acrylic.",
     "caption": "",
-    "tags": ["acrylic"]
+    "tags": [
+      "acrylic"
+    ]
   },
   {
     "filename": "as-night-falls-nearer-now-I-start-to-forget-the-day-edited.jpg",
@@ -21,7 +25,9 @@
     "year": 2023,
     "alt": "Black-and-white willow-charcoal piece",
     "caption": "Prompted by 'Repetition,' features objects from my day-to-day...songs, texts, and alarms on repeat",
-    "tags": ["charcoal"]
+    "tags": [
+      "charcoal"
+    ]
   },
   {
     "filename": "bananas-i-try.jpg",
@@ -29,7 +35,9 @@
     "year": 2022,
     "alt": "A saturated pastel work of a bunch of bananas on a plate, with the words 'I try' in brown.",
     "caption": "",
-    "tags": ["pastel"]
+    "tags": [
+      "pastel"
+    ]
   },
   {
     "filename": "beach-collage.jpg",
@@ -37,7 +45,9 @@
     "year": 2021,
     "alt": "Collage of sky, water, and people that looks almost like a beach.",
     "caption": "",
-    "tags": ["collage"]
+    "tags": [
+      "collage"
+    ]
   },
   {
     "filename": "birbs.jpg",
@@ -45,7 +55,9 @@
     "year": 2023,
     "alt": "A mourning dove and a cardinal, drawn in pencil",
     "caption": "",
-    "tags": ["colored pencil"]
+    "tags": [
+      "colored pencil"
+    ]
   },
   {
     "filename": "eckert-horizontal.jpg",
@@ -53,7 +65,9 @@
     "year": 2024,
     "alt": "Ink drawinging of the University of Chicago math building, Eckhart Hall",
     "caption": "",
-    "tags": ["pen"]
+    "tags": [
+      "pen"
+    ]
   },
   {
     "filename": "four-dinosaurs.jpg",
@@ -61,7 +75,9 @@
     "year": 2023,
     "alt": "'Sue,' the Field Museum's Tyrannosaurus Rex, in the main hall, with four ravens positioned in front of it",
     "caption": "",
-    "tags": ["pastel"]
+    "tags": [
+      "pastel"
+    ]
   },
   {
     "filename": "four-solarized-resized.jpg",
@@ -69,7 +85,10 @@
     "year": 2024,
     "alt": "2x2 grid of the same image of a loaf of bread and a stick of butter, with different solarized color schemes",
     "caption": "A heavily edited version of the original pastel work for the album 'Bread & Butter'",
-    "tags": ["digital", "pastel"]
+    "tags": [
+      "digital",
+      "pastel"
+    ]
   },
   {
     "filename": "grunge-repeated-reduced.jpg",
@@ -77,7 +96,10 @@
     "year": 2024,
     "alt": "Black-and-white grunge version of a loaf of bread and a stick of butter",
     "caption": "A heavily edited version of the original pastel work for the album 'Bread & Butter'",
-    "tags": ["digital", "pastel"]
+    "tags": [
+      "digital",
+      "pastel"
+    ]
   },
   {
     "filename": "harper.jpg",
@@ -85,7 +107,18 @@
     "year": 2021,
     "alt": "Mixed-media work including Arabic & Coptic text, pastel splotches, and an ink-based depiction Harper Library",
     "caption": "A mixed-media work including peices of identity at the time: the university library, arabic and coptic text, and even latin, all mixed with color and hand-stained paper",
-    "tags": ["pastel", "mixed-media"]
+    "tags": [
+      "pastel",
+      "mixed-media"
+    ]
+  },
+  {
+    "filename": "insects.jpg",
+    "title": "Insects",
+    "year": 2026,
+    "alt": "Insects artwork.",
+    "caption": "",
+    "tags": []
   },
   {
     "filename": "otter.jpg",
@@ -93,7 +126,9 @@
     "year": 2024,
     "alt": "An otter swims in front of blurred kelp.",
     "caption": "Practice pastel work based on an otter photo reference I am trying to find again",
-    "tags": ["pastel"]
+    "tags": [
+      "pastel"
+    ]
   },
   {
     "filename": "pastel-edited.jpg",
@@ -101,7 +136,9 @@
     "year": 2022,
     "alt": "Saturated pastel work with a jar, three apples, and a banana",
     "caption": "",
-    "tags": ["pastel"]
+    "tags": [
+      "pastel"
+    ]
   },
   {
     "filename": "pastel-hands.jpg",
@@ -109,6 +146,16 @@
     "year": 2023,
     "alt": "Two multicolored-hands twisted towards one another",
     "caption": "A sketch with pastel",
+    "tags": [
+      "pastel"
+    ]
+  },
+  {
+    "filename": "pastel-wave.jpg",
+    "title": "Pastel Wave",
+    "year": 2024,
+    "alt": "A genetle blue wave",
+    "caption": "",
     "tags": ["pastel"]
   },
   {
@@ -117,7 +164,10 @@
     "year": 2024,
     "alt": "Diagram of two pterosaur skulls, diagonally opposed, with anatomical labels",
     "caption": "A diagram of a Thallassodromeus and Nyctosaurus, illustrating the distinct crest styles expressed in pterosaurs.",
-    "tags": ["digital", "paleontology"]
+    "tags": [
+      "digital",
+      "paleontology"
+    ]
   },
   {
     "filename": "pterosaur-sketch-reduced.jpg",
@@ -125,7 +175,10 @@
     "year": 2024,
     "alt": "Sketch of a pterosaur bust",
     "caption": "A sketch of Pterodactylus antiquus, the first pterosaur ever discovered, based on a fossil specimen image. If I did it properly, I would brighten the crest, clarify the texture vs. pycnofibers, and distinguisht the area around the jaws from the rest of the head.",
-    "tags": ["digital", "paleontology"]
+    "tags": [
+      "digital",
+      "paleontology"
+    ]
   },
   {
     "filename": "sad-collage.jpg",
@@ -133,7 +186,9 @@
     "year": 2021,
     "alt": "A collage of blues and dark colors with Starry-Night-like orange swirls, alongside eye-imagery and album art",
     "caption": "Not my best work, but the first collage I've made, and I like the way the colors interact",
-    "tags": ["collage"]
+    "tags": [
+      "collage"
+    ]
   },
   {
     "filename": "skele-edited-edited.jpg",
@@ -141,7 +196,9 @@
     "year": 2023,
     "alt": "Skeletal figure labeled 'Homo Sapiens', dropping an eaten apple, with a constrictor snack curled around a tree above",
     "caption": "This piece was part of coursework, and unfortunately I got sick and wasn't able to finish it properly. It is a piece I would like to redo -- a constrast between the biblical story and the sterility of scientific imagery ",
-    "tags": ["pencil"]
+    "tags": [
+      "pencil"
+    ]
   },
   {
     "filename": "skulls-edited.jpg",
@@ -149,7 +206,9 @@
     "year": 2023,
     "alt": "Grid of 3x3 skulls and pencil-notes from different angles",
     "caption": "A human skull-study from different angles using models on SketchFab",
-    "tags": ["pencil"]
+    "tags": [
+      "pencil"
+    ]
   },
   {
     "filename": "solarized.jpg",
@@ -157,7 +216,18 @@
     "year": 2024,
     "alt": "A loaf of bread and a stick of butter, with a background solarized",
     "caption": "A heavily edited version of the original pastel work for the album 'Bread & Butter'",
-    "tags": ["digital", "pastel"]
+    "tags": [
+      "digital",
+      "pastel"
+    ]
+  },
+  {
+    "filename": "stegosaurus-study.jpeg",
+    "title": "Stegosaurus Study",
+    "year": 2022,
+    "alt": "Mounted stegosaurus specimen sketch in pencil.",
+    "caption": "A sketch of the mounted Stegosaurus at the Field Museum",
+    "tags": ["pencil", "paleontology"]
   },
   {
     "filename": "stork.png",
@@ -165,14 +235,24 @@
     "year": 2018,
     "alt": "A blue heron, neck held back, standing in water, painted on wood.",
     "caption": "An acrylic painting on wood I was very undertrained for, but it was a significant stage in my artistic journey",
-    "tags": ["acrylic"]
+    "tags": [
+      "acrylic"
+    ]
   },
   {
-    "filename": "wave.jpg.JPG",
-    "title": "A wave",
+    "filename": "tiger-swimming.jpeg",
+    "title": "Tiger Swimming",
+    "year": 2024,
+    "alt": "Tiger Swimming against a green background.",
+    "caption": "A pastel practice based on an iconic photo of a tiger swimming through algae-filled water",
+    "tags": ["pastel"]
+  },
+  {
+    "filename": "wave.jpg",
+    "title": "Wave",
     "year": 2019,
-    "alt": "A cresting wave painted on wood.",
-    "caption": "",
+    "alt": "A cresting wave on wood.",
+    "caption": "A cresting wave on wood for a commission",
     "tags": ["acrylic"]
   }
 ]
