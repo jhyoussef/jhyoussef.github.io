@@ -10,9 +10,11 @@ nav_order: 2
   {% assign all_posts = site.posts | sort: "date" | reverse %}
   {% assign writing_posts = all_posts | where_exp: "post", "post.path contains '_posts/writings/'" %}
   {% assign note_posts = all_posts | where_exp: "post", "post.path contains '_posts/notes/'" %}
+  {% assign book_note_posts = all_posts | where_exp: "post", "post.path contains '_posts/book-notes/'" %}
+  {% assign notebook_posts = note_posts | concat: book_note_posts | sort: "date" | reverse %}
   {% assign featured_posts = writing_posts | where: "featured", true %}
   {% assign writings_per_page = 4 %}
-  {% assign notes_initial_count = 4 %}
+  {% assign notes_initial_count = 6 %}
   {% assign notes_load_increment = 2 %}
 
   {% assign essay_tags_csv = "" %}
@@ -206,15 +208,19 @@ nav_order: 2
     <div class="col-lg-4 col-md-5">
       <aside class="writings-notes-column">
         <section class="home-section writings-notes-section">
-          <h2 class="home-section-title">notes</h2>
+          <h2 class="home-section-title">notebooks</h2>
 
-          {% if note_posts.size > 0 %}
+          {% if notebook_posts.size > 0 %}
             <div class="writings-notes-scroll" data-notes-list>
               {% assign note_index = 0 %}
-              {% for post in note_posts %}
+              {% for post in notebook_posts %}
                 {% assign note_index = note_index | plus: 1 %}
                 {% assign note_word_count = post.content | strip_html | number_of_words %}
                 {% assign note_preview = post.content | strip_html | truncatewords: 100 %}
+                {% assign notebook_type = "note" %}
+                {% if post.path contains "_posts/book-notes/" %}
+                  {% assign notebook_type = "book note" %}
+                {% endif %}
 
                 <article
                   class="card mb-3 hoverable writings-note-card{% if note_word_count > 100 %} writings-note-card--faded{% endif %}"
@@ -223,6 +229,7 @@ nav_order: 2
                 >
                   <div class="card-body">
                     <p class="post-meta writings-meta-row mb-2">
+                      <span>{{ notebook_type }}</span>
                       <span>{{ post.date | date: '%B %d, %Y' }}</span>
                       {% if post.tags and post.tags.size > 0 %}
                         <span>{{ post.tags | join: " | " }}</span>
@@ -238,13 +245,13 @@ nav_order: 2
                 </article>
               {% endfor %}
             </div>
-            {% if note_posts.size > notes_initial_count %}
+            {% if notebook_posts.size > notes_initial_count %}
               <div class="writings-notes-actions">
-                <button type="button" class="writings-load-more-button" data-notes-load-more>Load more notes</button>
+                <button type="button" class="writings-load-more-button" data-notes-load-more>Load more notebooks</button>
               </div>
             {% endif %}
           {% else %}
-          <p class="writings-empty-state">No note posts yet.</p>
+          <p class="writings-empty-state">No notebooks yet.</p>
           {% endif %}
         </section>
       </aside>
