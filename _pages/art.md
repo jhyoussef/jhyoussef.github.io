@@ -82,7 +82,7 @@ Click each work to see full-screen along with any metadata and progress notes.
     opacity: 0.7;
   }
 
-  .masonry-item[hidden] {
+  #art-gallery .masonry-item[hidden] {
     display: none !important;
   }
 
@@ -173,16 +173,17 @@ Click each work to see full-screen along with any metadata and progress notes.
 <div class="art-tags">
   <ul>
     <li>
-      <button type="button" class="art-tag-filter" data-art-tag="">
+      <a class="art-tag-filter" href="{{ '/art/' | relative_url }}" data-art-tag="">
         all
-      </button>
+      </a>
     </li>
     {% for tag in unique_tags %}
       <li>
         <span class="art-tag-separator">&middot;</span>
-        <button type="button" class="art-tag-filter" data-art-tag="{{ tag | slugify }}">
+        {% assign tag_slug = tag | slugify %}
+        <a class="art-tag-filter" href="{{ '/art/' | relative_url }}?tag={{ tag_slug }}" data-art-tag="{{ tag_slug }}">
           # {{ tag }}
-        </button>
+        </a>
       </li>
     {% endfor %}
   </ul>
@@ -228,10 +229,14 @@ document.addEventListener("DOMContentLoaded", function () {
     return;
   }
 
-  const readTagFromUrl = () => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("tag") || "";
-  };
+  const normalizeTag = (value) =>
+    (value || "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const readTagFromUrl = () => normalizeTag(new URLSearchParams(window.location.search).get("tag"));
 
   const updateUrl = (tag) => {
     const url = new URL(window.location.href);
@@ -255,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const buttonTag = button.dataset.artTag || "";
       const isActive = buttonTag === tag;
       button.classList.toggle("is-active", isActive);
-      button.setAttribute("aria-pressed", isActive ? "true" : "false");
+      button.setAttribute("aria-current", isActive ? "true" : "false");
     });
 
     if (syncUrl) {
@@ -264,7 +269,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
       const selectedTag = button.dataset.artTag || "";
       applyFilter(selectedTag, true);
     });
